@@ -7,6 +7,11 @@
   <title>Payment List</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/bootstrap.css' ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/datatables.css' ?>">
+  <script>
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 </head>
 
 <body>
@@ -37,6 +42,7 @@
                 <option>12월</option>
               </select>
             </div>
+
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month"><span class="fa fa-plus"></span> Add Month</a></div>
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Delete_Month"><span class="fa fa-plus"></span> Delete Month</a></div>
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
@@ -323,15 +329,11 @@
                   columns: [{
                     title: '#'
                   }, {
-                    title: 'ID'
-                  }, {
                     title: 'Month'
                   }, {
-                    title: 'ST ID'
+                    title: 'Class Name'
                   }, {
                     title: 'Name'
-                  }, {
-                    title: 'Class Name'
                   }, {
                     title: 'Pay Status'
                   }, {
@@ -342,17 +344,22 @@
 
               }
 
-              let rowData = ["#", "id", "st_id", "name", "class_name", "pay_status", "actions"];
+              let rowData = ["#", "month", "class_name", "name", "pay_status", "actions"];
               let action_link = null;
+              let name_tooltip = null;
 
               table.clear().draw();
 
               for (i = 0; i < data.length; i++) {
+                name_tooltip =
+                  '<a href="javascript:void(0);" class="text" data-toggle="tooltip" data-placement="top" title="ID: ' + data[i].id + ' , ST_ID: ' +
+                  data[i].st_id + ' "> ' + data[i].name + ' </a>';
+
                 action_link =
                   '<a href="javascript:void(0);" class="btn btn-info btn-sm pay_edit" data-payment_id="' + data[i].id + '">수납</a>' + ' ' +
                   '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_id="' + data[i].st_id + '" data-st_name="' + data[i].name + '" data-class_name="' + data[i].class_name + '"data-pay_status="' + data[i].pay_status + '">Edit</a>' + ' ' +
                   '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_name="' + data[i].name + '">Delete</a>';
-                rowData = [i + 1, data[i].id, data[i].month, data[i].st_id, data[i].name, data[i].class_name, data[i].pay_status, action_link];
+                rowData = [i + 1, data[i].month, data[i].class_name, name_tooltip, data[i].pay_status, action_link];
                 table.row.add(rowData).draw(false);
               }
             }
