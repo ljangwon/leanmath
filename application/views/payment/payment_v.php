@@ -22,8 +22,8 @@
     <div class="row">
       <div class="col-12">
         <div class="col-md-12">
-          <h1>Payment
-            <small>List</small>
+          <h1>Home
+            <small>/Payment List</small>
             <?php echo $this->session->flashdata('msg'); ?>
             <div class="form-group float-right">
               <label for="select_month">Month</label>
