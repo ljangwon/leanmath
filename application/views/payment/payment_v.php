@@ -38,14 +38,30 @@
                 <option>8월</option>
                 <option>9월</option>
                 <option>10월</option>
-                <option selected>11월</option>
-                <option>12월</option>
+                <option>11월</option>
+                <option selected>12월</option>
               </select>
             </div>
 
-            <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month"><span class="fa fa-plus"></span> Add Month</a></div>
-            <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Delete_Month"><span class="fa fa-plus"></span> Delete Month</a></div>
-            <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
+            <div class="float-right">
+              <div id="top_buttons">
+                <table id="top_buttons" width="30%">
+                  <tr>
+                    <td>
+                      <a href=" javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month">
+                        <span class="fa fa-plus"></span> Add Month</a>
+                    </td>
+                    <td>
+                      <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Delete_Month">
+                        <span class="fa fa-plus"></span> Delete Month</a>
+                    </td>
+                    <td>
+                      <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add">
+                        <span class="fa fa-plus"></span> Add New </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
           </h1>
 
           <table class="table table-striped display compact" id="payment_data">
