@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-12">
         <div class="col-md-12">
-          <h1><a style="text-decoration:none color:red" href=" <?php echo base_url() ?>"> LEANMATH </a>
+          <h1><a style="text-decoration:none color:red" href=" <?php echo base_url() ?>"> LEANMATH - new </a>
             <small>/Payment List</small>
             <?php echo $this->session->flashdata('msg'); ?>
             <div class="form-group float-right">
