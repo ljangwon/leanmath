@@ -23,12 +23,15 @@
         <button> delete </button>
       </div>
 
-      <div class="col-4 ml-auto">
+      <div class="col-4 ml-auto ">
         <button> login </button>
         <button> logout </button>
       </div>
 
-
+      <div class="col-4 ">
+        <button> login </button>
+        <button> logout </button>
+      </div>
 
     </div>
   </div>
