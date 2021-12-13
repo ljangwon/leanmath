@@ -142,6 +142,9 @@ class Student_m extends CI_Model
         $this->db->set('class_time3', $option['class_time3']);
 
         $this->db->set('memo', ltrim($option['memo']));
+        $this->db->set('check_memo', ltrim($option['check_memo']));
+        $this->db->set('off_memo', ltrim($option['off_memo']));
+
         $this->db->set('fees', $option['fees']);
         $this->db->set('flag', $option['flag']);
 
