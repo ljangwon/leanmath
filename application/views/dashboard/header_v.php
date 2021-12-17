@@ -1,6 +1,6 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">LeanMath</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/leanmath">LeanMath</a>
 
   <div class="navbar-brand col ml-5 dropdown">
     <a href="#" class="link-light text-decoration-none dropdown-toggle" id="dropdown2-2" data-bs-toggle="dropdown" aria-expanded="false">

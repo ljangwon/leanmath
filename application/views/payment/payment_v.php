@@ -19,7 +19,7 @@
     <!-- row1 title and message begin -->
     <div class="row" id='row1'>
       <div class="col-xs-12">
-        <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> L-MATH </a>
+        <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LEAN-MATH </a>
           <small>/ Payment List</small>
         </h1>
       </div>

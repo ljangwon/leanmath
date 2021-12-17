@@ -40,7 +40,7 @@ class Auth extends MY_Controller
         $this->form_validation->set_rules('re_password', '비밀번호 확인', 'required');
 
         if ($this->form_validation->run() === false) {
-            $this->load->view('register');
+            $this->load->view('auth/register');
         } else {
             if (!function_exists('password_hash')) {
                 $this->load->helper('password');
@@ -76,6 +76,7 @@ class Auth extends MY_Controller
             $this->session->set_userdata('name', $user->name);
             $this->session->set_userdata('year', '2021년');
             $this->session->set_userdata('level', $user->level);
+            $this->session->set_userdata('workspace', $user->workspace);
 
             $returnURL = $this->input->get('returnURL');
             if ($returnURL === false) {

@@ -1,13 +1,15 @@
 <?php
-class User_m extends CI_Model {
+class User_m extends CI_Model
+{
 
     function __construct()
-    {    	
+    {
         parent::__construct();
     }
 
 
-    function gets(){
+    function gets()
+    {
         return $this->db->query("SELECT * FROM user")->result();
     }
 
@@ -23,10 +25,12 @@ class User_m extends CI_Model {
 
     function getByEmail($option)
     {
-        $result = $this->db->get_where('user', array(
-                                                    'email'=>$option['email']
-                                                    ))->row();
+        $result = $this->db->get_where(
+            'user',
+            array(
+                'email' => $option['email']
+            )
+        )->row();
         return $result;
     }
-
 }

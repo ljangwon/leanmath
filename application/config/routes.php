@@ -47,7 +47,7 @@ $route['dashboard/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
 $route['test/(:num)'] = "test/get/$1";
 $route['test/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
 
-$route['default_controller'] = "dashboard";
+$route['default_controller'] = "payment2";
 $route['404_override'] = 'errors/notfound';
 
 

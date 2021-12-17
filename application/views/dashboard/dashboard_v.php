@@ -329,7 +329,6 @@
 									<td><textarea name="memo" cols=100 rows="2" class="text-start"><?= $entry->memo ?> </textarea> </td>
 								</tr>
 							</form>
-
 					<?php
 						}
 					}
