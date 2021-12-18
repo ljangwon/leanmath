@@ -9,6 +9,7 @@ class Student2 extends My_Controller
 
 		$this->load->model('student_m');
 	}
+
 	function index()
 	{
 		$this->load->view(
@@ -99,7 +100,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s6_student_modal_v',
+			'student2/s6_student2_modal_v',
 			array()
 		);
 
@@ -114,6 +115,36 @@ class Student2 extends My_Controller
 		);
 	}
 
+	// read list
+	function student_list()
+	{
+		$data = $this->student_m->get_list(
+			array()
+		);
+		echo json_encode($data);
+	}
+
+	// create
+	function st_add()
+	{
+		$st_id = $this->session->userdata('st_id');
+
+		$new_st_id = $this->student_m->add(
+			array(
+				'name' => $this->input->post('name'),
+				'class_name' => $this->input->post('class_name'),
+			)
+		);
+
+		if (!$st_id) {
+			alert("학생 추가 실패했습니다.", site_url('/student2/get_student/' . $st_id));
+		} else {
+
+			alert("학생 추가 성공했습니다.", site_url('/student2/get_student/' . $new_st_id));
+		}
+	}
+
+	// read
 	function get_student($st_id)
 	{
 		if (empty($st_id)) {
@@ -186,26 +217,7 @@ class Student2 extends My_Controller
 		);
 	}
 
-	function st_add()
-	{
-		$st_id = $this->session->userdata('st_id');
-
-		$new_st_id = $this->student_m->add(
-			array(
-				'name' => $this->input->post('name'),
-				'class_name' => $this->input->post('class_name'),
-			)
-		);
-
-		if (!$st_id) {
-			alert("학생 추가 실패했습니다.", site_url('/student2/get_student/' . $st_id));
-		} else {
-
-			alert("학생 추가 성공했습니다.", site_url('/student2/get_student/' . $new_st_id));
-		}
-	}
-
-	// 학생 수정 컨트롤러
+	// update
 	function st_modify()
 	{
 		$st_id = $this->session->userdata('st_id');

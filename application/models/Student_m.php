@@ -7,6 +7,25 @@ class Student_m extends CI_Model
         parent::__construct();
     }
 
+
+    function get_list($option)
+    {
+        $this->db->select('*');
+        $this->db->order_by('flag', 'ASC');
+        $this->db->order_by('class_name', 'ASC');
+        $this->db->order_by('grade1', 'DESC');
+        $this->db->order_by('grade2', 'ASC');
+
+        if ($option) {
+            $this->db->where('flag', 1);
+            $this->db->where($option);
+        } else {
+            $this->db->where('flag', 1);
+        }
+        $result = $this->db->get('student')->result();
+        return $result;
+    }
+
     function gets($option = null)
     {
         $this->db->select('*');
