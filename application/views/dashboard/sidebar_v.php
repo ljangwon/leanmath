@@ -30,7 +30,7 @@
             $entry->class_day1 == date('w') |
             $entry->class_day2 == date('w') |
             $entry->class_day3 == date('w') &&
-            $entry->flag == '1'
+            $entry->status == '재원'
           ) {
         ?>
 
@@ -74,7 +74,7 @@
         foreach ($students as $entry) {
           if (
             $entry->class_day1 == '1' &&
-            $entry->flag == "1"
+            $entry->status == "재원"
           ) {
         ?>
 
@@ -117,7 +117,7 @@
         foreach ($students as $entry) {
           if (
             $entry->class_day1 == '2' &&
-            $entry->flag == "1"
+            $entry->status == "재원"
           ) {
         ?>
 
@@ -160,7 +160,7 @@
         foreach ($students as $entry) {
           if (
             $entry->class_day1 == '3' &&
-            $entry->flag == "1"
+            $entry->status == "재원"
           ) {
         ?>
 
@@ -203,7 +203,7 @@
         <?php
         foreach ($students as $entry) {
           if (
-            $entry->flag == 0
+            $entry->status == '대기'
           ) {
         ?>
 
@@ -244,14 +244,9 @@
       <ul class="nav flex-column mb-2 overflow-auto">
 
         <?php
-        $students = $this->student_m->get_by_option(
-          array(
-            "flag" => "9",
-          )
-        );
         foreach ($students as $entry) {
           if (
-            $entry->flag == 9
+            $entry->status == '퇴원'
           ) {
         ?>
 

@@ -11,12 +11,8 @@ class Dashboard_m extends CI_Model
 	function st_add($option)
 	{
 		$this->db->set('created', 'NOW()', false);
-		if ($option['name']) {
-			$this->db->set('name', $option['name']);
-		}
-		if ($option['class_name']) {
-			$this->db->set('class_name', $option['class_name']);
-		}
+		$this->db->set('workspace', $this->session->userdata('workspace'));
+		$this->db->set($option);
 
 		$this->db->insert('student');
 		$st_id = $this->db->insert_id();
@@ -26,34 +22,40 @@ class Dashboard_m extends CI_Model
 	function st_gets($option = null)
 	{
 		$this->db->select('*');
-		$this->db->order_by('flag', 'ASC');
+		$this->db->order_by('status', 'ASC');
 		$this->db->order_by('class_name', 'ASC');
 		$this->db->order_by('grade1', 'DESC');
 		$this->db->order_by('grade2', 'ASC');
+
+		$this->db->where('flag', 1);
+		$this->db->where('workspace', $this->session->userdata('workspace'));
+		$this->db->where('status', '재원');
 		if ($option) {
 			$this->db->where('grade1', $option);
-			$this->db->where('flag', 1);
 		}
 		$result = $this->db->get('student')->result();;
-		//$result =  $this->db->query("SELECT * FROM student")->result();
+
 		return $result;
 	}
 
 	function st_gets_today($option = null)
 	{
 		$this->db->select('*');
-		$this->db->order_by('flag', 'ASC');
+		$this->db->order_by('status', 'ASC');
 		$this->db->order_by('class_name', 'ASC');
 		$this->db->order_by('grade1', 'DESC');
 		$this->db->order_by('grade2', 'ASC');
+
+		$this->db->where('flag', 1);
+		$this->db->where('workspace', $this->session->userdata('workspace'));
+		$this->db->where('status', '재원');
 		if ($option) {
 			$this->db->where('class_day1', $option);
 			$this->db->or_where('class_day2', $option);
 			$this->db->or_where('class_day3', $option);
-			$this->db->where('flag', 1);
 		}
+
 		$result = $this->db->get('student')->result();;
-		//$result =  $this->db->query("SELECT * FROM student")->result();
 		return $result;
 	}
 
@@ -62,9 +64,12 @@ class Dashboard_m extends CI_Model
 		$this->db->select('*');
 
 		$this->db->select('UNIX_TIMESTAMP(created) AS created');
-		$result = $this->db->get_where('student', array(
-			'id' => $student_id
-		))->row();
+		$this->db->where(array(
+			'flag' => '1',
+			'workspace' => $this->session->userdata('workspace'),
+		));
+		$result = $this->db->where('id', $student_id);
+		$result = $this->db->get('student')->row();
 		return $result;
 	}
 
@@ -74,8 +79,10 @@ class Dashboard_m extends CI_Model
 		$result = $this->db->get_where(
 			'student',
 			array(
-				'grade1' => $option,
-				'flag' => '1'
+				'flag' => '1',
+				'workspace' => $this->session->userdata('workspace'),
+				'status' => '재원',
+				'grade1' => $option
 			)
 		)->row();
 		return $result;
@@ -87,9 +94,11 @@ class Dashboard_m extends CI_Model
 		$result = $this->db->get_where(
 			'student',
 			array(
+				'flag' => '1',
+				'status' => '재원',
+				'workspace' => $this->session->userdata('workspace'),
 				'grade1' => $option['grade1'],
 				'grade2' => $option['grade2'],
-				'flag' => '1'
 			)
 		)->row();
 		return $result;
@@ -99,8 +108,10 @@ class Dashboard_m extends CI_Model
 	{
 		$this->db->select_sum('fees');
 		$this->db->where(array(
-			'grade1' => $option,
-			'flag' => '1'
+			'flag' => '1',
+			'workspace' => $this->session->userdata('workspace'),
+			'status' => '재원',
+			'grade1' => $option
 		));
 		//$result = $this->db->get_where('student', array('grade1'=>$option))->row();
 		$result = $this->db->get('student')->row();
@@ -147,6 +158,7 @@ class Dashboard_m extends CI_Model
 		$this->db->set('receipt_use', $option['receipt_use']);
 
 		$this->db->set('flag', $option['flag']);
+		$this->db->set('status', $option['status']);
 		$this->db->set('start_date', $option['start_date']);
 		$this->db->set('end_date', $option['end_date']);
 		$this->db->set('report_last_date', $option['report_last_date']);

@@ -5,7 +5,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="st_add_Label">학생 추가</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
       <div class="modal-body">
         <form action="<?= site_url() ?>/student2/st_add" method="post">
@@ -18,7 +20,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
@@ -32,7 +34,9 @@
 
       <div class="modal-header">
         <h5 class="modal-title" id="st_delete_Label">학생 삭제</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
 
       <div class="modal-body">
@@ -48,7 +52,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
       </div>
 
     </div>

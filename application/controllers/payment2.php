@@ -65,18 +65,21 @@ class Payment2 extends My_Controller
 	function payment_list()
 	{
 		if ($this->input->post('pay_status') == '전체') {
+
 			$data = $this->payment_m->payment_list(
 				array(
-					'year' => $this->session->userdata('year'),
-					'month' => $this->input->post('month')
+					'p.flag' => '1',
+					'p.year' => $this->session->userdata('year'),
+					'p.month' => $this->input->post('month')
 				)
 			);
 		} else {
 			$data = $this->payment_m->payment_list(
 				array(
-					'year' => $this->session->userdata('year'),
-					'month' => $this->input->post('month'),
-					'pay_status' => $this->input->post('pay_status')
+					'p.flag' => '1',
+					'p.year' => $this->session->userdata('year'),
+					'p.month' => $this->input->post('month'),
+					'p.pay_status' => $this->input->post('pay_status')
 				)
 			);
 		}
@@ -87,6 +90,7 @@ class Payment2 extends My_Controller
 	{
 		$data = $this->payment_m->save_payment(
 			array(
+				'workspace' => $this->session->userdata('workspace'),
 				'year'  => $this->input->post('year'),
 				'month' => $this->input->post('month'),
 				'st_id' => $this->input->post('st_id'),
@@ -101,8 +105,10 @@ class Payment2 extends My_Controller
 	{
 		$data = $this->payment_m->add_payment_by_month(
 			array(
+				'workspace' => $this->session->userdata('workspace'),
 				'year' => $this->input->post('year'),
-				'month' => $this->input->post('month')
+				'month' => $this->input->post('month'),
+				'pay_status' => '미납'
 			)
 		);
 		echo json_encode($data);
@@ -110,7 +116,6 @@ class Payment2 extends My_Controller
 
 	function update_discount()
 	{
-
 		$data = $this->payment_m->update_discount(
 			array(
 				'payment_id' => $this->input->post('payment_id'),
@@ -125,7 +130,6 @@ class Payment2 extends My_Controller
 				'net_income' => $this->input->post('net_income')
 			)
 		);
-
 		echo json_encode($data);
 	}
 
@@ -162,6 +166,7 @@ class Payment2 extends My_Controller
 	{
 		$data = $this->payment_m->month_delete(
 			array(
+				'workspace' => $this->session->userdata('workspace'),
 				'year' => $this->input->post('year_del'),
 				'month' => $this->input->post('month_del')
 			)

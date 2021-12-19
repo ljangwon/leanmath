@@ -8,7 +8,7 @@
     //function show all product
     function show_payment(this_month, this_pay_status) {
       $.ajax({
-        url: '<?php echo site_url('payment/payment_list') ?>',
+        url: '<?php echo site_url('payment2/payment_list') ?>',
         type: "POST",
         data: {
           month: this_month,
@@ -69,7 +69,7 @@
 
           for (i = 0; i < data.length; i++) {
             name_link =
-              '<a href="<?= site_url('/dashboard/dashboard_get') ?>/' +
+              '<a href="<?= site_url('/student2/get_student') ?>/' +
               data[i].st_id +
               ' " class="text" data-toggle="tooltip " data-placement="top " title="ID: ' +
               data[i].id + ' , ST_ID: ' +

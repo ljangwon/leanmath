@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>LeanMath - Payment2 </title>
+  <title>LeanMath - ERP </title>
 
   <!-- Custom fonts for this template-->
   <link href="/leanmath/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

@@ -166,17 +166,22 @@
     </div>
     <!-- --------------------------------------- -->
     <div class="row mb-3" id='row8'>
-      <div class="col-sm-4 text-center">
-        <label for="" class="form-label text-nowrap">수강여부</label>
-        <input type="text" name="flag" class="form-control" placeholder="수강여부" value="<?= $student->flag ?>">
+      <div class="col-sm-3 text-center">
+        <label for="" class="form-label text-nowrap">삭제flag</label>
+        <input type="text" name="flag" class="form-control" placeholder="flag" value="<?= $student->flag ?>">
       </div>
 
-      <div class="col-sm-4 text-center">
+      <div class="col-sm-3 text-center">
+        <label for="" class="form-label text-nowrap">학생상태</label>
+        <input type="text" name="status" class="form-control" placeholder="학생상태" value="<?= $student->status ?>">
+      </div>
+
+      <div class="col-sm-3 text-center">
         <label for="" class="form-label text-nowrap">시작일</label>
         <input type="text" name="start_date" class="form-control" placeholder="시작일" value="<?= $student->start_date ?>">
       </div>
 
-      <div class="col-sm-4 text-center">
+      <div class="col-sm-3 text-center">
         <label for="" class="form-label text-nowrap">종료일</label>
         <input type="text" name="end_date" class="form-control" value="<?= $student->end_date ?>">
       </div>

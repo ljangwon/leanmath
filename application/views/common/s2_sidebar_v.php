@@ -13,15 +13,26 @@
         </div>
         <div class="sidebar-brand-text mx-3">LeanMath<sup>2</sup></div>
       </a>
-
+      <?php
+      $weekString = array("일", "월", "화", "수", "목", "금", "토");
+      ?>
+      <div class="fw-bold text-center text-white">
+        Today : (<?= date("Y-m-d", time()) ?> <?= $weekString[date('w')] ?>)</div>
+      <div class="fw-bold text-center text-white">
+        St_ID : <?= $this->session->userdata('st_id') ?> </div>
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-3">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        즐겨찾기
+      </div>
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/leanmath/index.php/dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard - Old</span>
+          <span>대시보드 - 옛날</span>
         </a>
       </li>
 
@@ -29,7 +40,15 @@
       <li class="nav-item">
         <a class="nav-link" href="/leanmath/index.php/student2">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard - Student</span>
+          <span>전체 학생목록</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - 수납현황 -->
+      <li class="nav-item">
+        <a class="nav-link" href="/leanmath/index.php/payment2">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>학생 수납현황</span>
         </a>
       </li>
 
@@ -40,9 +59,6 @@
       <div class="sidebar-heading">
         학생명단
       </div>
-      <li>
-
-      </li>
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-1" aria-expanded="true" aria-controls="collapseTwo">
@@ -55,10 +71,11 @@
             <?php
             foreach ($students as $entry) {
               if (
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->status == '재원' &&
                 $entry->class_day1 == date('w') |
                 $entry->class_day2 == date('w') |
-                $entry->class_day3 == date('w') &&
-                $entry->flag == '1'
+                $entry->class_day3 == date('w')
               ) {
             ?>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
@@ -81,8 +98,9 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->class_day1 == '1' &&
-                $entry->flag == "1"
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->status == '재원' &&
+                $entry->class_day1 == '1'
               ) {
             ?>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
@@ -105,8 +123,9 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->class_day1 == '2' &&
-                $entry->flag == "1"
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->status == "재원" &&
+                $entry->class_day1 == '2'
               ) {
             ?>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
@@ -129,8 +148,9 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->class_day1 == '3' &&
-                $entry->flag == "1"
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->status == "재원" &&
+                $entry->class_day1 == '3'
               ) {
             ?>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
@@ -153,7 +173,8 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->flag == "1"
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->status == "재원"
               ) {
             ?>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
@@ -176,7 +197,8 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->flag == "0"
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->status == "대기"
               ) {
             ?>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
@@ -199,7 +221,32 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->flag == "9"
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->status == "퇴원"
+              ) {
+            ?>
+                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
+            <?php
+              }
+            }
+            ?>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-8" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>삭제 학생명단</span>
+        </a>
+        <div id="collapse2-8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Students List:</h6>
+            <?php
+            foreach ($students as $entry) {
+              if (
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->flag == "0"
               ) {
             ?>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>

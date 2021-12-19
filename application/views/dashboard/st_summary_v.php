@@ -49,7 +49,7 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->flag == "1" &&
+                $entry->status == "재원"  &&
                 $entry->class_day1 ==  '1' &&
                 $entry->class_day2 ==  '5'
               ) {
@@ -73,7 +73,7 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->flag == "1" &&
+                $entry->status == "재원"  &&
                 $entry->class_day1 ==  '2' &&
                 $entry->class_day2 ==  '4'
               ) {
@@ -97,7 +97,7 @@
             <?php
             foreach ($students as $entry) {
               if (
-                $entry->flag == "1" &&
+                $entry->status == "재원" &&
                 $entry->class_day1 ==  '3' &&
                 $entry->class_day2 ==  '6'
               ) {
@@ -134,7 +134,6 @@
             <?php
             foreach ($payment_list as $entry) {
               if (
-                $entry->flag == "1" &&
                 $entry->class_day1 ==  '1' &&
                 $entry->class_day2 ==  '5'
               ) {
@@ -146,7 +145,7 @@
                         <?= $entry->name ?> </a>
                       - <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)
                       -<?= $entry->class_name ?>
-                      -수강료:<?= $entry->fees ?>
+                      -수강료:<?= $entry->net_income ?>
                       -수납상황: <?= $entry->pay_status ?>
                       <button it="pay"> 수납버튼 </button>
                     </span>
@@ -165,16 +164,22 @@
             <?php
             foreach ($payment_list as $entry) {
               if (
-                $entry->flag == "1" &&
                 $entry->class_day1 ==  '2' &&
                 $entry->class_day2 ==  '4'
               ) {
             ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
-                    <span style="font-size:1.5rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?>-수강료:<?= $entry->fees ?></a>
-                  </span>
-                  </a>
+                  <div>
+                    <span style="font-size:1.5rem">
+                      <a style="display:inline-block" class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+                        <?= $entry->name ?> </a>
+                      - <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)
+                      -<?= $entry->class_name ?>
+                      -수강료:<?= $entry->net_income ?>
+                      -수납상황: <?= $entry->pay_status ?>
+                      <button it="pay"> 수납버튼 </button>
+                    </span>
+                  </div>
                 </li>
             <?php
               }
@@ -189,16 +194,22 @@
             <?php
             foreach ($payment_list as $entry) {
               if (
-                $entry->flag == "1" &&
                 $entry->class_day1 ==  '3' &&
                 $entry->class_day2 ==  '6'
               ) {
             ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
-                    <span style="font-size:1.5rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?>-수강료:<?= $entry->fees ?></a>
-                  </span>
-                  </a>
+                  <div>
+                    <span style="font-size:1.5rem">
+                      <a style="display:inline-block" class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+                        <?= $entry->name ?> </a>
+                      - <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)
+                      -<?= $entry->class_name ?>
+                      -수강료:<?= $entry->net_income ?>
+                      -수납상황: <?= $entry->pay_status ?>
+                      <button it="pay"> 수납버튼 </button>
+                    </span>
+                  </div>
                 </li>
             <?php
               }

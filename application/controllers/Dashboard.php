@@ -20,21 +20,7 @@ class Dashboard extends MY_Controller
 	// Default 컨트롤러
 	public function index()
 	{
-		/* 		$students = $this->dashboard_m->st_gets();
-
-		$this->load->view('dashboard/header_v');
-		$this->load->view(
-			'dashboard/sidebar_v',
-			array(
-				'students' => $students
-			)
-		);
- */
-		if (!$st_id = $this->session->userdata('st_id')) {
-			redirect(site_url('/dashboard/st_summary'));
-		} else {
-			redirect(site_url('/dashboard/dashboard_get/' . $st_id));
-		}
+		redirect(site_url('/dashboard/st_summary'));
 	}
 
 	// 학생 현황 요약 컨트롤러 start
@@ -121,7 +107,8 @@ class Dashboard extends MY_Controller
 		// payment load 
 		$payment_list = $this->payment_m->select_st_payment_by_option(
 			array(
-				'month' => '11'
+				'p.year' => '2021년',
+				'p.month' => '12월'
 			)
 		);
 
@@ -183,8 +170,9 @@ class Dashboard extends MY_Controller
 
 		// 학생 한명 Data 로드하기 
 		$student = $this->dashboard_m->st_get($st_id);
-		$this->session->set_userdata('st_name', $student->name);
-
+		if ($student) {
+			$this->session->set_userdata('st_name', $student->name);
+		}
 		// 학생 테스트들 Data 로드하기 
 		$tests = $this->dashboard_m->test_gets($st_id);
 
@@ -326,8 +314,6 @@ class Dashboard extends MY_Controller
 
 	function st_add()
 	{
-		$st_id = $this->session->userdata('st_id');
-
 		$new_st_id = $this->dashboard_m->st_add(
 			array(
 				'name' => $this->input->post('name'),
@@ -335,8 +321,8 @@ class Dashboard extends MY_Controller
 			)
 		);
 
-		if (!$st_id) {
-			alert("학생 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		if (!$new_st_id) {
+			alert("학생 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $this->session->userdata('st_id')));
 		} else {
 
 			alert("학생 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $new_st_id));
@@ -386,6 +372,7 @@ class Dashboard extends MY_Controller
 				'receipt_use' => $this->input->post('receipt_use'),
 
 				'flag' => $this->input->post('flag'),
+				'status' => $this->input->post('status'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
 				'report_last_date' => $this->input->post('report_last_date')

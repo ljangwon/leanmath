@@ -115,33 +115,65 @@ class Student2 extends My_Controller
 		);
 	}
 
-	// read list
-	function student_list()
-	{
-		$data = $this->student_m->get_list(
-			array()
-		);
-		echo json_encode($data);
-	}
-
 	// create
 	function st_add()
 	{
-		$st_id = $this->session->userdata('st_id');
-
 		$new_st_id = $this->student_m->add(
 			array(
 				'name' => $this->input->post('name'),
 				'class_name' => $this->input->post('class_name'),
+				'study_memo' => '2021년 12월 17일 업데이트
+
+초4 홍길동 학습 기록 공유드립니다.
+
+<자기주도 학습시간계획>
+월(2시간), 화(1시간), 수(1시간), 목(1시간), 금(2시간), 토(1시간), 일(0시간) 주당 총 8시간
+
+<레벨테스트>
+초4 (3월) 100점
+
+<교재진행사항>
+1) 연산선행 
+- 초4-1(??교재) 총 6단원 - 진행중
+
+- 다음교재 초4-1(??교재) 예정
+
+2) 개념선행
+- 초4-1(??교재) 총 6단원 - 진행중
+
+- 다음교재 초4-1(??교재) 예정
+
+3) 현행 심화 
+- 초4-1(??교재) 총 6단원 - 진행중
+
+- 다음교재 초4-1(??교재) 예정
+
+<단원평가 결과>
+- 초4-2 기본과정 - 진행중
+1단원(0개/10문제) 
+
+<학습주안점>
+- 자기주도학습체계를 성실히 잘 따르고 있음.'
 			)
 		);
 
-		if (!$st_id) {
-			alert("학생 추가 실패했습니다.", site_url('/student2/get_student/' . $st_id));
+		if (!$new_st_id) {
+			alert("학생 추가 실패했습니다.", site_url('/student2'));
 		} else {
 
 			alert("학생 추가 성공했습니다.", site_url('/student2/get_student/' . $new_st_id));
 		}
+	}
+
+	// read list
+	function ajax_student_list()
+	{
+		$data = $this->student_m->get_list(
+			array(
+				'status' => '재원'
+			)
+		);
+		echo json_encode($data);
 	}
 
 	// read
@@ -260,6 +292,7 @@ class Student2 extends My_Controller
 				'receipt_use' => $this->input->post('receipt_use'),
 
 				'flag' => $this->input->post('flag'),
+				'status' => $this->input->post('status'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
 				'report_last_date' => $this->input->post('report_last_date')

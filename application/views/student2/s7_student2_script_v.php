@@ -8,7 +8,7 @@
     //function show all product
     function show_student_list() {
       $.ajax({
-        url: '<?php echo site_url('student2/student_list') ?>',
+        url: '<?php echo site_url('student2/ajax_student_list') ?>',
         type: "POST",
         data: {},
         dataType: "JSON",
