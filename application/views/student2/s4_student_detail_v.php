@@ -9,10 +9,7 @@
     </div>
 
     <div class="col-xs-12">
-      <span>
-        session_st_id : <?= $this->session->userdata('st_id') ?>
-        student name : <?= $this->session->userdata('st_name') ?>
-      </span>
+
       <span id="msg" style="background-color: red">
         <?php echo $this->session->flashdata('msg'); ?>
       </span>
@@ -24,19 +21,26 @@
   <!-- row2 add buttons begin col-xs-4 -->
   <form id="st_info_modify" action="<?= site_url() ?>/student2/st_modify" method="post">
     <div class="row mb-3" id='row2'>
+
+      <div class="col-6">
+        <span>
+          session_st_id : <?= $this->session->userdata('st_id') ?>
+          student name : <?= $this->session->userdata('st_name') ?>
+        </span>
+      </div>
       <div class="col-6">
         <div class="row">
-          <div class="float-sm-left mr-2">
+          <div class="float-xs-right mr-2">
             <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#student_add">
               <span class="fa fa-plus"></span> 학생추가
             </a>
           </div>
-          <div class="float-sm-left mr-2">
+          <div class="float-xs-right mr-2">
             <button type="submit" class="btn btn-primary">
               <span class="fa fa-plus"></span> 학생수정
             </button>
           </div>
-          <div class="float-sm-left mr-2">
+          <div class="float-xs-right mr-2">
             <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#student_del">
               <span class="fa fa-plus"></span> 학생삭제
             </a>
