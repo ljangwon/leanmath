@@ -131,7 +131,7 @@ class Student_m extends CI_Model
   {
     $this->db->select('count(*) as cnt');
     $this->db->where('flag', '1');
-    $this->db->where('status', '재원');
+    $this->db->where('workspace', $this->session->userdata('workspace'));
     $this->db->where($option);
     $result = $this->db->get(
       'student'
@@ -145,6 +145,7 @@ class Student_m extends CI_Model
     $this->db->where(array(
       'grade1' => $option,
       'flag' => '1',
+      'workspace' => $this->session->userdata('workspace'),
       'status' => '재원'
     ));
     $result = $this->db->get('student')->row();

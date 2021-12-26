@@ -57,7 +57,7 @@
               $this->load->model('student_m');
               $st_count = $this->student_m->get_st_count(
                 array(
-                  'flag' => '1'
+                  'status' => '재원'
                 )
               );
               echo $st_count->cnt;
