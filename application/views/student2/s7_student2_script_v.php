@@ -2,15 +2,23 @@
 <script type="text/javascript">
   $(document).ready(function() {
     let table = null;
+    let workspace = null;
+    let status = null;
 
-    show_student_list(); //call function show all payment
+    workspace = $('#selecet_workspace').val();
+    status = $('#selecet_status').val();
 
-    //function show all product
-    function show_student_list() {
+    show_student_list(workspace, status);
+
+    //function show all student
+    function show_student_list(workspace, status) {
       $.ajax({
         url: '<?php echo site_url('student2/ajax_student_list') ?>',
         type: "POST",
-        data: {},
+        data: {
+          "workspace": workspace,
+          "status": status
+        },
         dataType: "JSON",
         async: true,
         success: function(data) {
@@ -25,6 +33,8 @@
               stateSave: false,
               paging: false,
               autoWidth: false,
+              scrollX: true,
+              scrollY: "60vh",
               columns: [{
                 title: '#'
               }, {
@@ -57,15 +67,14 @@
       });
     }
 
-    $('#select_month').change(function() {
-      let this_month = $(this).val();
-      show_payment(this_month, $('#select_pay_status').val());
+    $('#select_workspace').change(function() {
+      let this_workspace = $(this).val();
+      show_student_list(this_workspace, $('#select_status').val());
     });
 
-    $('#select_pay_status').change(function() {
-
-      let this_pay_status = $(this).val();
-      show_payment($('#select_month').val(), this_pay_status);
+    $('#select_status').change(function() {
+      let this_status = $(this).val();
+      show_student_list($('#select_workspace').val(), this_status);
     });
 
   });

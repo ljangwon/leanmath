@@ -74,7 +74,7 @@ class Auth extends MY_Controller
         ) {
             $this->session->set_userdata('is_login', true);
             $this->session->set_userdata('name', $user->name);
-            $this->session->set_userdata('year', '2021년');
+            $this->session->set_userdata('year', '2022년');
             $this->session->set_userdata('level', $user->level);
             $this->session->set_userdata('workspace', $user->workspace);
 

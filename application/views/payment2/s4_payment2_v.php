@@ -41,6 +41,14 @@
 
     <div class="col-6">
       <div class="row">
+
+        <div class="col-xs-4">
+          <select class="form-control" id="select_year">
+            <option selected>2021년</option>
+            <option>2022년</option>
+          </select>
+        </div>
+
         <div class="col-xs-4">
           <select class="form-control" id="select_month">
             <option>1월</option>
@@ -62,19 +70,11 @@
           <select class="form-control" id="select_pay_status">
             <option>카드수납</option>
             <option>현금수납</option>
-            <option>미납</option>
-            <option selected>전체</option>
+            <option selected>미납</option>
+            <option>전체</option>
           </select>
         </div>
 
-        <div class="col-xs-4">
-          <select class="form-control" id="select_pay_s">
-            <option>카드수납</option>
-            <option>현금수납</option>
-            <option>미납</option>
-            <option selected>전체</option>
-          </select>
-        </div>
       </div>
     </div>
   </div>

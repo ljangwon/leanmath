@@ -32,13 +32,23 @@
     <div class="col-6">
       <div class="row">
         <!-- button1 start -->
-        <div class="col-xs-4">
-          <select class="form-control" id="select_month">
+        <div class="col-xs-6">
+          <select class="form-control" id="select_workspace">
             <option selected>leanmath</option>
             <option>thezone</option>
           </select>
         </div>
         <!-- button1 end -->
+
+        <!-- button2 start -->
+        <div class="col-xs-6 ml-3">
+          <select class="form-control" id="select_status">
+            <option selected>재원</option>
+            <option>대기</option>
+            <option>퇴원</option>
+          </select>
+        </div>
+        <!-- button2 end -->
       </div>
     </div>
   </div>

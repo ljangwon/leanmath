@@ -3,14 +3,15 @@
   $(document).ready(function() {
     let table = null;
 
-    show_payment($('#select_month').val(), $('#select_pay_status').val()); //call function show all payment
+    show_payment($('#select_year').val(), $('#select_month').val(), $('#select_pay_status').val()); //call function show all payment
 
     //function show all product
-    function show_payment(this_month, this_pay_status) {
+    function show_payment(this_year, this_month, this_pay_status) {
       $.ajax({
         url: '<?php echo site_url('payment2/payment_list') ?>',
         type: "POST",
         data: {
+          year: this_year,
           month: this_month,
           pay_status: this_pay_status
         },
@@ -28,6 +29,9 @@
               stateSave: false,
               paging: false,
               autoWidth: false,
+              scrollX: true,
+              scrollY: "50vh",
+              scrollCollapse: true,
               columns: [{
                 title: '#'
               }, {
@@ -162,7 +166,10 @@
 
           alert('month added!!!')
           $('#Modal_Add_Month').modal('hide');
-          show_payment($('#select_month').val());
+
+          $('$select_year').val(year);
+          $('$select_month').val(month);
+          show_payment(year, month, $('#select_pay_status').val());
         }
       });
       return false;
@@ -189,7 +196,7 @@
           $('[name="st_name"]').val("");
 
           $('#Modal_Add').modal('hide');
-          show_payment($('#select_month').val());
+          show_payment($('#select_year').val(), $('#select_month').val(), $('#select_pay_status').val());
         }
       });
       return false;
@@ -208,7 +215,7 @@
           pay_status: '카드수납',
         },
         success: function(data) {
-          show_payment($('#select_month').val());
+          show_payment($('#select_year').val(), $('#select_month').val(), $('#select_pay_status').val());
         }
       });
       return false;
@@ -226,7 +233,7 @@
           pay_status: '현금수납',
         },
         success: function(data) {
-          show_payment($('#select_month').val());
+          show_payment($('#select_year').val(), $('#select_month').val(), $('#select_pay_status').val());
         }
       });
       return false;
@@ -243,7 +250,7 @@
           payment_id: payment_id
         },
         success: function(data) {
-          show_payment($('#select_month').val());
+          show_payment($('#select_year').val(), $('#select_month').val(), $('#select_pay_status').val());
         }
       });
       return false;
@@ -323,7 +330,7 @@
           $('[name$="_edit"]').val("");
           $('#Modal_Edit').modal('hide');
 
-          show_payment($('#select_month').val());
+          show_payment($('#select_year').val(), $('#select_month').val(), $('#select_pay_status').val());
         }
       });
       return false;
@@ -358,7 +365,7 @@
           $('[name="month_delete"]').val("");
 
           $('#Modal_Delete').modal('hide');
-          show_payment($('#select_month').val());
+          show_payment($('#select_year').val(), $('#select_month').val(), $('#select_pay_status').val());
         }
       });
       return false;
@@ -383,21 +390,25 @@
           alert('month deleted !!!');
 
           $('#Modal_Delete_Month').modal('hide');
-          show_payment($('#select_month').val());
+          show_payment($('#select_year').val(), $('#select_month').val(), $('#select_pay_status').val());
         }
       });
       return false;
     });
 
+    $('#select_year').change(function() {
+      let this_year = $(this).val();
+      show_payment(this_year, $('#select_month').val(), $('#select_pay_status').val());
+    });
+
     $('#select_month').change(function() {
       let this_month = $(this).val();
-      show_payment(this_month, $('#select_pay_status').val());
+      show_payment($('#select_year').val(), this_month, $('#select_pay_status').val());
     });
 
     $('#select_pay_status').change(function() {
-
       let this_pay_status = $(this).val();
-      show_payment($('#select_month').val(), this_pay_status);
+      show_payment($('#select_year').val(), $('#select_month').val(), this_pay_status);
     });
 
   });

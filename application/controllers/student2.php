@@ -170,7 +170,8 @@ class Student2 extends My_Controller
 	{
 		$data = $this->student_m->get_list(
 			array(
-				'status' => '재원'
+				'workspace' => $this->input->post('workspace'),
+				'status' => $this->input->post('status')
 			)
 		);
 		echo json_encode($data);

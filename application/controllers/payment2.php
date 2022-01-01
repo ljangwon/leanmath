@@ -68,16 +68,14 @@ class Payment2 extends My_Controller
 
 			$data = $this->payment_m->payment_list(
 				array(
-					'p.flag' => '1',
-					'p.year' => $this->session->userdata('year'),
-					'p.month' => $this->input->post('month')
+					'p.year' => $this->input->post('year'),
+					'p.month' => $this->input->post('month'),
 				)
 			);
 		} else {
 			$data = $this->payment_m->payment_list(
 				array(
-					'p.flag' => '1',
-					'p.year' => $this->session->userdata('year'),
+					'p.year' => $this->input->post('year'),
 					'p.month' => $this->input->post('month'),
 					'p.pay_status' => $this->input->post('pay_status')
 				)

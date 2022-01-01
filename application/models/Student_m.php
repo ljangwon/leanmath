@@ -25,11 +25,11 @@ class Student_m extends CI_Model
 
     if ($option) {
       $this->db->where('flag', 1);
-      $this->db->where('workspace', $this->session->userdata('workspace'));
       $this->db->where($option);
     } else {
       $this->db->where('flag', 1);
       $this->db->where('workspace', $this->session->userdata('workspace'));
+      $this->db->where('status', '재원');
     }
     $result = $this->db->get('student')->result();
     return $result;

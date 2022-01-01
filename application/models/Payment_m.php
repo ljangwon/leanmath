@@ -7,10 +7,22 @@ class Payment_m extends CI_Model
     parent::__construct();
   }
 
+  // insert
+  function insert($option = null)
+  {
+    $this->db->set('workspace', $this->session->userdata('workspace'));
+    $this->db->set($option);
+
+    $result = $this->db->insert('st_payment');
+    return $result;
+  }
+
+  // insert
   function save_payment($option)
   {
     $this->db->set('workspace', $this->session->userdata('workspace'));
     $this->db->set($option);
+
     $result = $this->db->insert('st_payment');
     return $result;
   }
@@ -47,8 +59,8 @@ class Payment_m extends CI_Model
       }
 
       $data = array(
-        'workspace' => $this->session->userdata('workspace'),
         'flag' => '1',
+        'workspace' => $this->session->userdata('workspace'),
         'year'  => $year,
         'month' => $month,
         'st_id' => $entry->id,
@@ -69,6 +81,38 @@ class Payment_m extends CI_Model
     }
     return $result;
   }
+
+  // select
+  function select_by_month($option)
+  {
+    $this->db->select('*');
+    $this->db->from('st_payment');
+    $this->db->join('student', 'student.id=st_payment.st_id');
+    $this->db->where('st_payment.flag', '1');
+    $this->db->where('st_payment.workspace', $this->session->userdata('workspace'));
+    $this->db->where('year', "2021");
+    $this->db->where('month', $option['month']);
+    $result = $this->db->get()->result();
+
+    return $result;
+  }
+
+  //select
+  function select_st_payment_by_option($option)
+  {
+    $this->db->select('*');
+    $this->db->set('p.flag', '1');
+    $this->db->set('p.workspace', $this->session->userdata('workspace'));
+    $this->db->set($option);
+    $this->db->from('st_payment as p');
+    $this->db->join('student as s', 's.id=p.st_id');
+
+    $result = $this->db->get()->result();
+
+    return $result;
+  }
+
+  //select
   function payment_list($option = null)
   {
     $this->db->select('p.id, p.year, p.month, p.st_id, p.name, s.class_name, 
@@ -93,6 +137,7 @@ class Payment_m extends CI_Model
     return $result;
   }
 
+  //update
   function update_pay_status($option)
   {
     $payment_id = $option['payment_id'];
@@ -142,6 +187,7 @@ class Payment_m extends CI_Model
     return $result;
   }
 
+  // update
   function update_discount($option)
   {
     $payment_id = $option['payment_id'];
@@ -192,6 +238,7 @@ class Payment_m extends CI_Model
     return $result;
   }
 
+  // update
   function update_receipt_status($option)
   {
     $payment_id = $option['payment_id'];
@@ -221,71 +268,23 @@ class Payment_m extends CI_Model
     return $result;
   }
 
+  // delete
   function month_delete($option)
   {
     $this->db->set('flag', '0');
+    $this->db->where('flag', '1');
+    $this->db->where('workspace', $this->session->userdata('workspace'));
     $this->db->where($option);
     $result = $this->db->update('st_payment');
     return $result;
   }
 
+  //delete
   function delete_payment()
   {
     $payment_id = $this->input->post('payment_id');
     $this->db->where('id', $payment_id);
     $result = $this->db->delete('st_payment');
-    return $result;
-  }
-
-  // insert
-  function insert($option = null)
-  {
-    if ($option['year']) {
-      $this->db->set('year', $option['year']);
-    }
-
-    if ($option['month']) {
-      $this->db->set('month', $option['month']);
-    }
-
-    if ($option['st_id']) {
-      $this->db->set('st_id', $option['st_id']);
-    }
-
-    if ($option['fees']) {
-      $this->db->set('regular_price', $option['fees']);
-    }
-
-    $this->db->set('pay_status', '미납');
-
-    $this->db->insert('st_payment');
-    return true;
-  }
-
-  // select
-  function select_by_month($option)
-  {
-    $this->db->select('*');
-    $this->db->from('st_payment');
-    $this->db->join('student', 'student.id=st_payment.st_id');
-    $this->db->where('year', "2021");
-    $this->db->where('month', $option['month']);
-    $result = $this->db->get()->result();
-
-    return $result;
-  }
-
-  function select_st_payment_by_option($option)
-  {
-    $this->db->select('*');
-    $this->db->set('p.flag', '1');
-    $this->db->set('p.workspace', $this->session->userdata('workspace'));
-    $this->db->set($option);
-    $this->db->from('st_payment as p');
-    $this->db->join('student as s', 's.id=p.st_id');
-
-    $result = $this->db->get()->result();
-
     return $result;
   }
 }
