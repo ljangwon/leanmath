@@ -1,81 +1,163 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
-class Book extends MY_Controller
+<?php
+class Book extends My_Controller
 {
-	// 기본 생성자
 	function __construct()
 	{
 		parent::__construct();
 
-		$this->load->view('dashboard/head_v');
-		$this->load->view('dashboard/header_v');
+		$this->_require_login(site_url('book'), 10);
 
-		$this->_require_login(site_url('/book'));
-
+		$this->load->model('student_m');
 		$this->load->model('book_m');
+		$this->load->model('book_chapter_m');
+	}
 
-		$books = $this->book_m->book_gets();
+	function index()
+	{
+		$book_id = $this->session->userdata('book_id');
+		if (!empty($book_id)) {
+			$this->get_book($book_id);
+		}
+		$this->get_book_list();
+	}
 
-		$this->load->view('book/sidebar_v', array(
+	// create
+	function create_book()
+	{
+		$new_book_id = $this->book_m->create(
+			array(
+				'title' => $this->input->post('title'),
+			)
+		);
+
+		if (!$new_book_id) {
+			alert("book 추가 실패했습니다.", site_url('/book'));
+		} else {
+
+			alert("book 추가 성공했습니다.", site_url('/book/get_book/' . $new_book_id));
+		}
+	}
+
+	// read ajax data of book list
+	function ajax_read_book_list()
+	{
+		$data = $this->book_m->read_book_list(
+			array(
+				'workspace' => $this->input->post('workspace'),
+				'status' => $this->input->post('status')
+			)
+		);
+		echo json_encode($data);
+	}
+
+	// read ajax data of book chapter list
+	function ajax_read_book_chapter_list()
+	{
+		$book_id = $this->input->post('book_id');
+
+		$data = $this->book_chapter_m->r_list($book_id);
+		echo json_encode($data);
+	}
+
+
+	// show book list
+	function get_book_list()
+	{
+		$this->load->view(
+			'common/s1_head_v',
+			array()
+		);
+
+		$books = $this->book_m->r_list();
+
+		$this->load->view(
+			'book/s2_book_sidebar_v',
+			array(
 				'books' => $books
 			)
 		);
+
+		$this->load->view(
+			'common/s3_topbar_v',
+			array()
+		);
+
+		$this->load->view(
+			'book/s4_book_list_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s5_footer_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s6_common_modal_v',
+			array()
+		);
+
+		$this->load->view(
+			'book/s6_book_list_modal_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s7_common_script_v',
+			array()
+		);
+
+		$this->load->view(
+			'book/s7_book_list_script_v',
+			array()
+		);
 	}
 
-	// 교재 기본 컨트롤
-	public function index()
+	// show empty page 
+	function get_empty()
 	{
-		if( !$book_id = $this->session->userdata('book_id') )	{
+		$this->load->view(
+			'common/s1_head_v',
+			array()
+		);
 
-			redirect( site_url('/book/book_summary') );
+		$books = $this->book_m->r_book_list();
 
-		}
-		else {
-			redirect( site_url('/book/book_get/' . $book_id) );
-		}
+		$this->load->view(
+			'book/s2_book_sidebar_v',
+			array(
+				'books' => $books
+			)
+		);
+
+		$this->load->view(
+			'common/s3_topbar_v',
+			array()
+		);
+
+		$this->load->view(
+			'book/s4_book_none_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s5_footer_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s6_common_modal_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s7_common_script_v',
+			array()
+		);
 	}
 
-		// 교재 마스터 추가
-		function book_add()
-		{
-				$book_id = $this->session->userdata('book_id');
-	
-				$new_book_id = $this->book_m->book_add( array(
-							'grade1' => $this->input->post('grade1'),
-							'grade2' => $this->input->post('grade2'),				
-							'name' => $this->input->post('name'),
-							)
-					);
-		
-				if (!$new_book_id) {
-					alert("교재 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
-				} else {
-	
-					alert("교재 추가 성공했습니다.", site_url('/book/book_get/' . $new_book_id));
-				}
-		}
-
-	// 교재 현황 요약
-	function book_summary()
-	{
-			$book_count_m1_1 = $this->book_m->book_get_count_option( array(
-						'grade1' => '중등',
-						'grade2' => '1-1',
-						'flag' => '1'
-					)
-			);
-			$this->load->view('book/summary_v', array(
-						'book_count_m1_1' => $book_count_m1_1
-					)
-			);
-
-		// footer
-		$this->load->view('default/footer_v');
-
-	}
-
-	// 교재 상세화면 
-	function book_get($book_id)
+	// show detail page of a book 
+	function get_book($book_id = null)
 	{
 		if (empty($book_id)) {
 			$book_id = $this->session->userdata('book_id');
@@ -87,167 +169,94 @@ class Book extends MY_Controller
 			alert('book_id의 값이 없습니다', site_url('/book'));
 		}
 
-		$this->load->helper(array('HTML', 'korean'));
+		$this->load->view(
+			'common/s1_head_v',
+			array()
+		);
 
-		// 교재 Data 로드하기 
-		$book = $this->book_m->book_get($book_id);
+		$books = $this->book_m->r_list();
 
-		// 단원 Data 로드하기 
-		$chapters = $this->book_m->chapter_gets($book_id);
+		$this->load->view(
+			'book/s2_book_sidebar_v',
+			array(
+				'books' => $books
+			)
+		);
 
-		// main 
-		$this->load->view('book/book_v', array(
-			'book' => $book,
-			'chapters' => $chapters
-		));
+		$this->load->view(
+			'common/s3_topbar_v',
+			array()
+		);
 
-		// footer
-		$this->load->view('dashboard/footer_v');
+		// book Data 로드하기 
+		$book = $this->book_m->r_get($book_id);
+
+		// book chapter Data 로드하기 
+		$chapters = $this->book_chapter_m->r_list($book_id);
+
+		$this->load->view(
+			'book/s4_book_detail_v',
+			array(
+				'book' => $book,
+				'chapters' => $chapters
+			)
+		);
+
+		$this->load->view(
+			'common/s5_footer_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s6_common_modal_v',
+			array()
+		);
+
+		$this->load->view(
+			'book/s6_book_detail_modal_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s7_common_script_v',
+			array()
+		);
+
+		$this->load->view(
+			'book/s7_book_detail_script_v',
+			array()
+		);
 	}
 
-	// 교재 마스터 수정 
-	function book_modify()
+	// update
+	function update_book()
 	{
 		$book_id = $this->session->userdata('book_id');
 
-		$result = $this->book_m->book_modify(
+		$result = $this->book_m->update(
 			array(
 				'id' => $this->input->post('id'),
+				'title' => $this->input->post('book_title'),
 				'grade1' => $this->input->post('grade1'),
 				'grade2' => $this->input->post('grade2'),
-				'name' => $this->input->post('name'),
-				'level' => $this->input->post('level'),
-
-				'chapter_num' => $this->input->post('chapter_num'),
-				'memo' => $this->input->post('memo'),
-				'flag' => $this->input->post('flag')
+				'status' => $this->input->post('status')
 			)
 		);
 
 		if (!$result) {
-			alert("교재 마스터 업데이트가 실패했습니다.", site_url('/book/book_get/' . $book_id) );
+			alert("book 업데이트가 실패했습니다.", site_url('/book/get_book/' . $book_id));
 		} else {
-			alert("교재 마스터 업데이트가 성공했습니다.", site_url('/book/book_get/' . $this->input->post('id')));
+			alert("book 업데이트가 성공했습니다.", site_url('/book/get_book/' . $this->input->post('id')));
 		}
 	}
 
-	// 교재 마스터 삭제
-	function book_delete()
+	// delete
+	function delete_book()
 	{
-			$book_id = $this->input->post('book_id');
+		$book_id = $this->input->post('id');
 
-			$this->book_m->book_delete($book_id);
-			$this->session->set_userdata('book_id', '');
-			redirect(site_url('/book'));
+		$this->book_m->delete($book_id);
+		$this->session->set_userdata('book_id', '');
+		redirect(site_url('/book'));
 	}
-	// 교재 마스트 컨트롤러 끝
-
-  // 단원 컨트롤러 시작
-	// 단원 추가
-	function chapter_add()
-	{
-		$book_id = $this->session->userdata('book_id');
-
-		$result = $this->book_m->chapter_add(
-			array(
-				'book_id' => $book_id
-			)
-		);
-
-		if (!$result) {
-			alert("단원 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
-		} else {
-			alert("단원 추가 성공했습니다.", site_url('/book/book_get/' . $book_id));
-		}
-	}
-
-			// 단원 추가
-			function chapter_add3()
-			{
-				$book_id = $this->session->userdata('book_id');
-		
-				$result = $this->book_m->chapter_add3(
-					array(
-						'book_id' => $book_id
-					)
-				);
-		
-				if (!$result) {
-					alert("단원3 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
-				} else {
-					alert("단원3 추가 성공했습니다.", site_url('/book/book_get/' . $book_id));
-				}
-			}
-
-		// 단원 추가
-		function chapter_add6()
-		{
-			$book_id = $this->session->userdata('book_id');
-	
-			$result = $this->book_m->chapter_add6(
-				array(
-					'book_id' => $book_id
-				)
-			);
-	
-			if (!$result) {
-				alert("단원6 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
-			} else {
-				alert("단원6 추가 성공했습니다.", site_url('/book/book_get/' . $book_id));
-			}
-		}
-
-			// 단원 추가
-	function chapter_add9()
-	{
-		$book_id = $this->session->userdata('book_id');
-
-		$result = $this->book_m->chapter_add9(
-			array(
-				'book_id' => $book_id
-			)
-		);
-
-		if (!$result) {
-			alert("단원9 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
-		} else {
-			alert("단원9 추가 성공했습니다.", site_url('/book/book_get/' . $book_id));
-		}
-	}
-
-	// 단원 수정
-	function chapter_modify()
-	{
-		$result = $this->book_m->chapter_modify(
-			array(
-				'id' => $this->input->post('id'),
-				'book_id' => $this->input->post('book_id'),
-				'num' => $this->input->post('num'),
-				'name' => $this->input->post('name')
-			)
-		);
-
-		
-
-		if (!$result) {
-			alert("단원 업데이트가 실패했습니다.", site_url('/book/book_get/' . $this->input->post('book_id')));
-		} else {
-			alert("단원 업데이트가 성공했습니다.", site_url('/book/book_get/' . $this->input->post('book_id')));
-		}
-	}
-
-	// 단원 삭제
-	function chapter_delete($chapter_id)
-	{
-		$book_id = $this->session->userdata('book_id');
-
-		$result = $this->book_m->chapter_delete($chapter_id);
-
-		if (!$result) {
-			alert("단원 삭제 실패했습니다.", site_url('/book/book_get/' . $book_id));
-		} else {
-			alert("단원 삭제 성공했습니다.", site_url('/book/book_get/' . $book_id));
-		}
-	}
-	// 단원 컨트롤러 end
 }

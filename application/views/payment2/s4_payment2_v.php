@@ -44,14 +44,14 @@
 
         <div class="col-xs-4">
           <select class="form-control" id="select_year">
-            <option selected>2021년</option>
-            <option>2022년</option>
+            <option>2021년</option>
+            <option selected>2022년</option>
           </select>
         </div>
 
         <div class="col-xs-4">
           <select class="form-control" id="select_month">
-            <option>1월</option>
+            <option selected>1월</option>
             <option>2월</option>
             <option>3월</option>
             <option>4월</option>
@@ -62,7 +62,7 @@
             <option>9월</option>
             <option>10월</option>
             <option>11월</option>
-            <option selected>12월</option>
+            <option>12월</option>
           </select>
         </div>
 

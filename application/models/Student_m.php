@@ -45,7 +45,7 @@ class Student_m extends CI_Model
     if ($option) {
       $this->db->where('flag', '1');
       $this->db->where('workspace', $this->session->userdata('workspace'));
-      $this->db->where('grade1', $option);
+      $this->db->where($option);
     } else {
       $this->db->where('flag', '1');
       $this->db->where('workspace', $this->session->userdata('workspace'));
@@ -95,7 +95,7 @@ class Student_m extends CI_Model
   {
     $this->db->select('*');
 
-    $this->db->select('UNIX_TIMESTAMP(created) AS created');
+    $this->db->select('UNIX_TIMESTAMP(modified_time) AS modified_time');
 
     $result = $this->db->get_where('student', array(
       'flag' => '1',

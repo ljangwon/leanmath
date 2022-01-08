@@ -19,7 +19,7 @@
       <div class="fw-bold text-center text-white">
         Today : (<?= date("Y-m-d", time()) ?> <?= $weekString[date('w')] ?>)</div>
       <div class="fw-bold text-center text-white">
-        St_ID : <?= $this->session->userdata('st_id') ?> </div>
+        Book_ID : <?= $this->session->userdata('book_id') ?> </div>
       <!-- Divider -->
       <hr class="sidebar-divider my-3">
 
@@ -52,66 +52,30 @@
         </a>
       </li>
 
-      <!-- Nav Item - 교재현황 -->
-      <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/book">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>교재 현황</span>
-        </a>
-      </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        학생명단
+        교재목록
       </div>
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-1" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>오늘 학생명단</span>
-        </a>
-        <div id="collapse2-1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == '재원' &&
-                $entry->class_day1 == date('w') |
-                $entry->class_day2 == date('w') |
-                $entry->class_day3 == date('w')
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-2" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>월/금반 학생명단</span>
+          <span>초등교재 목록 </span>
         </a>
         <div id="collapse2-2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
+            <h6 class="collapse-header">Book List:</h6>
             <?php
-            foreach ($students as $entry) {
+            foreach ($books as $entry) {
               if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == '재원' &&
-                $entry->class_day1 == '1'
+                $entry->status == '사용' &&
+                $entry->grade1 == '초등'
               ) {
             ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
+                <a class="collapse-item" href="<?= site_url('/book/get_book/') ?>/<?= $entry->id ?>"><?= $entry->title ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->status ?> </a>
             <?php
               }
             }
@@ -123,20 +87,19 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-3" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>화/목반 학생명단</span>
+          <span>중등교재 목록</span>
         </a>
         <div id="collapse2-3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
+            <h6 class="collapse-header">Book List:</h6>
             <?php
-            foreach ($students as $entry) {
+            foreach ($books as $entry) {
               if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == "재원" &&
-                $entry->class_day1 == '2'
+                $entry->status == '사용' &&
+                $entry->grade1 == '중등'
               ) {
             ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
+                <a class="collapse-item" href="<?= site_url('/book/get_book/') ?>/<?= $entry->id ?>"><?= $entry->title ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->status ?> </a>
             <?php
               }
             }
@@ -148,20 +111,19 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-4" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>수/토반 학생명단</span>
+          <span>고등교재 목록</span>
         </a>
         <div id="collapse2-4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
+            <h6 class="collapse-header">Book List:</h6>
             <?php
-            foreach ($students as $entry) {
+            foreach ($books as $entry) {
               if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == "재원" &&
-                $entry->class_day1 == '3'
+                $entry->status == '사용' &&
+                $entry->grade1 == '고등'
               ) {
             ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
+                <a class="collapse-item" href="<?= site_url('/book/get_book/') ?>/<?= $entry->id ?>"><?= $entry->title ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->status ?> </a>
             <?php
               }
             }
@@ -173,91 +135,18 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-5" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>전체 학생명단</span>
+          <span>전체 교재명단 </span>
         </a>
         <div id="collapse2-5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
+            <h6 class="collapse-header">Book List:</h6>
             <?php
-            foreach ($students as $entry) {
+            foreach ($books as $entry) {
               if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == "재원"
+                $entry->status == '사용'
               ) {
             ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-6" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>대기 학생명단</span>
-        </a>
-        <div id="collapse2-6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == "대기"
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-7" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>퇴원 학생명단</span>
-        </a>
-        <div id="collapse2-7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == "퇴원"
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-8" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>삭제 학생명단</span>
-        </a>
-        <div id="collapse2-8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->flag == "0"
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
+                <a class="collapse-item" href="<?= site_url('/book/get_book/') ?>/<?= $entry->id ?>"><?= $entry->title ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->status ?> </a>
             <?php
               }
             }
