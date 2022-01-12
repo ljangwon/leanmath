@@ -14,10 +14,7 @@ class Book extends My_Controller
 
 	function index()
 	{
-		$book_id = $this->session->userdata('book_id');
-		if (!empty($book_id)) {
-			$this->get_book($book_id);
-		}
+
 		$this->get_book_list();
 	}
 
@@ -27,6 +24,7 @@ class Book extends My_Controller
 		$new_book_id = $this->book_m->create(
 			array(
 				'title' => $this->input->post('title'),
+				'grade1' => $this->input->post('grade1')
 			)
 		);
 
@@ -41,7 +39,7 @@ class Book extends My_Controller
 	// read ajax data of book list
 	function ajax_read_book_list()
 	{
-		$data = $this->book_m->read_book_list(
+		$data = $this->book_m->r_list(
 			array(
 				'workspace' => $this->input->post('workspace'),
 				'status' => $this->input->post('status')
@@ -253,10 +251,10 @@ class Book extends My_Controller
 	// delete
 	function delete_book()
 	{
-		$book_id = $this->input->post('id');
+		$book_id = $this->input->post('book_id');
 
-		$this->book_m->delete($book_id);
+		$data = $this->book_m->delete($book_id);
 		$this->session->set_userdata('book_id', '');
-		redirect(site_url('/book'));
+		echo json_encode($data);
 	}
 }

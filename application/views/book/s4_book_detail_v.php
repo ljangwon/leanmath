@@ -31,11 +31,6 @@
       <div class="col-6">
         <div class="row">
           <div class="float-xs-right mr-2">
-            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#modal_c_book">
-              <span class="fa fa-plus"></span> 교재추가
-            </a>
-          </div>
-          <div class="float-xs-right mr-2">
             <button type="submit" class="btn btn-primary">
               <span class="fa fa-plus"></span> 교재수정
             </button>

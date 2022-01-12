@@ -44,6 +44,7 @@
         <div class="col-xs-6 ml-3">
           <select class="form-control" id="select_status">
             <option selected>사용</option>
+            <option>미사용</option>
             <option>임시</option>
           </select>
         </div>

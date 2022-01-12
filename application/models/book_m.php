@@ -11,6 +11,7 @@ class Book_m extends CI_Model
   {
     $this->db->set('workspace', $this->session->userdata('workspace'));
     $this->db->set($option);
+
     $this->db->insert('book_master');
     $result = $this->db->insert_id();
     return $result;

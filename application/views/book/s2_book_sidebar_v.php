@@ -7,7 +7,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/leanmath/index.php/admin">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/leanmath/index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -49,6 +49,14 @@
         <a class="nav-link" href="/leanmath/index.php/payment2">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>학생 수납현황</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - 수납현황 -->
+      <li class="nav-item">
+        <a class="nav-link" href="/leanmath/index.php/book">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>교재 현황</span>
         </a>
       </li>
 
