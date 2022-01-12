@@ -255,8 +255,6 @@ class Payment_m extends CI_Model
     if ($pay_status == '현금수납' && $receipt_use == '사용') {
       if ($receipt_status == '발행필요') {
         $receipt_status = '발행완료';
-      } elseif ($receipt_status == '발행완료') {
-        $receipt_status = '발행필요';
       }
     }
 
