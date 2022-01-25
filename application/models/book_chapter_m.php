@@ -9,7 +9,6 @@ class Book_chapter_m extends CI_Model
   // create
   function create($option)
   {
-    $this->db->set('workspace', $this->session->userdata('workspace'));
     $this->db->set($option);
     $this->db->insert('book_chapter');
     $result = $this->db->insert_id();
@@ -20,7 +19,10 @@ class Book_chapter_m extends CI_Model
   function r_list($book_id = null)
   {
     $this->db->select('*');
+    $this->db->order_by('number');
+    $this->db->order_by('id', 'DESC');
     $this->db->where('book_id', $book_id);
+
 
     $result = $this->db->get('book_chapter')->result();
     return $result;
@@ -49,10 +51,9 @@ class Book_chapter_m extends CI_Model
   }
 
   // delete a book chapter
-  function delete($book_chapter_id)
+  function delete($chapter_id)
   {
-
-    $this->db->where('id', $book_chapter_id);
+    $this->db->where('id', $chapter_id);
 
     $result = $this->db->delete('book_chapter');
 

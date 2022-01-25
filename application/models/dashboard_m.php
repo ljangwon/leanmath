@@ -10,7 +10,6 @@ class Dashboard_m extends CI_Model
 	// 학생정보 CRUD start 
 	function st_add($option)
 	{
-		$this->db->set('created', 'NOW()', false);
 		$this->db->set('workspace', $this->session->userdata('workspace'));
 		$this->db->set($option);
 
@@ -63,7 +62,6 @@ class Dashboard_m extends CI_Model
 	{
 		$this->db->select('*');
 
-		$this->db->select('UNIX_TIMESTAMP(created) AS created');
 		$this->db->where(array(
 			'flag' => '1',
 			'workspace' => $this->session->userdata('workspace'),

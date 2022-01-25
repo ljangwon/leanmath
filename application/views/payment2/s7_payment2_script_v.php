@@ -68,6 +68,7 @@
           let pay_action_link = null;
           let receipt_status_link = '';
           let receipt_action_link = null;
+          let net_income_sum = 0;
 
           table.clear().draw();
 
@@ -140,9 +141,10 @@
               receipt_action_link,
               action_link
             ];
+            net_income_sum += parseInt(data[i].net_income);
             table.row.add(rowData).draw(false);
           }
-
+          $('#net_income').text(net_income_sum);
         }
       });
     }

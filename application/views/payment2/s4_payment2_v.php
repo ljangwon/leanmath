@@ -88,6 +88,14 @@
   </div>
   <!-- row4 main data table end -->
 
+  <div class="row">
+    <div class="col-md-12">
+      net income: <span id="net_income"> </span> 원
+
+    </div>
+
+  </div>
+
 </div>
 <!-- /.container-fluid -->
 

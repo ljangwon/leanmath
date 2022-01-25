@@ -19,7 +19,7 @@
   <!-- row1 title and message end -->
 
   <!-- row2 add buttons begin col-xs-4 -->
-  <form id="st_info_modify" action="<?= site_url() ?>/book/update_book" method="post">
+  <form id="book_info_modify" action="<?= site_url() ?>/book/update_book" method="post">
     <div class="row mb-3" id='row2'>
 
       <div class="col-6">
@@ -36,8 +36,8 @@
             </button>
           </div>
           <div class="float-xs-right mr-2">
-            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#modal_d_book">
-              <span class="fa fa-plus"></span> 교재삭제
+            <a href="javascript:void(0);" id='btn_chapter_add' class="btn btn-primary">
+              <span class="fa fa-plus"></span> 단원추가
             </a>
           </div>
         </div>
@@ -51,7 +51,7 @@
         <input type="text" name="id" class="form-control" placeholder="" value="<?= $book->id ?>">
       </div>
 
-      <div class="col-sm-4 text-center">
+      <div class="col-sm-3 text-center">
         <label for="" class="form-label">Title </label>
         <input type="text" name="book_title" class="form-control" placeholder="" value="<?= $book->title ?>">
       </div>
@@ -64,6 +64,11 @@
       <div class="col-sm-2 text-center">
         <label for="" class="form-label">학년</label>
         <input type="text" name="grade2" class="form-control" placeholder="" value="<?= $book->grade2 ?>">
+      </div>
+
+      <div class="col-sm-1 text-center">
+        <label for="" class="form-label">단원수</label>
+        <input type="text" name="chapter_count" class="form-control" placeholder="" value="<?= $book->chapter_count ?>">
       </div>
 
       <div class="col-sm-2 text-center">
