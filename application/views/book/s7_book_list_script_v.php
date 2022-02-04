@@ -2,37 +2,52 @@
 <script type="text/javascript">
   $(document).ready(function() {
     let table = null;
+
     let workspace = null;
     let status = null;
 
     workspace = $('#selecet_workspace').val();
     status = $('#selecet_status').val();
 
-    show_book_list(workspace, status);
+    show_book_list(workspace, status, '초등');
+    show_book_list(workspace, status, '중등');
+    show_book_list(workspace, status, '고등');
 
-    //function show all student
-    function show_book_list(workspace, status) {
+    // show book list
+    function show_book_list(workspace, status, grade) {
+      log('show book list start' + grade);
       $.ajax({
         url: '<?php echo site_url('book/ajax_read_book_list') ?>',
         type: "POST",
         data: {
           "workspace": workspace,
-          "status": status
+          "status": status,
+          "grade1": grade
         },
         dataType: "JSON",
         async: true,
         success: function(data) {
           let i;
-
           let dataset = null;
-
+          table = null;
           if (table == undefined || table == null) {
+            let book_list_data = null;
 
-            table = $('#book_list_data').DataTable({
+            if (grade == '초등') {
+              book_list_data = '#elem_book_list_data';
+            } else if (grade == '중등') {
+              book_list_data = '#mid_book_list_data';
+            } else {
+              book_list_data = '#high_book_list_data';
+            }
+
+            log(book_list_data);
+
+            table = $(book_list_data).DataTable({
               data: dataset,
               stateSave: false,
               paging: false,
-              autoWidth: false,
+              autoWidth: true,
               scrollX: true,
               scrollY: "60vh",
               columns: [{
@@ -89,13 +104,12 @@
             rowData = [i + 1, id_link, data[i].grade1, data[i].grade2, title_link, data[i].chapter_count, data[i].status, action_link]
             table.row.add(rowData).draw(false);
           }
-
         }
       });
     }
 
     //get data for delete record
-    $('#book_list_data').on('click', '.item_delete', function() {
+    $('#elem_book_list_data').on('click', '.item_delete', function() {
       let book_id = $(this).data('book_id');
       let book_title = $(this).data('book_title');
       let book_grade1 = $(this).data('book_grade1');
@@ -120,13 +134,16 @@
           book_id: book_id
         },
         success: function(data) {
+          log(data);
           $('[name="book_id_delete"]').val("");
           $('[name="book_title_delete"]').val("");
           $('[name="book_grade1_delete"]').val("");
           $('[name="book_grade2_delete"]').val("");
 
           $('#Modal_Book_Delete').modal('hide');
-          show_book_list(workspace, status);
+          show_book_list(workspace, status, '초등');
+          show_book_list(workspace, status, '중등');
+          show_book_list(workspace, status, '고등');
         }
       });
       return false;
@@ -134,12 +151,12 @@
 
     $('#select_workspace').change(function() {
       let this_workspace = $(this).val();
-      show_book_list(this_workspace, $('#select_status').val());
+      show_book_list(this_workspace, $('#select_status').val(), '초등');
     });
 
     $('#select_status').change(function() {
       let this_status = $(this).val();
-      show_book_list($('#select_workspace').val(), this_status);
+      show_book_list($('#select_workspace').val(), this_status, '초등');
     });
 
   });

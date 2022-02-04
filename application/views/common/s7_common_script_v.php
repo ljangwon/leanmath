@@ -12,3 +12,10 @@
 <script src="/leanmath/admin/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="/leanmath/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/keytable/2.6.1/js/dataTables.keyTable.min.js"></script>
+
+<!-- common functions -->
+<script>
+  function log(message) {
+    console.log(message);
+  }
+</script>

@@ -2,7 +2,6 @@
 <script type="text/javascript">
   $(document).ready(function() {
     let table = null;
-
     show_book_chapter_list();
 
     //function show all chapters
@@ -16,11 +15,13 @@
         dataType: "JSON",
         async: true,
         success: function(data) {
-          let i;
-
+          log('ajax_read_book_chapter_list success');
+          let i = null;
           let dataset = null;
 
           if (table == undefined || table == null) {
+
+            log('datatable is initiated');
 
             table = $('#book_chapter_list_data').DataTable({
               data: dataset,
@@ -33,7 +34,7 @@
               columns: [{
                   title: '#'
                 }, {
-                  title: 'id'
+                  title: 'ID'
                 }, {
                   title: '단원번호'
                 }, {
@@ -49,7 +50,10 @@
 
           let rowData = ["", "", "", "", ""];
           let name_link = '';
+
           table.clear().draw();
+          log('table.clear');
+
           for (i = 0; i < data.length; i++) {
             action_link = '' +
               '<a display="float" href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" ' +
@@ -59,51 +63,87 @@
             table.row.add(rowData).draw(false);
           }
 
-          let preClickedTD = null;
+          log('datatable is filled by ajax data');
+
+          let preClickedCell = null;
+
+          table.off('key-focus');
+          table.off('key-blur');
+
           table
             .on('key-focus', function(e, datatable, cell, originalEvent) {
+              log('key-focus begin');
               let columnHeader = table.column(cell.index().column).header();
               let columnHeaderText = $(columnHeader).html();
+              let ex_cols = ['Action', '#', 'ID'];
 
-              console.log('columnHeaderText:' + columnHeaderText);
+              for (let i = 0; i < ex_cols.length; i++) {
+                if (columnHeaderText == ex_cols[i]) {
+                  log('diable column is clicked, so return');
+                  return;
+                }
+              };
 
-              if (columnHeaderText == 'Action') {
-                return;
-              }
+              //let rowData = datatable.row(cell.index().row).data();
 
-              let rowData = datatable.row(cell.index().row).data();
               let clickCellData = cell.data();
               let clickCellInputId = 'td_' + cell.index().row + '_' + cell.index().column;
               let inputData = "<input type='text' id ='" + clickCellInputId + "'>";
+
+              log(cell.index().row + 'row' + cell.index().column + 'col: cell is drawed by input type');
               cell.data(inputData).draw();
+
+              // inputID ???
               cell.inputID = clickCellInputId;
-              $('#' + clickCellInputId).attr('originalData', clickCellData);
+              clickCellData = !clickCellData ? '' : clickCellData;
+
+              let jq_inputText = $('#' + clickCellInputId);
+
+              jq_inputText.attr('originalData', clickCellData);
+
+              log(clickCellInputId + '의 attr of originalData :' + jq_inputText.attr('originalData'));
               //original data 저장함...
-              $('#' + clickCellInputId).val(clickCellData);
-              $('#' + clickCellInputId).focus();
-              preClickedTD = cell;
+              log('inputText에 내용 채우기 :' + clickCellData);
+
+              jq_inputText.val(clickCellData);
+
+              preClickedCell = cell;
+
             })
             .on('key-blur', function(e, datatable, cell) {
-              if (preClickedTD) {
+              log('key-blur begin');
+
+              if (preClickedCell) {
                 // 선택 상태에서 원복
-                returnTdToOriginal(preClickedTD, cell.index().row, cell.index().column);
+                log(preClickedCell.inputID);
+                returnTdToOriginal(preClickedCell, cell.index().row, cell.index().column);
               }
+
             });
 
-          function returnTdToOriginal(preClickedTD, rowIdx, colIdx) {
-            let cellInputId = 'td_' + rowIdx + '_' + colIdx;
+          function returnTdToOriginal(preClickedCell, rowIdx, colIdx) {
+            log('If preClickedTD exist, then returnTdToOriginal begin');
+            let cellInputId = preClickedCell.inputID;
+            let jq_inputText = $('#' + cellInputId);
+            let jq_inputText_origin = jq_inputText.attr('originalData')
+            let jq_inputText_val = jq_inputText.val();
+
             let cell = table.cell(rowIdx, colIdx);
             let id = table.cell(rowIdx, 1).data();
 
             let columnHeader = table.column(colIdx).header();
             let columnHeaderText = $(columnHeader).html();
 
+            log('origin: ' + jq_inputText.attr('originalData'));
+            log('val: ' + jq_inputText.val());
             // originData가 바꼈을 때에만 서버업데이트...
-            if ($('#' + cellInputId).attr('originalData') != $('#' + cellInputId).val()) {
-              saveTdData(id, columnHeaderText, $('#' + cellInputId).val());
+            if (jq_inputText_origin && jq_inputText_origin != jq_inputText_val) {
+              log('saveTdData begin');
+              saveTdData(id, columnHeaderText, jq_inputText_val);
             }
-
-            preClickedTD.data($('#' + preClickedTD.inputID).val());
+            log('preClickedCell value back');
+            log('jq_inputText_val : ' + jq_inputText_val);
+            preClickedCell.data(jq_inputText_val);
           }
 
           function saveTdData(id, header, value) {
@@ -121,10 +161,10 @@
                 value: value
               },
               success: function(result) {
-                console.log('success: ' + id + result);
+                log('success: ' + id + result);
               },
             }).fail(function(result) {
-              console.log('fail: ' + id + result);
+              log('fail: ' + id + result);
             });
           }
 
@@ -145,8 +185,8 @@
           book_id: book_id
         },
         success: function(data) {
-          console.log('ajax create chapter success');
-          console.log(data);
+          log('ajax create chapter success');
+          log(data);
           show_book_chapter_list();
         }
       });
@@ -165,8 +205,8 @@
           chapter_id: chapter_id
         },
         success: function(data) {
-          console.log('ajax delete chapter success');
-          console.log(data);
+          log('ajax delete chapter success');
+          log(data);
           show_book_chapter_list();
         }
       });

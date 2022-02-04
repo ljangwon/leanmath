@@ -2,6 +2,7 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="row" id='row1'>
+  
     <div class="col-xs-12">
       <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LEAN-MATH </a>
         <small>/빈화면 </small>
@@ -16,6 +17,7 @@
         <?php echo $this->session->flashdata('msg'); ?>
       </span>
     </div>
+
   </div>
 
   <!-- row1 title and message end -->

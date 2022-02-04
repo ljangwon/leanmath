@@ -42,7 +42,8 @@ class Book extends My_Controller
 		$data = $this->book_m->r_list(
 			array(
 				'workspace' => $this->input->post('workspace'),
-				'status' => $this->input->post('status')
+				'status' => $this->input->post('status'),
+				'grade1' => $this->input->post('grade1')
 			)
 		);
 		echo json_encode($data);

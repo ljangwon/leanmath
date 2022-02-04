@@ -51,8 +51,8 @@
 
         <div class="col-xs-4">
           <select class="form-control" id="select_month">
-            <option selected>1월</option>
-            <option>2월</option>
+            <option>1월</option>
+            <option selected>2월</option>
             <option>3월</option>
             <option>4월</option>
             <option>5월</option>

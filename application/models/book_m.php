@@ -69,13 +69,9 @@ class Book_m extends CI_Model
   // delete a book
   function delete($book_id)
   {
-    $this->db->set(array(
-      'flag' => '0'
-    ));
-
     $this->db->where('id', $book_id);
 
-    $result = $this->db->update('book_master');
+    $result = $this->db->delete('book_master');
 
     return $result;
   }
