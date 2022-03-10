@@ -115,7 +115,7 @@ class Payment_m extends CI_Model
   //select
   function payment_list($option = null)
   {
-    $this->db->select('p.id, p.year, p.month, p.st_id, p.name, s.class_name, 
+    $this->db->select('p.id, p.year, p.month, p.st_id, s.name, s.class_name, 
         p.regular_price, p.discount1, p.discount2, 
         p.discount_memo, p.return_price, p.net_income, 
         p.receipt_status, p.receipt_use, p.receipt_phone,

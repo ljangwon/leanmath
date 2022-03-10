@@ -52,11 +52,27 @@
         </a>
       </li>
 
-      <!-- Nav Item - 수납현황 -->
+      <!-- Nav Item - 교재현황 -->
       <li class="nav-item">
         <a class="nav-link" href="/leanmath/index.php/book">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>교재 현황</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - 교재 excel -->
+      <li class="nav-item">
+        <a class="nav-link" href="/leanmath/index.php/home">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>교재 마스터 - 엑셀 </span>
+        </a>
+      </li>
+
+      <!-- Nav Item - 교재 단원 excel -->
+      <li class="nav-item">
+        <a class="nav-link" href="/leanmath/index.php/home2">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>교재 단원 - 엑셀</span>
         </a>
       </li>
 

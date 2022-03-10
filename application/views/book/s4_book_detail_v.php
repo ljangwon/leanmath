@@ -46,32 +46,32 @@
 
     <!-- --------------------------------------- -->
     <div class="row mb-3" id='row3'>
-      <div class="col-sm-2 text-center">
+      <div class="col-sm-4 text-center">
         <label for="" class="form-label">BOOK_ID</label>
         <input type="text" name="id" class="form-control" placeholder="" value="<?= $book->id ?>">
       </div>
 
-      <div class="col-sm-3 text-center">
+      <div class="col-sm-4 text-center">
         <label for="" class="form-label">Title </label>
         <input type="text" name="book_title" class="form-control" placeholder="" value="<?= $book->title ?>">
       </div>
 
-      <div class="col-sm-2 text-center">
+      <div class="col-sm-4 text-center">
         <label for="" class="form-label">구분</label>
         <input type="text" name="grade1" class="form-control" placeholder="" value="<?= $book->grade1 ?>">
       </div>
 
-      <div class="col-sm-2 text-center">
+      <div class="col-sm-4 text-center">
         <label for="" class="form-label">학년</label>
         <input type="text" name="grade2" class="form-control" placeholder="" value="<?= $book->grade2 ?>">
       </div>
 
-      <div class="col-sm-1 text-center">
+      <div class="col-sm-4 text-center">
         <label for="" class="form-label">단원수</label>
         <input type="text" name="chapter_count" class="form-control" placeholder="" value="<?= $book->chapter_count ?>">
       </div>
 
-      <div class="col-sm-2 text-center">
+      <div class="col-sm-4 text-center">
         <label for="" class="form-label">상태</label>
         <input type="text" name="status" class="form-control" value="<?= $book->status ?>">
       </div>
@@ -85,9 +85,3 @@
       </div>
     </div>
     <!-- row4 main data table end -->
-
-</div>
-<!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->

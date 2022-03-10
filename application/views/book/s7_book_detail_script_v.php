@@ -29,7 +29,7 @@
               paging: false,
               autoWidth: false,
               scrollX: true,
-              scrollY: "60vh",
+              scrollY: "100vh",
               keys: true,
               columns: [{
                   title: '#'
@@ -196,6 +196,8 @@
     //get data for delete record
     $('#book_chapter_list_data').on('click', '.item_delete', function() {
       let chapter_id = $(this).data('chapter_id');
+
+      log("item_delete start");
 
       $.ajax({
         type: "POST",

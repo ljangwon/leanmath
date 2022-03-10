@@ -13,6 +13,7 @@
         <form action="<?= site_url() ?>/book/create_book" method="post">
           <input type="text" name="title" placeholder="book name" class="span12" />
           <input type="text" name="grade1" placeholder="book 학년구분" class="span12" />
+          <input type="text" name="grade2" placeholder="학기" class="span12" />
           <div class="form_control">
             <input class="btn" type="submit" value="Book추가" />
           </div>
@@ -38,19 +39,26 @@
         </div>
         <div class="modal-body">
           <div class="form-group row">
-            <label class="col-md-2 col-form-label">Book title</label>
+            <label class="col-md-2 col-form-label">책제목</label>
             <div class="col-md-10">
               <input type="text" name="book_title_delete" id="book_title_delete" class="form-control" readonly>
+            </div>
+
+            <label class="col-md-2 col-form-label">학제 구분</label>
+            <div class="col-md-10">
               <input type="text" name="book_grade1_delete" id="book_grade1_delete" class="form-control" readonly>
+            </div>
+
+            <label class="col-md-2 col-form-label">학년학기</label>
+            <div class="col-md-10">
               <input type="text" name="book_grade2_delete" id="book_grade2_delete" class="form-control" readonly>
             </div>
-          </div>
 
-          <div class="form-group row">
             <label class="col-md-2 col-form-label">Book Id </label>
             <div class="col-md-10">
               <input type="text" name="book_id_delete" id="book_id_delete" class="form-control" readonly>
             </div>
+
           </div>
 
           <strong>Are you sure to delete this record?</strong>

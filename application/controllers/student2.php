@@ -33,7 +33,9 @@ class Student2 extends My_Controller
 
 		$this->load->view(
 			'student2/s4_student_list_v',
-			array()
+			array(
+				'students' => $students
+			)
 		);
 
 		$this->load->view(
@@ -64,7 +66,6 @@ class Student2 extends My_Controller
 
 	function get_all()
 	{
-
 		$this->load->view(
 			'common/s1_head_v',
 			array()
@@ -85,8 +86,10 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s4_none_student_v',
-			array()
+			'student2/s4_student_list_all_v',
+			array(
+				'students' => $students
+			)
 		);
 
 		$this->load->view(
@@ -122,15 +125,18 @@ class Student2 extends My_Controller
 			array(
 				'name' => $this->input->post('name'),
 				'class_name' => $this->input->post('class_name'),
-				'study_memo' => '2021년 12월 17일 업데이트
+				'study_memo' => '2022년 3월 1일 업데이트
 
-초4 홍길동 학습 기록 공유드립니다.
+초5 홍길동 학습 기록 공유드립니다.
 
 <자기주도 학습시간계획>
 월(2시간), 화(1시간), 수(1시간), 목(1시간), 금(2시간), 토(1시간), 일(0시간) 주당 총 8시간
 
 <레벨테스트>
 초4 (3월) 100점
+
+<교재이력>
+초5-1 : 빅터연산, 디딤돌(기본+응용), 쎈, 최상위S, 점프왕수학
 
 <교재진행사항>
 1) 연산선행 
@@ -153,7 +159,7 @@ class Student2 extends My_Controller
 1단원(0개/10문제) 
 
 <학습주안점>
-- 자기주도학습체계를 성실히 잘 따르고 있음.'
+- 자기주도학습을 성실히 잘 따르고 있음.'
 			)
 		);
 

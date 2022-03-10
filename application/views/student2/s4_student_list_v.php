@@ -7,12 +7,6 @@
         <small>/학생 리스트</small>
       </h1>
     </div>
-
-    <div class="col-xs-12">
-      <span id="msg" style="background-color: red">
-        <?php echo $this->session->flashdata('msg'); ?>
-      </span>
-    </div>
   </div>
 
   <!-- row1 title and message end -->
@@ -54,11 +48,562 @@
   </div>
 
   <!-- row4 main data table  begin -->
-  <div class="row" id='row4'>
-    <div class="col-md-12">
-      <table class="table table-striped display compact cell-border" id="student_list_data" style="width:100%">
-      </table>
+  <div class="row" id='timetable'>
+
+    <!-- 월요일 start -->
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">월2</h5>
+          <p class="card-text">
+
+            <?php
+            foreach ($students as $entry) {
+              if (
+                $entry->workspace == $this->session->userdata('workspace') &&
+                $entry->status == "재원" &&
+                $entry->class_day1 == '1' &&
+                $entry->class_time1 == '14'
+              ) {
+            ?>
+                <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+            <?php
+              }
+            }
+            ?>
+
+          </p>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">월4</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '1' &&
+              $entry->class_time1 == '16'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">월6</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '1' &&
+              $entry->class_time1 == '18'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">월8</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '1' &&
+              $entry->class_time1 == '20'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
     </div>
+    <!-- 월요일 end -->
+
+    <!-- 화요일 start -->
+    <div class="col-md-2">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">화2</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '2' &&
+              $entry->class_time1 == '14'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">화4</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '2' &&
+              $entry->class_time1 == '16'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">화6</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '2' &&
+              $entry->class_time1 == '18'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">화8</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '2' &&
+              $entry->class_time1 == '20'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+    </div>
+    <!-- 화요일 end -->
+
+    <!-- 수요일 start -->
+    <div class="col-md-2">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">수2</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '3' &&
+              $entry->class_time1 == '14'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">수4</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '3' &&
+              $entry->class_time1 == '16'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">수6</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '3' &&
+              $entry->class_time1 == '18'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">수8</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day1 == '3' &&
+              $entry->class_time1 == '20'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+    </div>
+    <!-- 수요일 end -->
+
+    <!-- 목요일 start -->
+    <div class="col-md-2">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">목2</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '4' &&
+              $entry->class_time2 == '14'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">목4</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '4' &&
+              $entry->class_time2 == '16'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">목6</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '4' &&
+              $entry->class_time2 == '18'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">목8</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '4' &&
+              $entry->class_time2 == '20'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+    </div>
+    <!-- 목요일 end -->
+
+    <!-- 금요일 start -->
+    <div class="col-md-2">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">금2</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '5' &&
+              $entry->class_time2 == '14'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">금4</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '5' &&
+              $entry->class_time2 == '16'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">금6</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '5' &&
+              $entry->class_time2 == '18'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">금8</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '5' &&
+              $entry->class_time2 == '20'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+    </div>
+    <!-- 금요일 end -->
+
+    <!-- 토요일 start -->
+    <div class="col-md-2">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">토9</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '6' &&
+              $entry->class_time2 == '9'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">토11</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '6' &&
+              $entry->class_time2 == '11'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">토14</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '6' &&
+              $entry->class_time2 == '14'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">토16</h5>
+          <?php
+          foreach ($students as $entry) {
+            if (
+              $entry->workspace == $this->session->userdata('workspace') &&
+              $entry->status == "재원" &&
+              $entry->class_day2 == '6' &&
+              $entry->class_time2 == '16'
+            ) {
+          ?>
+              <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+      <!-- card end -->
+    </div>
+    <!-- 토요일 end -->
+
+
   </div>
   <!-- row4 main data table end -->
 

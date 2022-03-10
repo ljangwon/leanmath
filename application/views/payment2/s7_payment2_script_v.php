@@ -154,8 +154,10 @@
       let year = $('#add_year').val();
       let month = $('#add_month').val();
 
+      log('add_month');
+
       $.ajax({
-        url: "<?php echo site_url('payment/add_payment_by_month') ?>",
+        url: "<?php echo site_url('payment2/add_payment_by_month') ?>",
         type: "POST",
         data: {
           year: year,
@@ -183,9 +185,11 @@
       var month = $('#month').val();
       var st_id = $('#st_id').val();
       var st_name = $('#st_name').val();
+
+      log('payment2/save ');
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment/save') ?>",
+        url: "<?php echo site_url('payment2/save') ?>",
         dataType: "JSON",
         data: {
           year: year,
@@ -207,10 +211,10 @@
     //get data for pay record
     $('#payment_data').on('click', '.pay_card_edit', function() {
       var payment_id = $(this).data('payment_id');
-
+      log('update_pay_status start');
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment/update_pay_status') ?>",
+        url: "<?php echo site_url('payment2/update_pay_status') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id,
@@ -228,7 +232,7 @@
 
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment/update_pay_status') ?>",
+        url: "<?php echo site_url('payment2/update_pay_status') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id,
@@ -246,7 +250,7 @@
 
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment/update_receipt_status') ?>",
+        url: "<?php echo site_url('payment2/update_receipt_status') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id
@@ -315,7 +319,7 @@
 
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment/update_discount') ?>",
+        url: "<?php echo site_url('payment2/update_discount') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id,
@@ -356,7 +360,7 @@
       var payment_id = $('#payment_id_delete').val();
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment/delete') ?>",
+        url: "<?php echo site_url('payment2/delete') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id
@@ -380,7 +384,7 @@
 
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment/month_delete') ?>",
+        url: "<?php echo site_url('payment2/month_delete') ?>",
         dataType: "JSON",
         data: {
           year_del: year_del,

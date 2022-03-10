@@ -24,7 +24,8 @@ class Book extends My_Controller
 		$new_book_id = $this->book_m->create(
 			array(
 				'title' => $this->input->post('title'),
-				'grade1' => $this->input->post('grade1')
+				'grade1' => $this->input->post('grade1'),
+				'grade2' => $this->input->post('grade2')
 			)
 		);
 

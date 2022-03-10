@@ -21,4 +21,29 @@
   <!-- Custom styles for this page -->
   <link href="/leanmath/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  <style>
+    :root {
+      /* color */
+      --color-black: #3f454d;
+      --color-white: #ffffff;
+      --color-blue: #3b88c3;
+      --color-yellow: #fbbe28;
+      --color-pink: #fd7f84;
+      --color-light-grey: #dfdfdf;
+      /* size */
+      --size-button: 60px;
+      --font-size: 18px;
+      --base-space: 8px;
+      --size-border: 4px;
+      --size-thumbnail: 50px;
+      /* animation */
+      --ani-duration: 300ms;
+    }
+
+    .card {
+      font-size: 0.8rem;
+      width: 16rem;
+    }
+  </style>
+
 </head>

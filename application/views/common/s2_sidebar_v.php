@@ -38,9 +38,16 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/student2">
+        <a class="nav-link" href="/leanmath/index.php/student2/get_all">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>전체 학생목록</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/leanmath/index.php/student2">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>전체 시간표</span>
         </a>
       </li>
 

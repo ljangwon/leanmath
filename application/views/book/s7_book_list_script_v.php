@@ -2,7 +2,6 @@
 <script type="text/javascript">
   $(document).ready(function() {
     let table = null;
-
     let workspace = null;
     let status = null;
 
@@ -47,26 +46,34 @@
               data: dataset,
               stateSave: false,
               paging: false,
-              autoWidth: true,
+              autoWidth: false,
               scrollX: true,
-              scrollY: "60vh",
+              scrollY: "100vh",
               columns: [{
-                  title: '#'
+                  title: '#',
+                  width: "10px"
                 }, {
-                  title: 'id'
+                  title: 'id',
+                  width: "10px"
                 }, {
-                  title: '구분'
+                  title: '구분',
+                  width: "10px"
                 }, {
-                  title: '학년/학기'
+                  title: '학년/학기',
+                  width: "10px"
                 }, {
-                  title: '교재명'
+                  title: '교재명',
+                  width: "100px"
                 }, {
                   title: '단원수',
+                  width: "10px"
                 }, {
                   title: '상태',
+                  width: "10px"
                 },
                 {
                   title: 'Action',
+                  width: "30px"
                 }
               ]
 
@@ -110,6 +117,32 @@
 
     //get data for delete record
     $('#elem_book_list_data').on('click', '.item_delete', function() {
+      let book_id = $(this).data('book_id');
+      let book_title = $(this).data('book_title');
+      let book_grade1 = $(this).data('book_grade1');
+      let book_grade2 = $(this).data('book_grade2');
+
+      $('#Modal_Book_Delete').modal('show');
+      $('[name="book_id_delete"]').val(book_id);
+      $('[name="book_title_delete"]').val(book_title);
+      $('[name="book_grade1_delete"]').val(book_grade1);
+      $('[name="book_grade2_delete"]').val(book_grade2);
+    });
+
+    $('#mid_book_list_data').on('click', '.item_delete', function() {
+      let book_id = $(this).data('book_id');
+      let book_title = $(this).data('book_title');
+      let book_grade1 = $(this).data('book_grade1');
+      let book_grade2 = $(this).data('book_grade2');
+
+      $('#Modal_Book_Delete').modal('show');
+      $('[name="book_id_delete"]').val(book_id);
+      $('[name="book_title_delete"]').val(book_title);
+      $('[name="book_grade1_delete"]').val(book_grade1);
+      $('[name="book_grade2_delete"]').val(book_grade2);
+    });
+
+    $('#high_book_list_data').on('click', '.item_delete', function() {
       let book_id = $(this).data('book_id');
       let book_title = $(this).data('book_title');
       let book_grade1 = $(this).data('book_grade1');
