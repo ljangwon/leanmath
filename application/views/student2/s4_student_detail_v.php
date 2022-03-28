@@ -209,7 +209,7 @@
     <!-- --------------------------------------- -->
     <div class="row mb-3" id='row10'>
       <div class="col-sm-4 text-center">
-        <label class="form-label text-nowrap">마지막상담일</label>
+        <label class="form-label text-nowrap">상담 메모</label>
         <input type="text" name="report_last_date" class="form-control" value="<?= $student->report_last_date ?>">
         <div class="form-row">
           <div class="col-6"> 상담일 <input type="text" name="report_date" id="report_date" class="form-control" value="<?= $student->report_date ?>"> </div>
