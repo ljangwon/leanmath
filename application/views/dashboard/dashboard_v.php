@@ -188,7 +188,7 @@
 				<!-- --------------------------------------- -->
 				<div class="col-sm-4 text-center">
 					<label for="" class="form-label text-nowrap">마지막상담일</label>
-					<input type="text" name="report_last_date" class="form-control" placeholder="2021년11월25일" value="<?= $student->report_last_date ?>">
+					<input type="text" name="report_last_date" class="form-control" placeholder="" value="<?= $student->report_last_date ?>">
 				</div>
 				<div class="col-sm-4 text-center">
 					<label class="form-label">지적사항 메모</label>

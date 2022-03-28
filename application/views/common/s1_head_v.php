@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this page -->
   <link href="/leanmath/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" rel="stylesheet">
 
   <style>
     :root {
@@ -45,5 +46,4 @@
       width: 16rem;
     }
   </style>
-
 </head>

@@ -1,6 +1,7 @@
 <!-- Bootstrap core JavaScript-->
 <script src="/leanmath/admin/vendor/jquery/jquery.min.js"></script>
 <script src="/leanmath/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="/leanmath/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -15,7 +16,17 @@
 
 <!-- common functions -->
 <script>
-  function log(message) {
-    console.log(message);
-  }
+	function log(message) {
+		console.log(message);
+	}
 </script>
+
+<!-- Modal Feedback Show -->
+<?php if ($this->session->flashdata('modal_message')) { ?>
+	<?= $this->session->flashdata('modal_message') ?>
+	<script>
+		$(window).on('load', function() {
+			$('#modalFeedback').modal('show');
+		});
+	</script>
+<?php } ?>

@@ -3,13 +3,12 @@
   <!-- Page Heading -->
   <div class="row" id='row1'>
     <div class="col-xs-12">
-      <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LEAN-MATH </a>
+      <h1><a style=text-decoration-line:none href='http://jakeleanco.dothome.co.kr/leanmath/index.php/student2'> LEAN-MATH </a>
         <small>/학생 상세화면 </small>
       </h1>
     </div>
 
     <div class="col-xs-12">
-
       <span id="msg" style="background-color: red">
         <?php echo $this->session->flashdata('msg'); ?>
       </span>
@@ -210,10 +209,34 @@
     <!-- --------------------------------------- -->
     <div class="row mb-3" id='row10'>
       <div class="col-sm-4 text-center">
-        <label for="" class="form-label text-nowrap">마지막상담일</label>
-        <input type="text" name="report_last_date" class="form-control" placeholder="2021년11월25일" value="<?= $student->report_last_date ?>">
+        <label class="form-label text-nowrap">마지막상담일</label>
+        <input type="text" name="report_last_date" class="form-control" value="<?= $student->report_last_date ?>">
+        <div class="form-row">
+          <div class="col-6"> 상담일 <input type="text" name="report_date" id="report_date" class="form-control" value="<?= $student->report_date ?>"> </div>
+          <div class="col-3"> 상담형식 <input type="text" name="report_type" class="form-control" value="<?= $student->report_type ?>"> </div>
+          <?php
+          $last_date = $student->report_date;
+          $today = date("Y-m-d", mktime(0, 0, 0, date('m'), date('d'), date('Y')));
+
+          $ee = strtotime($today);
+          $ss = strtotime($last_date);
+          $day = 86400;
+          $days = ($ee - $ss) / $day;
+
+          if ($days > 60) {
+            $color = "color:red";
+          } else {
+            $color = "color:blue";
+          }
+
+          ?>
+
+          <div class="col-3"> 경과일 <input type="text" readonly name="pass_days" class="form-control" value="<?= $days ?>" style="<?= $color ?>"> </div>
+
+        </div>
       </div>
-      <div class="col-sm-4 text-center">
+
+      <div class=" col-sm-4 text-center">
         <label class="form-label">지적사항 메모</label>
         <textarea name="check_memo" placeholder="지적사항 메모" class="form-control text-start" rows="5"><?= $student->check_memo ?> </textarea>
       </div>

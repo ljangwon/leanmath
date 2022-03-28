@@ -17,9 +17,21 @@ class User_m extends CI_Model
     {
         $this->db->set('email', $option['email']);
         $this->db->set('password', $option['password']);
+        $this->db->set('name', $option['name']);
         $this->db->set('created', 'NOW()', false);
         $this->db->insert('user');
         $result = $this->db->insert_id();
+        return $result;
+    }
+
+    function modify($option)
+    {
+        $this->db->set('name', $option['name']);
+        $this->db->set('password', $option['password']);
+        $this->db->set('created', 'NOW()', false);
+        $this->db->where('email', $option['email']);
+        $result = $this->db->update('user');
+
         return $result;
     }
 

@@ -4,7 +4,7 @@
   <div class="row" id='row1'>
     <div class="col-xs-12">
       <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LEAN-MATH </a>
-        <small>/ Payment List</small>
+        <small>/학생수납현황</small>
       </h1>
     </div>
 
@@ -53,8 +53,8 @@
           <select class="form-control" id="select_month">
             <option>1월</option>
             <option>2월</option>
-            <option selected>3월</option>
-            <option>4월</option>
+            <option>3월</option>
+            <option selected>4월</option>
             <option>5월</option>
             <option>6월</option>
             <option>7월</option>

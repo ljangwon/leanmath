@@ -4,7 +4,7 @@
   <div class="row" id='row1'>
     <div class="col-xs-12">
       <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LEAN-MATH </a>
-        <small>/ Payment List</small>
+        <small>/수납영수증</small>
       </h1>
     </div>
 
@@ -41,11 +41,19 @@
 
     <div class="col-6">
       <div class="row">
+
+        <div class="col-xs-4">
+          <select class="form-control" id="select_year">
+            <option>2021년</option>
+            <option selected>2022년</option>
+          </select>
+        </div>
+
         <div class="col-xs-4">
           <select class="form-control" id="select_month">
             <option>1월</option>
             <option>2월</option>
-            <option>3월</option>
+            <option selected>3월</option>
             <option>4월</option>
             <option>5월</option>
             <option>6월</option>
@@ -54,7 +62,7 @@
             <option>9월</option>
             <option>10월</option>
             <option>11월</option>
-            <option selected>12월</option>
+            <option>12월</option>
           </select>
         </div>
 
@@ -62,19 +70,11 @@
           <select class="form-control" id="select_pay_status">
             <option>카드수납</option>
             <option>현금수납</option>
-            <option>미납</option>
-            <option selected>전체</option>
+            <option selected>미납</option>
+            <option>전체</option>
           </select>
         </div>
 
-        <div class="col-xs-4">
-          <select class="form-control" id="select_pay_s">
-            <option>카드수납</option>
-            <option>현금수납</option>
-            <option>미납</option>
-            <option selected>전체</option>
-          </select>
-        </div>
       </div>
     </div>
   </div>
@@ -82,11 +82,19 @@
   <!-- row4 main data table  begin -->
   <div class="row" id='row4'>
     <div class="col-md-12">
-      <table class="table table-striped display compact cell-border" id="payment_data" style="width:100%">
+      <table class="table table-striped display compact cell-border" id="payment3_data" style="width:100%">
       </table>
     </div>
   </div>
   <!-- row4 main data table end -->
+
+  <div class="row">
+    <div class="col-md-12">
+      net income: <span id="net_income"> </span> 원
+
+    </div>
+
+  </div>
 
 </div>
 <!-- /.container-fluid -->

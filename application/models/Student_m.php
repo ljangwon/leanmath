@@ -104,17 +104,6 @@ class Student_m extends CI_Model
     return $result;
   }
 
-  function get_count($option)
-  {
-    $this->db->select('count(*) as cnt');
-    $this->db->where('flag', '1');
-    $this->db->where($option);
-    $result = $this->db->get(
-      'student'
-    )->row();
-    return $result;
-  }
-
   function get_count_option($option)
   {
     $this->db->select('count(*) as cnt');
@@ -142,12 +131,14 @@ class Student_m extends CI_Model
   function get_fees_sum($option)
   {
     $this->db->select_sum('fees');
-    $this->db->where(array(
-      'grade1' => $option,
-      'flag' => '1',
-      'workspace' => $this->session->userdata('workspace'),
-      'status' => '재원'
-    ));
+    $this->db->where(
+      array(
+        'grade1' => $option,
+        'flag' => '1',
+        'workspace' => $this->session->userdata('workspace'),
+        'status' => '재원'
+      )
+    );
     $result = $this->db->get('student')->row();
     return $result;
   }

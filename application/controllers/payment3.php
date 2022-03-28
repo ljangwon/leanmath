@@ -1,5 +1,5 @@
 <?php
-class Payment2 extends My_Controller
+class Payment3 extends My_Controller
 {
 	function __construct()
 	{
@@ -32,7 +32,7 @@ class Payment2 extends My_Controller
 		);
 
 		$this->load->view(
-			'payment2/s4_payment2_v',
+			'payment3/s4_payment3_v',
 			array()
 		);
 
@@ -47,7 +47,7 @@ class Payment2 extends My_Controller
 		);
 
 		$this->load->view(
-			'payment2/s6_payment2_modal_v',
+			'payment3/s6_payment3_modal_v',
 			array()
 		);
 
@@ -57,7 +57,7 @@ class Payment2 extends My_Controller
 		);
 
 		$this->load->view(
-			'payment2/s7_payment2_script_v',
+			'payment3/s7_payment3_script_v',
 			array()
 		);
 	}
@@ -84,7 +84,7 @@ class Payment2 extends My_Controller
 		echo json_encode($data);
 	}
 
-	function save()	
+	function save()
 	{
 		$data = $this->payment_m->save_payment(
 			array(

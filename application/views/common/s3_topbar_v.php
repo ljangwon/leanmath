@@ -55,57 +55,131 @@
             <span class="badge badge-danger badge-counter">
               <?
               $this->load->model('student_m');
-              $st_count = $this->student_m->get_st_count(
+              $total_count = $this->student_m->get_st_count(
                 array(
                   'status' => '재원'
                 )
               );
-              echo $st_count->cnt;
+              echo $total_count->cnt;
               ?> </span>
           </a>
           <!-- Dropdown - Alerts -->
           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
             <h6 class="dropdown-header">
-              알림 센터
+              학생 상세 명수
             </h6>
-
-            <a class="dropdown-item d-flex align-items-center" href="#">
-              <div class="mr-3">
-                <div class="icon-circle bg-primary">
-                  <i class="fas fa-file-alt text-white"></i>
-                </div>
-              </div>
-              <div>
-                <div class="small text-gray-500">December 12, 2019</div>
-                <span class="font-weight-bold">A new monthly report is ready to download!</span>
-              </div>
-            </a>
-
-            <a class="dropdown-item d-flex align-items-center" href="#">
-              <div class="mr-3">
-                <div class="icon-circle bg-success">
-                  <i class="fas fa-donate text-white"></i>
-                </div>
-              </div>
-              <div>
-                <div class="small text-gray-500">December 7, 2019</div>
-                $290.29 has been deposited into your account!
-              </div>
-            </a>
-
-            <a class="dropdown-item d-flex align-items-center" href="#">
-              <div class="mr-3">
-                <div class="icon-circle bg-warning">
-                  <i class="fas fa-exclamation-triangle text-white"></i>
-                </div>
-              </div>
-              <div>
-                <div class="small text-gray-500">December 2, 2019</div>
-                Spending Alert: We've noticed unusually high spending for your account.
-              </div>
-            </a>
-
-            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+            <?
+            $st_count_e4 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '초등',
+                'grade2' => '4'
+              )
+            );
+            $st_count_e5 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '초등',
+                'grade2' => '5'
+              )
+            );
+            $st_count_e6 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '초등',
+                'grade2' => '6'
+              )
+            );
+            $st_count_e = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '초등',
+              )
+            );
+            $st_fees_sum_e = $this->student_m->get_fees_sum('초등');
+            ?>
+            <p>초4 : <?= $st_count_e4->cnt ?> 명 </p>
+            <p>초5 : <?= $st_count_e5->cnt ?> 명 </p>
+            <p>초6 : <?= $st_count_e6->cnt ?> 명 </p>
+            <p class="d-inline"> 초등 전체 :
+            <div class="d-inline text-primary"> <?= $st_count_e->cnt ?> </div> 명 = 총 <?= number_format($st_fees_sum_e->fees) ?> 원 </P>
+            <hr>
+            <?
+            $st_count_m1 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '중등',
+                'grade2' => '1'
+              )
+            );
+            $st_count_m2 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '중등',
+                'grade2' => '2'
+              )
+            );
+            $st_count_m3 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '중등',
+                'grade2' => '3'
+              )
+            );
+            $st_count_m = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '중등',
+              )
+            );
+            $st_fees_sum_m = $this->student_m->get_fees_sum('중등');
+            ?>
+            <p>중1 : <?= $st_count_m1->cnt ?> 명 </p>
+            <p>중2 : <?= $st_count_m2->cnt ?> 명 </p>
+            <p>중3 : <?= $st_count_m3->cnt ?> 명 </p>
+            <p class="d-inline"> 중등 전체 :
+            <div class="d-inline text-primary"> <?= $st_count_m->cnt ?> </div> 명 = 총 <?= number_format($st_fees_sum_m->fees) ?> 원 </p>
+            <hr>
+            <?
+            $st_count_h1 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '고등',
+                'grade2' => '1'
+              )
+            );
+            $st_count_h2 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '고등',
+                'grade2' => '2'
+              )
+            );
+            $st_count_h3 = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '고등',
+                'grade2' => '3'
+              )
+            );
+            $st_count_h = $this->student_m->get_st_count(
+              array(
+                'status' => '재원',
+                'grade1' => '고등',
+              )
+            );
+            $st_fees_sum_h = $this->student_m->get_fees_sum('고등');
+            ?>
+            <p>고1 : <?= $st_count_h1->cnt ?> 명 </p>
+            <p>고2 : <?= $st_count_h2->cnt ?> 명 </p>
+            <p>고3 : <?= $st_count_h3->cnt ?> 명 </p>
+            <p class="d-inline"> 고등 전체 :
+            <div class="d-inline text-primary"> <?= $st_count_h->cnt ?> </div> 명 = 총 <?= number_format($st_fees_sum_h->fees) ?> 원 </p>
+            <hr>
+            <p class="d-inline"> 전체 인원 :
+            <div class="d-inline text-primary"> <?= $st_count_e->cnt + $st_count_m->cnt + $st_count_h->cnt ?></div> 명 </p>
+            <p class="d-inline"> 전체 매출 :
+            <div class="d-inline text-primary"> <?= number_format($st_fees_sum_e->fees + $st_fees_sum_m->fees + $st_fees_sum_h->fees) ?> </div> 원 </p>
 
           </div>
         </li>
@@ -193,6 +267,10 @@
               Activity Log
             </a>
             <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/leanmath/index.php/auth/changePassword">
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              ChangePassword
+            </a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               Logout

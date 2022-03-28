@@ -8,7 +8,7 @@ class A extends CI_Controller
 
     function index()
     {
-        $this->load->view('a');
-        $this->session->set_flashdata('message', '로그인에 실패 했습니다.');
+
+        $this->load->view('a_datepicker');
     }
 }
