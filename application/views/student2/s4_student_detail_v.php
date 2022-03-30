@@ -181,12 +181,12 @@
 
       <div class="col-sm-3 text-center">
         <label for="" class="form-label text-nowrap">시작일</label>
-        <input type="text" name="start_date" class="form-control" placeholder="시작일" value="<?= $student->start_date ?>">
+        <input type="text" name="start_date" id="start_date" class="form-control" placeholder="시작일" value="<?= $student->start_date ?>">
       </div>
 
       <div class="col-sm-3 text-center">
         <label for="" class="form-label text-nowrap">종료일</label>
-        <input type="text" name="end_date" class="form-control" value="<?= $student->end_date ?>">
+        <input type="text" name="end_date" id="end_date" class="form-control" value="<?= $student->end_date ?>">
       </div>
     </div>
     <!-- --------------------------------------- -->
