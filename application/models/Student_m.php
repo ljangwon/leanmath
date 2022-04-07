@@ -143,6 +143,25 @@ class Student_m extends CI_Model
     return $result;
   }
 
+  function get_student_names($postData)
+  {
+
+    $response = array();
+
+    if (isset($postData['search'])) {
+      // Select record
+      $this->db->select("id, name");
+      $this->db->where("name like '%" . $postData['search'] . "%' ");
+
+      $records = $this->db->get('student')->result();
+
+      foreach ($records as $row) {
+        $response[] = array("value" => $row->id, "label" => $row->name);
+      }
+    }
+    return $response;
+  }
+
   function test_h_add($option)
   {
     $this->db->set('created', 'NOW()', false);

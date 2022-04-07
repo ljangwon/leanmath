@@ -21,6 +21,36 @@
 	}
 </script>
 
+<script type='text/javascript'>
+	$(document).ready(function() {
+
+		// Initialize 
+		$("#search_name").autocomplete({
+			source: function(request, response) {
+				// Fetch data
+				$.ajax({
+					url: "<?= base_url() ?>index.php/student2/ajax_student_names",
+					type: 'post',
+					dataType: "json",
+					data: {
+						search: request.term
+					},
+					success: function(data) {
+						response(data);
+					}
+				});
+			},
+			select: function(event, ui) {
+				// Set selection
+				$('#search_name').val(ui.item.label); // display the selected text
+				$('#search_id').val(ui.item.value); // save selected id to input
+				return false;
+			}
+		});
+
+	});
+</script>
+
 <!-- Modal Feedback Show -->
 <?php if ($this->session->flashdata('modal_message')) { ?>
 	<?= $this->session->flashdata('modal_message') ?>

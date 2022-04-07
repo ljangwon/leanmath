@@ -1,11 +1,11 @@
 <?php
-class Student2 extends My_Controller
+class Student3 extends My_Controller
 {
 	function __construct()
 	{
 		parent::__construct();
 
-		$this->_require_login(site_url('student2'), 10);
+		$this->_require_login(site_url('student3'), 10);
 
 		$this->load->model('student_m');
 	}
@@ -32,7 +32,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s4_student_list_v',
+			'student3/s4_list_v',
 			array(
 				'students' => $students
 			)
@@ -49,7 +49,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s6_student2_modal_v',
+			'student3/s6_modal_v',
 			array()
 		);
 
@@ -59,7 +59,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s7_student2_script_v',
+			'student3/s7_script_v',
 			array()
 		);
 	}
@@ -86,7 +86,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s4_student_list_all_v',
+			'student3/s4_list_all_v',
 			array(
 				'students' => $students
 			)
@@ -103,7 +103,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s6_student2_modal_v',
+			'student3/s6_modal_v',
 			array()
 		);
 
@@ -113,7 +113,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s7_student2_script_v',
+			'student3/s7_script_v',
 			array()
 		);
 	}
@@ -125,7 +125,7 @@ class Student2 extends My_Controller
 			array(
 				'name' => $this->input->post('name'),
 				'class_name' => $this->input->post('class_name'),
-				'study_memo' => '2022년 4월 1일 업데이트
+				'study_memo' => '2022년 3월 1일 업데이트
 
 초5 홍길동 학습 기록 공유드립니다.
 
@@ -164,15 +164,15 @@ class Student2 extends My_Controller
 		);
 
 		if (!$new_st_id) {
-			alert("학생 추가 실패했습니다.", site_url('/student2'));
+			alert("학생 추가 실패했습니다.", site_url('/student3'));
 		} else {
 
-			alert("학생 추가 성공했습니다.", site_url('/student2/get_student/' . $new_st_id));
+			alert("학생 추가 성공했습니다.", site_url('/student3/get_student/' . $new_st_id));
 		}
 	}
 
 	// read list
-	function ajax_student_list()
+	function ajax_list()
 	{
 		$data = $this->student_m->get_list(
 			array(
@@ -180,17 +180,6 @@ class Student2 extends My_Controller
 				'status' => $this->input->post('status')
 			)
 		);
-		echo json_encode($data);
-	}
-
-	function ajax_student_names()
-	{
-		// POST data
-		$postData = $this->input->post();
-
-		// Get data
-		$data = $this->student_m->get_student_names($postData);
-
 		echo json_encode($data);
 	}
 
@@ -204,7 +193,7 @@ class Student2 extends My_Controller
 		}
 
 		if (empty($st_id)) {
-			alert('st_id의 값이 없습니다', site_url('/student2'));
+			alert('st_id의 값이 없습니다', site_url('/student3'));
 		}
 
 		$this->load->view(
@@ -231,11 +220,11 @@ class Student2 extends My_Controller
 		if ($student) {
 			$this->session->set_userdata('st_name', $student->name);
 		} else {
-			alert('해당하는 학생이 없습니다', site_url('/student2'));
+			alert('해당하는 학생이 없습니다', site_url('/student3'));
 		}
 
 		$this->load->view(
-			'student2/s4_student_detail_v',
+			'student3/s4_detail_v',
 			array(
 				'student' => $student
 			)
@@ -252,7 +241,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s6_student2_modal_v',
+			'student3/s6_modal_v',
 			array()
 		);
 
@@ -262,85 +251,11 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s7_student2_script_v',
+			'student3/s7_script_v',
 			array()
 		);
 	}
 
-	// read
-	function get_student_post()
-	{
-		$st_id = $this->input->post('search_id');
-
-		if (empty($st_id)) {
-			$st_id = $this->session->userdata('st_id');
-		} else {
-			$this->session->set_userdata('st_id', $st_id);
-		}
-
-		if (empty($st_id)) {
-			alert('st_id의 값이 없습니다', site_url('/student2'));
-		}
-
-		$this->load->view(
-			'common/s1_head_v',
-			array()
-		);
-
-		$students = $this->student_m->gets();
-
-		$this->load->view(
-			'common/s2_sidebar_v',
-			array(
-				'students' => $students
-			)
-		);
-
-		$this->load->view(
-			'common/s3_topbar_v',
-			array()
-		);
-
-		// 학생 한명 Data 로드하기 
-		$student = $this->student_m->get($st_id);
-		if ($student) {
-			$this->session->set_userdata('st_name', $student->name);
-		} else {
-			alert('해당하는 학생이 없습니다', site_url('/student2'));
-		}
-
-		$this->load->view(
-			'student2/s4_student_detail_v',
-			array(
-				'student' => $student
-			)
-		);
-
-		$this->load->view(
-			'common/s5_footer_v',
-			array()
-		);
-
-		$this->load->view(
-			'common/s6_common_modal_v',
-			array()
-		);
-
-		$this->load->view(
-			'student2/s6_student2_modal_v',
-			array()
-		);
-
-		$this->load->view(
-			'common/s7_common_script_v',
-			array()
-		);
-
-		$this->load->view(
-			'student2/s7_student2_script_v',
-			array()
-		);
-	}
 
 	// update
 	function st_modify()
@@ -395,11 +310,11 @@ class Student2 extends My_Controller
 		);
 
 		if (!$result) {
-			alert("st 업데이트가 실패했습니다.", site_url('/student2/get_student/' . $st_id));
+			alert("st 업데이트가 실패했습니다.", site_url('/student3/get_student/' . $st_id));
 		} else {
 
 			//$this->modal_feedback('success', 'Success', '학생 정보 업데이트가 성공했습니다.', 'OK');
-			alert("st 업데이트가 성공했습니다.", site_url('/student2/get_student/' . $this->input->post('id')));
+			alert("st 업데이트가 성공했습니다.", site_url('/student3/get_student/' . $this->input->post('id')));
 		}
 	}
 
@@ -409,6 +324,6 @@ class Student2 extends My_Controller
 
 		$this->student_m->delete($student_id);
 		$this->session->set_userdata('st_id', '');
-		redirect(site_url('/student2'));
+		redirect(site_url('/student3'));
 	}
 }

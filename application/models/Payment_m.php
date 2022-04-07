@@ -234,7 +234,7 @@ class Payment_m extends CI_Model
     $this->db->where('id', $payment_id);
 
     $result = $this->db->update('st_payment');
-    $this->session->set_flashdata('msg', '<div class="alert alert-success">Discount updated</div>');
+
     return $result;
   }
 
