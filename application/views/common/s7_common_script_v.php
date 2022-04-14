@@ -1,21 +1,21 @@
 <!-- Bootstrap core JavaScript-->
-<script src="/leanmath/admin/vendor/jquery/jquery.min.js"></script>
-<script src="/leanmath/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script type="text/javascript" src="/leanmath/admin/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/leanmath/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="/leanmath/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/leanmath/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="/leanmath/admin/js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages - admin Javascript-->
+<script type="text/javascript" src="/leanmath/admin/js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="/leanmath/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="/leanmath/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level plugins - Datatable Javascript-->
+<script type="text/javascript" src="/leanmath/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/leanmath/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/keytable/2.6.1/js/dataTables.keyTable.min.js"></script>
 
 <!-- common functions -->
-<script>
+<script type='text/javascript'>
 	function log(message) {
 		console.log(message);
 	}
@@ -43,7 +43,7 @@
 			select: function(event, ui) {
 				// Set selection
 				$('#search_name').val(ui.item.label); // display the selected text
-				$('#search_id').val(ui.item.value); // save selected id to input
+				$('#search_id').val(ui.item.value1); // save selected id to input
 				return false;
 			}
 		});

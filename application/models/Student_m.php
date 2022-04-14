@@ -156,7 +156,7 @@ class Student_m extends CI_Model
       $records = $this->db->get('student')->result();
 
       foreach ($records as $row) {
-        $response[] = array("value" => $row->id, "label" => $row->name);
+        $response[] = array("value1" => $row->id, "label" => $row->name);
       }
     }
     return $response;
