@@ -54,8 +54,8 @@
             <option>1월</option>
             <option>2월</option>
             <option>3월</option>
-            <option selected>4월</option>
-            <option>5월</option>
+            <option>4월</option>
+            <option selected>5월</option>
             <option>6월</option>
             <option>7월</option>
             <option>8월</option>
