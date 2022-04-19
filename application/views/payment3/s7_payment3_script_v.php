@@ -28,10 +28,11 @@
               data: dataset,
               stateSave: false,
               paging: false,
-              autoWidth: false,
+              autoWidth: true,
               scrollX: true,
               scrollY: "50vh",
               scrollCollapse: true,
+              stripe: false,
               columns: [{
                 title: '이름'
               }, {
@@ -52,24 +53,48 @@
 
           for (i = 0; i < data.length; i++) {
             card_link = `
-            <div class="card">
-              <div class="card-body">
-               <h5 class="card-title"> ${data[i].name} </h5>
-                <p class="card-text">
-                ${data[i].year} ${data[i].month} <br>
+               <h5> 교습비 영수증 원부  </h5>
+                <table class="receipt" border=10>
+                <tr>
+                  <td colspan="3"> 일련번호: </td> 
+                  <td colspan="3"> 연월(분기): ${data[i].year} ${data[i].month} </td>
+                </tr>
+                <tr>
+                  <td rowspan="2"> 납<br>부<br>자 </td>
+                  <td colspan="2"> 등록(신고)번호: </td>
+                  <td colspan="3"> 성명: ${data[i].name}</td>
+                </tr>
+                <tr>
+                  <td colspan="2"> 생년월일: </td>
+                  <td colspan="3"> 교습과목: 수학 </td>
+                </tr>
+                <tr>
+                  <td rowspan="3"> 납부<br>명세 </td>
+                  <td colspan="2"> 교습비 </td>
+                  <td colspan="3"> 기타경비 </td>
+                <tr>
+                <tr>
+                  <td colspan="2" > ${data[i].net_income}원 </td> 
+                  <td colspan="3"> &nbsp;</td> 
+                </tr>
+
+                <tr>
+                  
+                </tr>
+                </table>
+               <p style="align:center" >
+                 </p> <br>
+                            <p> 년    월    일 </p> <br>
                 
-                수강료 ${data[i].net_income-70000}원 <br>
-                수납을 확인합니다.    - 이장원수학교습소
+                <p> 교습자    - 이장원수학교습소 </p>
                  </p>
-              </div>
-            </div>
             `;
 
             rowData = [
               data[i].name,
               card_link
             ];
-            net_income_sum += parseInt(data[i].net_income) - 70000;
+            net_income_sum += parseInt(data[i].net_income);
             table.row.add(rowData).draw(false);
           }
           $('#net_income').text(net_income_sum);

@@ -248,8 +248,8 @@
             if (
               $entry->workspace == $this->session->userdata('workspace') &&
               $entry->status == "재원" &&
-              $entry->class_day1 == '3' &&
-              $entry->class_time1 == '14'
+              (($entry->class_day1 == '3' && $entry->class_time1 == '14') ||
+                ($entry->class_day3 == '3' && $entry->class_time3 == '14'))
             ) {
           ?>
               <li><a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>

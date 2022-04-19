@@ -4,7 +4,7 @@
   <div class="row" id='row1'>
     <div class="col-xs-12">
       <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LEAN-MATH </a>
-        <small>/전체 시간표</small>
+        <small>/전체 시간표3</small>
       </h1>
     </div>
   </div>
@@ -250,8 +250,8 @@
             if (
               $entry->workspace == $this->session->userdata('workspace') &&
               $entry->status == "재원" &&
-              $entry->class_day1 == '3' &&
-              $entry->class_time1 == '14'
+              (($entry->class_day1 == '3' && $entry->class_time1 == '14') |
+                ($entry->class_day3 == '3' && $entry->class_time3 == '14'))
             ) {
           ?>
               <li><a class="collapse-item" href="<?= $site_student_get ?>/<?= $entry->id ?>"><?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a></li>

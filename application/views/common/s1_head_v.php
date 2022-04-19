@@ -45,5 +45,18 @@
       font-size: 0.8rem;
       width: 16rem;
     }
+
+    .receipt {
+      /* color */
+      width: 600px;
+      text-align: center;
+      border: 1px solid red;
+      vertical-align: center;
+    }
+
+    .receipt td {
+      border: 1px solid red;
+
+    }
   </style>
 </head>

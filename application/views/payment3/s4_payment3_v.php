@@ -53,8 +53,8 @@
           <select class="form-control" id="select_month">
             <option>1월</option>
             <option>2월</option>
-            <option selected>3월</option>
-            <option>4월</option>
+            <option>3월</option>
+            <option selected="">4월</option>
             <option>5월</option>
             <option>6월</option>
             <option>7월</option>
@@ -70,8 +70,8 @@
           <select class="form-control" id="select_pay_status">
             <option>카드수납</option>
             <option>현금수납</option>
-            <option selected>미납</option>
-            <option>전체</option>
+            <option>미납</option>
+            <option selected>전체</option>
           </select>
         </div>
 
