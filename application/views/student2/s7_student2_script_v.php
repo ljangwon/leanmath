@@ -45,12 +45,15 @@
                 },
                 {
                   title: 'Status'
+                },
+                {
+                  title: 'Report Date'
                 }
               ]
             });
 
           }
-          let rowData = ["", "", "", "", ""];
+          let rowData = ["", "", "", "", "", ""];
           let name_link = '';
           table.clear().draw();
           for (i = 0; i < data.length; i++) {
@@ -61,7 +64,7 @@
               data[i].id + '"> ' +
               data[i].name + ' </a>';
 
-            rowData = [i + 1, data[i].id, name_link, data[i].class_name, data[i].status];
+            rowData = [i + 1, data[i].id, name_link, data[i].class_name, data[i].status, data[i].report_date];
             table.row.add(rowData).draw(false);
           }
         }

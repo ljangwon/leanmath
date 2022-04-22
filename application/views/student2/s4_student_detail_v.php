@@ -210,7 +210,7 @@
     <div class="row mb-3" id='row10'>
       <div class="col-sm-4 text-center">
         <label class="form-label text-nowrap">상담 메모</label>
-        <input type="text" name="report_last_date" class="form-control" value="<?= $student->report_last_date ?>">
+        <input type="text" name="report_short_memo" class="form-control" value="<?= $student->report_short_memo ?>">
         <div class="form-row">
           <div class="col-6"> 상담일 <input type="text" name="report_date" id="report_date" class="form-control" value="<?= $student->report_date ?>"> </div>
           <div class="col-3"> 상담형식 <input type="text" name="report_type" class="form-control" value="<?= $student->report_type ?>"> </div>

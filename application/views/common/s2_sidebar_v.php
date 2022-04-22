@@ -28,7 +28,7 @@
         즐겨찾기
       </div>
 
-      <!-- Nav Item - Dashboard -->
+      <!-- Nav Item - Dashboard(old)-->
       <li class="nav-item">
         <a class="nav-link" href="/leanmath/index.php/dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -36,7 +36,7 @@
         </a>
       </li>
 
-      <!-- Nav Item - Dashboard -->
+      <!-- Nav Item - Student Entire List -->
       <li class="nav-item">
         <a class="nav-link" href="/leanmath/index.php/student2/get_all">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -44,6 +44,7 @@
         </a>
       </li>
 
+      <!-- Nav Item - Study Time Table -->
       <li class="nav-item">
         <a class="nav-link" href="/leanmath/index.php/student2">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -51,22 +52,29 @@
         </a>
       </li>
 
+      <!-- Nav Item - Consulting Schedule -->
+      <li class="nav-item">
+        <a class="nav-link" href="/leanmath/index.php/student2">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>상담스케줄</span>
+        </a>
+      </li>
+
       <!-- Nav Item - 수납현황 -->
       <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/payment2">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>학생 수납현황</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pay1-1" aria-expanded="true" aria-controls="">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>수납현황</span>
         </a>
+        <div id="pay1-1" class="collapse" aria-labelledby="" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/leanmath/index.php/payment2"> 수납현황 </a>
+            <a class="collapse-item" href="/leanmath/index.php/payment3"> 수납영수증 </a>
+          </div>
+        </div>
       </li>
 
-      <!-- Nav Item - 수납현황(영수증) -->
-      <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/payment3">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>학생 수납(영수증)</span>
-        </a>
 
-      </li>
       <!-- Nav Item - 교재현황 -->
       <li class="nav-item">
         <a class="nav-link" href="/leanmath/index.php/book">

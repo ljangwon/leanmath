@@ -388,7 +388,8 @@ class Student2 extends My_Controller
 				'status' => $this->input->post('status'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
-				'report_last_date' => $this->input->post('report_last_date'),
+
+				'report_short_memo' => $this->input->post('report_short_memo'),
 				'report_date' => $this->input->post('report_date'),
 				'report_type' => $this->input->post('report_type')
 			)
