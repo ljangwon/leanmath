@@ -31,7 +31,7 @@
               data: dataset,
               stateSave: false,
               paging: false,
-              autoWidth: false,
+              autoWidth: true,
               scrollX: true,
               scrollY: "60vh",
               columns: [{
@@ -48,15 +48,43 @@
                 },
                 {
                   title: 'Report Date'
+                },
+                {
+                  title: 'Elapsed Days'
                 }
               ]
             });
 
           }
-          let rowData = ["", "", "", "", "", ""];
-          let name_link = '';
+
+          let today = new Date();
+
+          let year = today.getFullYear(); // 년도
+          let month = today.getMonth(); // 월
+          let date = today.getDate(); // 날짜
+
+
           table.clear().draw();
           for (i = 0; i < data.length; i++) {
+            let rowData = ["", "", "", "", "", "", ""],
+              name_link = '',
+              day_span = '';
+
+            //  report date
+            const date1 = new Date(data[i].report_date);
+
+            // Today
+            const date2 = new Date(year, month, date);
+
+            const elapsedMSec = date2.getTime() - date1.getTime(); // 172800000
+            const elapsedDay = Math.floor(elapsedMSec / 1000 / 60 / 60 / 24); // 2
+
+            if (elapsedDay > 30) {
+              day_span = '<span style="color:red">' + elapsedDay + '</span>';
+            } else {
+              day_span = '<span style="color:blue">' + elapsedDay + '</span>';
+            }
+
             name_link =
               '<a href="<?= site_url('/student2/get_student') ?>/' +
               data[i].id +
@@ -64,7 +92,7 @@
               data[i].id + '"> ' +
               data[i].name + ' </a>';
 
-            rowData = [i + 1, data[i].id, name_link, data[i].class_name, data[i].status, data[i].report_date];
+            rowData = [i + 1, data[i].id, name_link, data[i].class_name, data[i].status, data[i].report_date, day_span];
             table.row.add(rowData).draw(false);
           }
         }
