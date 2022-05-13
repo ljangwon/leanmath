@@ -32,7 +32,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s4_student_list_v',
+			'student2/s4_timetable_v',
 			array(
 				'students' => $students
 			)
@@ -410,6 +410,7 @@ class Student2 extends My_Controller
 
 		$this->student_m->delete($student_id);
 		$this->session->set_userdata('st_id', '');
+
 		redirect(site_url('/student2'));
 	}
 }

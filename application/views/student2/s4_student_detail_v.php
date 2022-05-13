@@ -84,44 +84,44 @@
     <div class="row mb-3" id='row4'>
       <div class="col-sm-3 text-center">
         <label for="" class="form-label">학 교</label>
-        <input type="text" name="school_name" class="form-control" placeholder="명일중" value="<?= $student->school_name ?>">
+        <input type="text" name="school_name" class="form-control" placeholder="학교이름" value="<?= $student->school_name ?>">
       </div>
 
       <div class="col-sm-3 text-center">
         <label for="" class="form-label text-nowrap">구 분</label>
-        <input type="text" name="grade1" class="form-control" placeholder="중등" value="<?= $student->grade1 ?>">
+        <input type="text" name="grade1" class="form-control" placeholder="초등or중등" value="<?= $student->grade1 ?>">
       </div>
 
       <div class="col-sm-3 text-center text-nowrap">
         <label for="" class="form-label">학 년</label>
-        <input type="text" name="grade2" class="form-control" placeholder="1" value="<?= $student->grade2 ?>">
+        <input type="text" name="grade2" class="form-control" placeholder="학년" value="<?= $student->grade2 ?>">
       </div>
 
       <div class="col-sm-3 text-center">
         <label for="" class="form-label">수업명</label>
-        <input type="text" name="class_name" class="form-control" placeholder="수6토14" value="<?= $student->class_name ?>">
+        <input type="text" name="class_name" class="form-control" placeholder="수업명" value="<?= $student->class_name ?>">
       </div>
     </div>
     <!-- --------------------------------------- -->
     <div class="row mb-3" id='row5'>
       <div class="col-sm-2 text-center">
         <label for="" class="form-label">요일1</label>
-        <input type="text" name="class_day1" class="form-control" placeholder="3" value="<?= $student->class_day1 ?>">
+        <input type="text" name="class_day1" class="form-control" placeholder="" value="<?= $student->class_day1 ?>">
       </div>
 
       <div class="col-sm-2 text-center">
         <label for="" class="form-label">시간1</label>
-        <input type="text" name="class_time1" class="form-control" placeholder="14" value="<?= $student->class_time1 ?>">
+        <input type="text" name="class_time1" class="form-control" placeholder="" value="<?= $student->class_time1 ?>">
       </div>
 
       <div class="col-sm-2 text-center">
         <label for="" class="form-label">요일2</label>
-        <input type="text" name="class_day2" class="form-control" placeholder="6" value="<?= $student->class_day2 ?>">
+        <input type="text" name="class_day2" class="form-control" placeholder="" value="<?= $student->class_day2 ?>">
       </div>
 
       <div class="col-sm-2 text-center">
         <label for="" class="form-label">시간2</label>
-        <input type="text" name="class_time2" class="form-control" placeholder="9" value="<?= $student->class_time2 ?>">
+        <input type="text" name="class_time2" class="form-control" placeholder="" value="<?= $student->class_time2 ?>">
       </div>
 
       <div class="col-sm-2 text-center">
@@ -206,6 +206,7 @@
         <input type="text" name="level3" class="form-control" value="<?= $student->level3 ?>">
       </div>
     </div>
+
     <!-- --------------------------------------- -->
     <div class="row mb-3" id='row10'>
       <div class="col-sm-4 text-center">

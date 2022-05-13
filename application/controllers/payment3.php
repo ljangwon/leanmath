@@ -131,7 +131,6 @@ class Payment3 extends My_Controller
 		echo json_encode($data);
 	}
 
-
 	function update_pay_status()
 	{
 		$data = $this->payment_m->update_pay_status(

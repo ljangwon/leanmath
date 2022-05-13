@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-class A extends CI_Controller
+class Pdf extends CI_Controller
 {
     function __construct()
     {
@@ -9,6 +9,6 @@ class A extends CI_Controller
     function index()
     {
 
-        $this->load->view('a');
+        $this->load->view('pdf_v');
     }
 }

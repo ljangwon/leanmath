@@ -145,7 +145,6 @@ class Student_m extends CI_Model
 
   function get_student_names($postData)
   {
-
     $response = array();
 
     if (isset($postData['search'])) {
