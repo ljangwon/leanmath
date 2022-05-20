@@ -4,7 +4,7 @@
   <div class="row" id='row1'>
     <div class="col-xs-12">
       <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LEAN-MATH </a>
-        <small>/전체 시간표</small>
+        <small>/전체 시간표 2</small>
       </h1>
     </div>
   </div>

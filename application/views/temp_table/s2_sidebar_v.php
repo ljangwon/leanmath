@@ -39,13 +39,6 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/temp_table_c">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>임시-table 화면</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
         <a class="nav-link" href="/leanmath/index.php/user">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>사용자관리</span>

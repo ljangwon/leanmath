@@ -1,6 +1,8 @@
 <!-- Bootstrap core JavaScript-->
 <script type="text/javascript" src="/leanmath/admin/vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/leanmath/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Jquery-UI -->
 <script type="text/javascript" src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -13,6 +15,12 @@
 <script type="text/javascript" src="/leanmath/admin/vendor/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/leanmath/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/keytable/2.6.1/js/dataTables.keyTable.min.js"></script>
+
+<!-- Bootstrap-Table Javascript-->
+<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.20.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.20.1/dist/bootstrap-table-locale-all.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.20.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
 <!-- common functions -->
 <script type='text/javascript'>

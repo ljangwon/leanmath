@@ -206,7 +206,6 @@ class Dashboard extends MY_Controller
 			'memos_book' => $memos_book,
 			'memos_noshow' => $memos_noshow,
 			'memos_check' => $memos_check,
-
 			'studys' => $studys,
 		));
 

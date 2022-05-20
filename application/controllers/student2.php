@@ -347,60 +347,84 @@ class Student2 extends My_Controller
 	{
 		$st_id = $this->session->userdata('st_id');
 
-		$result = $this->student_m->modify(
-			array(
-				'id' => $this->input->post('id'),
-				'name' => $this->input->post('name'),
-				's_phone' => $this->input->post('s_phone'),
-				'house' => $this->input->post('house'),
-				'sibling_name' => $this->input->post('sibling_name'),
+		$a = array(
+			'id' => $this->input->post('id'),
+			'name' => $this->input->post('name'),
+			's_phone' => $this->input->post('s_phone'),
+			'house' => $this->input->post('house'),
+			'sibling_memo' => $this->input->post('sibling_memo'),
 
-				'grade1' => $this->input->post('grade1'),
-				'school_name' => $this->input->post('school_name'),
-				'grade2' => $this->input->post('grade2'),
-				'class_name' => $this->input->post('class_name'),
+			'grade' => $this->input->post('grade'),
+			'grade1' => $this->input->post('grade1'),
+			'school_name' => $this->input->post('school_name'),
+			'grade2' => $this->input->post('grade2'),
+			'class_name' => $this->input->post('class_name'),
 
-				'level1' => $this->input->post('level1'),
-				'level2' => $this->input->post('level2'),
-				'level3' => $this->input->post('level3'),
+			'class_day1' => $this->input->post('class_day1'),
+			'class_time1' => $this->input->post('class_time1'),
+			'class_day2' => $this->input->post('class_day2'),
+			'class_time2' => $this->input->post('class_time2'),
+			'class_day3' => $this->input->post('class_day3'),
+			'class_time3' => $this->input->post('class_time3'),
 
-				'class_day1' => $this->input->post('class_day1'),
-				'class_time1' => $this->input->post('class_time1'),
-				'class_day2' => $this->input->post('class_day2'),
-				'class_time2' => $this->input->post('class_time2'),
-				'class_day3' => $this->input->post('class_day3'),
-				'class_time3' => $this->input->post('class_time3'),
+			'memo' => $this->input->post('memo'),
+			'study_memo' => $this->input->post('study_memo'),
+			'test_memo' => $this->input->post('test_memo'),
+			'check_memo' => $this->input->post('check_memo'),
+			'off_memo' => $this->input->post('off_memo'),
 
-				'memo' => $this->input->post('memo'),
-				'study_memo' => $this->input->post('study_memo'),
-				'test_memo' => $this->input->post('test_memo'),
-				'check_memo' => $this->input->post('check_memo'),
-				'off_memo' => $this->input->post('off_memo'),
+			'fees' => $this->input->post('fees'),
+			'discount1' => $this->input->post('discount1'),
+			'discount2' => $this->input->post('discount2'),
+			'discount_memo' => $this->input->post('discount_memo'),
+			'receipt_phone' => $this->input->post('receipt_phone'),
+			'receipt_use' => $this->input->post('receipt_use'),
 
-				'fees' => $this->input->post('fees'),
-				'discount1' => $this->input->post('discount1'),
-				'discount2' => $this->input->post('discount2'),
-				'discount_memo' => $this->input->post('discount_memo'),
-				'receipt_phone' => $this->input->post('receipt_phone'),
-				'receipt_use' => $this->input->post('receipt_use'),
+			'status' => $this->input->post('status'),
+			'start_date' => $this->input->post('start_date'),
+			'end_date' => $this->input->post('end_date'),
 
-				'flag' => $this->input->post('flag'),
-				'status' => $this->input->post('status'),
-				'start_date' => $this->input->post('start_date'),
-				'end_date' => $this->input->post('end_date'),
-
-				'report_short_memo' => $this->input->post('report_short_memo'),
-				'report_date' => $this->input->post('report_date'),
-				'report_type' => $this->input->post('report_type')
-			)
+			'report_short_memo' => $this->input->post('report_short_memo'),
+			'report_date' => $this->input->post('report_date'),
+			'report_type' => $this->input->post('report_type')
 		);
 
+		if ($p = $this->input->post('level1')) {
+			$a = array_merge(
+				$a,
+				array('level1' => $p)
+			);
+		}
+
+		if ($p = $this->input->post('level2')) {
+			$a = array_merge(
+				$a,
+				array('level2' => $p)
+			);
+		}
+
+		if ($p = $this->input->post('level3')) {
+			$a = array_merge(
+				$a,
+				array('level3' => $p)
+			);
+		}
+
+		if ($p = $this->input->post('flag')) {
+			$a = array_merge(
+				$a,
+				array('flag' => $p)
+			);
+		}
+
+		$result = $this->student_m->modify($a);
+
 		if (!$result) {
-			alert("st 업데이트가 실패했습니다.", site_url('/student2/get_student/' . $st_id));
+			alert("학생 업데이트가 실패했습니다.", site_url('/student2/get_student/' . $st_id));
 		} else {
 
 			//$this->modal_feedback('success', 'Success', '학생 정보 업데이트가 성공했습니다.', 'OK');
-			alert("st 업데이트가 성공했습니다.", site_url('/student2/get_student/' . $this->input->post('id')));
+			alert("학생 업데이트가 성공했습니다.", site_url('/student2/get_student/' . $this->input->post('id')));
 		}
 	}
 
