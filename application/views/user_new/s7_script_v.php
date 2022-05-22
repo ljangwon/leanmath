@@ -1,7 +1,8 @@
 <script>
-	var $table = $('#table')
-	var $remove = $('#remove')
-	var selections = []
+	var $table = $('#table');
+	var $remove = $('#remove');
+	var $user_add = $('#user_add');
+	var selections = [];
 
 	function getIdSelections() {
 		return $.map($table.bootstrapTable('getSelections'), function(row) {
@@ -33,6 +34,9 @@
 			'</a> ',
 			'<a class="remove" href="javascript:void(0)" title="Remove">',
 			'<i class="fa fa-trash"></i>',
+			'</a>',
+			'<a class="change" href="javascript:void(0)" title="Remove">',
+			'<i class="fa fa-change"></i>',
 			'</a>'
 		].join('')
 	}
@@ -43,11 +47,28 @@
 		},
 
 		'click .remove': function(e, value, row, index) {
+			user_delete(row.id);
 			$table.bootstrapTable('remove', {
 				field: 'id',
 				values: [row.id]
 			})
 		}
+	}
+
+	function user_delete(id) {
+		var user_id = id;
+
+		$.ajax({
+			url: "<?php echo site_url('user_new_c/ajax_delete') ?>",
+			type: "POST",
+			data: {
+				id: user_id
+			},
+			dataType: "JSON",
+			success: function(data) {
+				console.log(user_id + ' deleted');
+			}
+		});
 	}
 
 	function totalTextFormatter(data) {
@@ -69,8 +90,9 @@
 
 	function initTable() {
 		$table.bootstrapTable('destroy').bootstrapTable({
-			height: 550,
+			height: 800,
 			locale: $('#locale').val(),
+			url: 'http://jakeleanco.dothome.co.kr/leanmath/index.php/user_new_c/ajax_get_list',
 			columns: [
 				[{
 					field: 'state',
@@ -79,7 +101,7 @@
 					align: 'center',
 					valign: 'middle'
 				}, {
-					title: 'Item ID',
+					title: 'id',
 					field: 'id',
 					rowspan: 2,
 					align: 'center',
@@ -88,21 +110,27 @@
 					footerFormatter: totalTextFormatter
 				}, {
 					title: 'Item Detail',
-					colspan: 3,
+					colspan: 4,
 					align: 'center'
 				}],
 				[{
 					field: 'name',
-					title: 'Item Name',
+					title: 'Name',
 					sortable: true,
-					footerFormatter: totalNameFormatter,
+					footerFormatter: totalTextFormatter,
 					align: 'center'
 				}, {
-					field: 'price',
-					title: 'Item Price',
+					field: 'email',
+					title: 'Email',
 					sortable: true,
 					align: 'center',
-					footerFormatter: totalPriceFormatter
+					footerFormatter: totalTextFormatter
+				}, {
+					field: 'password',
+					title: 'Password',
+					sortable: true,
+					align: 'center',
+					footerFormatter: totalTextFormatter
 				}, {
 					field: 'operate',
 					title: 'Item Operate',
@@ -126,16 +154,48 @@
 
 		$table.on('all.bs.table', function(e, name, args) {
 			console.log(name, args)
-		})
+		});
 
 		$remove.click(function() {
 			var ids = getIdSelections()
+
+			ids.forEach(function(id) {
+				user_delete(id);
+			});
+
 			$table.bootstrapTable('remove', {
 				field: 'id',
 				values: ids
 			})
-			
-			$remove.prop('disabled', true)
+			$remove.prop('disabled', true);
+
+		});
+
+		$user_add.click(function() {
+
+			var email = $('#user_email').val();
+			var password = $('#user_password').val();
+			var name = $('#user_name').val();
+
+			$.ajax({
+				url: "<?php echo site_url('user_new_c/ajax_add') ?>",
+				type: "POST",
+				data: {
+					email: email,
+					password: password,
+					name: name
+				},
+				dataType: "JSON",
+				success: function(data) {
+					$('[name="user_email"]').val("");
+					$('[name="user_password"]').val("");
+					$('[name="user_name"]').val("");
+
+					alert('User added!!!')
+					$('#modal_user_add').modal('hide');
+					initTable();
+				}
+			});
 		})
 	}
 

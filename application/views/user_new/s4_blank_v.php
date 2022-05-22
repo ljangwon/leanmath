@@ -3,17 +3,14 @@
   <!-- Page Heading -->
   <div class="row">
     <div class="col-xs-12">
-      <h5><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LEAN-MATH </a>
-        <small>/빈화면 </small>
+      <h5><a style=text-decoration-line:none href='<?php echo site_url('user_new_c') ?>'> LEAN-MATH </a>
+        <small>/사용자 리스트 화면 </small>
       </h5>
     </div>
   </div>
   <!-- Message -->
   <div class="row">
     <div class="col-xs-12">
-      <span>
-        메시지가 여기 나타남.
-      </span>
       <span id="msg" style="background-color: red">
         <?php echo $this->session->flashdata('msg'); ?>
       </span>
@@ -26,14 +23,17 @@
 
   <div class="select">
     <select class="form-control" id="locale">
-      <option value="en-US">en-US</option>
       <option value="ko-KR" selected>ko-KR</option>
+      <option value="en-US">en-US</option>
     </select>
   </div>
 
   <div id="toolbar">
     <button id="remove" class="btn btn-danger" disabled>
       <i class="fa fa-trash"></i> Delete
+    </button>
+    <button id="add" class="btn btn-danger" disabled>
+      <i class="fa fa-plus"></i> Add
     </button>
   </div>
 

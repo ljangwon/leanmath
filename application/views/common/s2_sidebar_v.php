@@ -46,7 +46,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/user">
+        <a class="nav-link" href="/leanmath/index.php/user_new_c">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>사용자관리</span>
         </a>

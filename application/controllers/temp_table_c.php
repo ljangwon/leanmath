@@ -19,48 +19,58 @@ class Temp_table_c extends My_Controller
 
 	function get_list()
 	{
-		// $this->load->view(
-		// 	'temp_table/s1_head_v',
-		// 	array()
-		// );
-
-		// $students = $this->student_m->gets();
-
-		// $this->load->view(
-		// 	'common/s2_sidebar_v',
-		// 	array(
-		// 		'students' => $students
-		// 	)
-		// );
-
-		// $this->load->view(
-		// 	'common/s3_topbar_v',
-		// 	array()
-		// );
-
-		// $this->load->view(
-		// 	'temp_table/s4_blank_v',
-		// 	array()
-		// );
-
-		// $this->load->view(
-		// 	'temp_table/s5_footer_v',
-		// 	array()
-		// );
-
-		// $this->load->view(
-		// 	'temp_table/s6_modal_v',
-		// 	array()
-		// );
-
-		// $this->load->view(
-		// 	'temp_table/s7_script_v',
-		// 	array()
-		// );
-
 		$this->load->view(
-			'temp_table/example_v',
+			'common/s1_head_v',
 			array()
 		);
+
+		$this->load->view(
+			'temp_table/s1_head_v',
+			array()
+		);
+
+		$students = $this->student_m->gets();
+
+		$this->load->view(
+			'common/s2_sidebar_v',
+			array(
+				'students' => $students
+			)
+		);
+
+		$this->load->view(
+			'common/s3_topbar_v',
+			array()
+		);
+
+		$this->load->view(
+			'temp_table/s4_blank_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s5_footer_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s6_common_modal_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s7_common_script_v',
+			array()
+		);
+
+		$this->load->view(
+			'temp_table/s7_script_v',
+			array()
+		);
+
+		// $this->load->view(
+		// 	'temp_table/example_v',
+		// 	array()
+		// );
 	}
 }
