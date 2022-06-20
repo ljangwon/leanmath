@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class User_new_m extends CI_Model
+class St_study_m extends CI_Model
 {
-  var $tbl = 'st_user';
+  var $tbl = 'st_study';
 
   function __construct()
   {
@@ -24,11 +24,26 @@ class User_new_m extends CI_Model
   // 한 데이터 삽입
   function add($array)
   {
-    $this->db->set('created', 'NOW()', false);
+
     $this->db->set($array);
     $this->db->insert($this->tbl);
 
     $result = $this->db->insert_id();
+
+    return $result;
+  }
+
+  // 데이터 수정
+  function modify($array)
+  {
+    $this->db->set($array);
+
+    $this->db->where(
+      'id',
+      $array['id']
+    );
+
+    $result = $this->db->update($this->tbl);
 
     return $result;
   }
@@ -41,16 +56,36 @@ class User_new_m extends CI_Model
     } else {
       $this->db->where('id', $id);
     }
+
     $result = $this->db->delete($this->tbl);
+
     return $result ? true : false;
   }
 
   // 리스트 데이터 얻기
-  function get_list()
+  function get_list($option = null)
   {
-    $this->db->select('id, name, email, password');
+    $this->db->select('*');
+
+    if ($option) {
+      $this->db->where($option);
+    }
 
     $result = $this->db->get($this->tbl)->result();
+
+    return $result;
+  }
+
+  function get_list_by_st_id($st_id)
+  {
+    $this->db->select('*');
+
+
+    $this->db->where('st_id', $st_id);
+
+
+    $result = $this->db->get($this->tbl)->result();
+
     return $result;
   }
 
@@ -106,27 +141,12 @@ class User_new_m extends CI_Model
     return $response;
   }
 
-  // 데이터 수정
-  function modify($array)
-  {
-    $this->db->set($array);
-
-    $this->db->where(
-      'id',
-      $array['id']
-    );
-
-    $result = $this->db->update($this->tbl);
-
-    return $result;
-  }
-
-  function getByEmail($array)
+  function get_by_single($array)
   {
     $result = $this->db->get_where(
       $this->tbl,
       array(
-        'email' => $array['email']
+        'id' => $array['id']
       )
     )->row();
     return $result;

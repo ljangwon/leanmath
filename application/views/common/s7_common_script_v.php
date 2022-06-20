@@ -22,6 +22,9 @@
 <script src="https://unpkg.com/bootstrap-table@1.20.1/dist/bootstrap-table-locale-all.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.20.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
+
+
+
 <!-- common functions -->
 <script type='text/javascript'>
 	function log(message) {

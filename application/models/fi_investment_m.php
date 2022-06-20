@@ -1,8 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class User_new_m extends CI_Model
+class Fi_investment_m extends CI_Model
 {
-  var $tbl = 'st_user';
+  var $tbl = 'fi_investment';
+  var $tbl_detail = 'fi_investment_detail';
 
   function __construct()
   {
@@ -33,22 +34,11 @@ class User_new_m extends CI_Model
     return $result;
   }
 
-  // 데이터 삭제
-  public function delete($id)
-  {
-    if (is_array($id)) {
-      $this->db->where_in('id', $id);
-    } else {
-      $this->db->where('id', $id);
-    }
-    $result = $this->db->delete($this->tbl);
-    return $result ? true : false;
-  }
-
   // 리스트 데이터 얻기
   function get_list()
   {
-    $this->db->select('id, name, email, password');
+    $this->db->select('*');
+    $this->db->where('flag', 1);
 
     $result = $this->db->get($this->tbl)->result();
     return $result;
@@ -62,6 +52,7 @@ class User_new_m extends CI_Model
     $result = $this->db->get_where(
       $this->tbl,
       array(
+        'flag' => '1',
         'id' => $id
       )
     )->row();
@@ -73,6 +64,21 @@ class User_new_m extends CI_Model
   function get_count_by_option($option)
   {
     $this->db->select('count(*) as cnt');
+    $this->db->where('flag', '1');
+    $this->db->where($option);
+
+    $result = $this->db->get(
+      $this->tbl
+    )->row();
+
+    return $result;
+  }
+
+  // 데이터 값 더하기
+  function get_sum_fees_by_option($option)
+  {
+    $this->db->select_sum('fees');
+    $this->db->where('flag', '1');
     $this->db->where($option);
 
     $result = $this->db->get(
@@ -121,14 +127,15 @@ class User_new_m extends CI_Model
     return $result;
   }
 
-  function getByEmail($array)
+  // 데이터 삭제
+  function delete($id)
   {
-    $result = $this->db->get_where(
+    $result = $this->db->delete(
       $this->tbl,
       array(
-        'email' => $array['email']
+        'id' => $id
       )
-    )->row();
+    );
     return $result;
   }
 }

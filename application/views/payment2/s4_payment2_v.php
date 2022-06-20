@@ -23,17 +23,17 @@
       <div class="row">
         <div class="float-sm-left mr-2">
           <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month">
-            <span class="fa fa-plus"> Add Month </span>
+            <span class=""> Add Year </span>
           </a>
         </div>
         <div class="float-sm-left mr-2">
           <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Delete_Month">
-            <span class="fa fa-plus"></span> Delete Month
+            <span class=""></span> Delete Month
           </a>
         </div>
         <div class="float-sm-left mr-2">
           <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add">
-            <span class="fa fa-plus"></span> Add New
+            <span class=""></span> Add New
           </a>
         </div>
       </div>
@@ -55,8 +55,8 @@
             <option>2월</option>
             <option>3월</option>
             <option>4월</option>
-            <option selected>5월</option>
-            <option>6월</option>
+            <option>5월</option>
+            <option selected>6월</option>
             <option>7월</option>
             <option>8월</option>
             <option>9월</option>

@@ -67,7 +67,7 @@
         <label for="" class="form-label">학 교</label>
         <input type="text" name="school_name" class="form-control" placeholder="" value="<?= $student->school_name ?>">
       </div>
-      <div class="col-sm-1 text-center">
+      <div class="col-sm-2 text-center">
         <label for="" class="form-label text-nowrap">학년구분</label>
         <input type="text" name="grade" class="form-control" placeholder="" value="<?= $student->grade ?>">
       </div>
@@ -82,7 +82,7 @@
         <input type="text" name="house" class="form-control" placeholder="" value="<?= $student->house ?>">
       </div>
 
-      <div class="col-sm-4 text-center">
+      <div class="col-sm-5 text-center">
         <label for="" class="form-label">형제메모</label>
         <textarea name="sibling_memo" class="form-control" rows="3"><?= $student->sibling_memo ?> </textarea>
       </div>
@@ -109,7 +109,7 @@
         <input type="text" name="class_day1" class="form-control" placeholder="" value="<?= $student->class_day1 ?>">
       </div>
 
-      <div class="col-sm-1 text-center">
+      <div class="col-sm-2 text-center">
         <label for="" class="form-label">시간1</label>
         <input type="text" name="class_time1" class="form-control" placeholder="" value="<?= $student->class_time1 ?>">
       </div>
@@ -119,7 +119,7 @@
         <input type="text" name="class_day2" class="form-control" placeholder="" value="<?= $student->class_day2 ?>">
       </div>
 
-      <div class="col-sm-1 text-center">
+      <div class="col-sm-2 text-center">
         <label for="" class="form-label">시간2</label>
         <input type="text" name="class_time2" class="form-control" placeholder="" value="<?= $student->class_time2 ?>">
       </div>
@@ -129,7 +129,7 @@
         <input type="text" name="class_day3" class="form-control" placeholder="" value="<?= $student->class_day3 ?>">
       </div>
 
-      <div class="col-sm-1 text-center">
+      <div class="col-sm-2 text-center">
         <label for="" class="form-label">시간3</label>
         <input type="text" name="class_time3" class="form-control" placeholder="" value="<?= $student->class_time3 ?>">
       </div>
@@ -190,7 +190,7 @@
 
     <!-- --------------------------------------- -->
     <div class="row mb-3" id='row10'>
-      <div class="col-sm-4 text-center">
+      <div class="col-sm-12 text-center">
         <label class="form-label text-nowrap">상담 메모</label>
         <input type="text" name="report_short_memo" class="form-control" value="<?= $student->report_short_memo ?>">
 
@@ -213,7 +213,7 @@
           $last_date = $student->report_date;
           $days = days_to_today($last_date);
 
-          if ($days > 60) {
+          if ($days > 100) {
             $color = "color:red";
           } else {
             $color = "color:blue";
@@ -223,11 +223,11 @@
         </div>
       </div>
 
-      <div class=" col-sm-4 text-center">
+      <div class=" col-sm-6 text-center">
         <label class="form-label">지적사항 메모</label>
         <textarea name="check_memo" placeholder="" class="form-control text-start" rows="7"><?= $student->check_memo ?> </textarea>
       </div>
-      <div class="col-sm-4 text-center">
+      <div class="col-sm-6 text-center">
         <label class="form-label">지각/결석 메모</label>
         <textarea name="off_memo" placeholder="" class="form-control text-start" rows="7"><?= $student->off_memo ?> </textarea>
       </div>

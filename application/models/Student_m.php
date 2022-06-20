@@ -11,7 +11,9 @@ class Student_m extends CI_Model
     $this->db->set('workspace', $this->session->userdata('workspace'));
     $this->db->set($option);
     $this->db->insert('student');
+
     $result = $this->db->insert_id();
+
     return $result;
   }
 
@@ -31,7 +33,9 @@ class Student_m extends CI_Model
       $this->db->where('workspace', $this->session->userdata('workspace'));
       $this->db->where('status', '재원');
     }
+
     $result = $this->db->get('student')->result();
+
     return $result;
   }
 
@@ -44,14 +48,13 @@ class Student_m extends CI_Model
     $this->db->order_by('grade2', 'ASC');
     if ($option) {
       $this->db->where('flag', '1');
-      $this->db->where('workspace', $this->session->userdata('workspace'));
       $this->db->where($option);
     } else {
       $this->db->where('flag', '1');
-      $this->db->where('workspace', $this->session->userdata('workspace'));
     }
+
     $result = $this->db->get('student')->result();
-    //$result =  $this->db->query("SELECT * FROM student")->result();
+
     return $result;
   }
 
@@ -91,16 +94,16 @@ class Student_m extends CI_Model
     return $result;
   }
 
-  function get($student_id)
+  function get($st_id)
   {
     $this->db->select('*');
-
     $this->db->select('UNIX_TIMESTAMP(modified_time) AS modified_time');
 
     $result = $this->db->get_where('student', array(
       'flag' => '1',
-      'id' => $student_id
+      'id' => $st_id
     ))->row();
+
     return $result;
   }
 
@@ -110,9 +113,11 @@ class Student_m extends CI_Model
     $this->db->where('flag', '1');
     $this->db->where('status', '재원');
     $this->db->where($option);
+
     $result = $this->db->get(
       'student'
     )->row();
+
     return $result;
   }
 
@@ -122,9 +127,11 @@ class Student_m extends CI_Model
     $this->db->where('flag', '1');
     $this->db->where('workspace', $this->session->userdata('workspace'));
     $this->db->where($option);
+
     $result = $this->db->get(
       'student'
     )->row();
+
     return $result;
   }
 
@@ -139,7 +146,9 @@ class Student_m extends CI_Model
         'status' => '재원'
       )
     );
+
     $result = $this->db->get('student')->row();
+
     return $result;
   }
 
@@ -167,7 +176,9 @@ class Student_m extends CI_Model
     $this->db->set('st_id', $option['st_id']);
 
     $this->db->insert('test_history');
+
     $result = $this->db->insert_id();
+
     return $result;
   }
 
@@ -182,17 +193,18 @@ class Student_m extends CI_Model
     return $result;
   }
 
-  function delete($student_id)
+  function delete($st_id)
   {
     $result = $this->db->delete('student', array(
-      'id' => $student_id
+      'id' => $st_id
     ));
+
     return $result;
   }
 
-  function backup($student_id)
+  function backup($st_id)
   {
-    return $student_id . '백업 되었습니다.';
+    return $st_id . '백업 되었습니다.';
     //return $this->db->update('student', )
   }
 }

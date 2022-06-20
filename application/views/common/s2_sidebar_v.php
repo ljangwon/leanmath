@@ -21,7 +21,9 @@
       <div class="fw-bold text-center text-white">
         Today : (<?= date("Y-m-d", time()) ?> <?= $weekString[date('w')] ?>)</div>
       <div class="fw-bold text-center text-white">
-        St_ID : <?= $this->session->userdata('st_id') ?> </div>
+        St_ID : <?= $this->session->userdata('st_id') ?> <br>
+        User Name : <?= $this->session->userdata('name') ?> </div>
+
       <!-- Divider -->
       <hr class="sidebar-divider my-3">
 
@@ -32,16 +34,16 @@
 
       <!-- Nav Item - Dashboard(old)-->
       <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/dashboard">
+        <a class="nav-link" href="/leanmath/index.php/temp_table_c">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>대시보드 - 옛날</span>
+          <span>임시-table 화면</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/temp_table_c">
+        <a class="nav-link" href="/leanmath/index.php/st_study_c">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>임시-table 화면</span>
+          <span>학습기록</span>
         </a>
       </li>
 
@@ -54,7 +56,7 @@
 
       <!-- Nav Item - Student Entire List -->
       <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/student2/get_all">
+        <a class="nav-link" href="/leanmath/index.php/student2/screen_student_list">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>전체 학생목록</span>
         </a>
@@ -62,17 +64,9 @@
 
       <!-- Nav Item - Study Time Table -->
       <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/student2">
+        <a class="nav-link" href="/leanmath/index.php/student2/screen_timetable">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>전체 시간표</span>
-        </a>
-      </li>
-
-      <!-- Nav Item - Consulting Schedule -->
-      <li class="nav-item">
-        <a class="nav-link" href="/leanmath/index.php/student2">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>상담스케줄</span>
         </a>
       </li>
 
@@ -89,7 +83,6 @@
           </div>
         </div>
       </li>
-
 
       <!-- Nav Item - 교재현황 -->
       <li class="nav-item">
@@ -123,105 +116,6 @@
                 $entry->class_day1 == date('w') |
                 $entry->class_day2 == date('w') |
                 $entry->class_day3 == date('w')
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-2" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>월/금반 학생명단</span>
-        </a>
-        <div id="collapse2-2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == '재원' &&
-                $entry->class_day1 == '1'
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-3" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>화/목반 학생명단</span>
-        </a>
-        <div id="collapse2-3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == "재원" &&
-                $entry->class_day1 == '2'
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-4" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>수/토반 학생명단</span>
-        </a>
-        <div id="collapse2-4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == "재원" &&
-                $entry->class_day1 == '3'
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-5" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>전체 학생명단</span>
-        </a>
-        <div id="collapse2-5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->status == "재원"
               ) {
             ?>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
@@ -281,30 +175,6 @@
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2-8" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>삭제 학생명단</span>
-        </a>
-        <div id="collapse2-8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students List:</h6>
-            <?php
-            foreach ($students as $entry) {
-              if (
-                $entry->workspace == $this->session->userdata('workspace') &&
-                $entry->flag == "0"
-              ) {
-            ?>
-                <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>"><?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-            <?php
-              }
-            }
-            ?>
-          </div>
-        </div>
-      </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -314,23 +184,6 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapse4-1" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>학생현황</span>
-        </a>
-        <div id="collapse4-1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">재원생 현황:</h6>
-            <a class="collapse-item" href="/leanmath/index.php/dashboard/st_summary"> 월별 등록 현황</a>
-            <a class="collapse-item" href="/leanmath/index.php/payment2"> 월별 수납 현황</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">대기자 현황:</h6>
-            <a class="collapse-item" href="/leanmath/index.php/dashboard/st_summary">대기자 현황</a>
-            <a class="collapse-item" href="/leanmath/index.php/dashboard/st_summary">퇴원생 현황</a>
-          </div>
-        </div>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapse4-2" aria-expanded="true" aria-controls="collapsePages">

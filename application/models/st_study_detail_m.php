@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class User_new_m extends CI_Model
+class St_study_detail_m extends CI_Model
 {
-  var $tbl = 'st_user';
+  var $tbl = 'st_study_detail';
 
   function __construct()
   {

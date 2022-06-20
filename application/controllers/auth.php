@@ -4,6 +4,7 @@ class Auth extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('user_new_m');
 	}
 
 	function index()
@@ -47,8 +48,7 @@ class Auth extends MY_Controller
 			}
 			$hash = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 
-			$this->load->model('user_m');
-			$this->user_m->add(
+			$this->user_new_m->add(
 				array(
 					'email' => $this->input->post('email'),
 					'password' => $hash,
@@ -67,9 +67,8 @@ class Auth extends MY_Controller
 		$this->_header();
 
 		$this->form_validation->set_rules('email', '이메일 주소', 'required|valid_email');
-		$this->form_validation->set_rules('name', '네임', 'required|min_length[2]|max_length[20]');
 		$this->form_validation->set_rules('old_password', '이전 비밀번호', 'required');
-		$this->form_validation->set_rules('new_password', '새 비밀번호', 'required|min_length[6]|max_length[30]|matches[re_password]');
+		$this->form_validation->set_rules('new_password', '새 비밀번호', 'required|min_length[4]|max_length[30]|matches[re_password]');
 		$this->form_validation->set_rules('re_password', '비밀번호 확인', 'required');
 
 		if ($this->form_validation->run() === false) {
@@ -78,11 +77,12 @@ class Auth extends MY_Controller
 			if (!function_exists('password_hash')) {
 				$this->load->helper('password');
 			}
+
 			if ($this->input->post('new_password')) {
 				$hash = password_hash($this->input->post('new_password'), PASSWORD_BCRYPT);
 			}
-			$this->load->model('user_m');
-			$user = $this->user_m->getByEmail(
+
+			$user = $this->user_new_m->getByEmail(
 				array(
 					'email' => $this->input->post('email')
 				)
@@ -93,11 +93,11 @@ class Auth extends MY_Controller
 				password_verify($this->input->post('old_password'), $user->password)
 			) {
 
-				$this->user_m->modify(
+				$result = $this->user_new_m->modify(
 					array(
-						'email' => $this->input->post('email'),
-						'password' => $hash,
-						'name' => $this->input->post('name')
+						'id' => $user->id,
+						'email' => $user->email,
+						'password' => $hash
 					)
 				);
 
@@ -105,23 +105,29 @@ class Auth extends MY_Controller
 				if ($returnURL === false) {
 					$returnURL = base_url();
 				}
-				redirect($returnURL);
-			} else {
-				$this->session->set_flashdata('message', '비밀번호 변경에 실패 했습니다.');
 
+				if ($result) {
+					$this->session->set_flashdata('msg', '비밀번호 변경에 성공했습니다.');
+					alert($returnURL + '로 이동합니다.');
+					redirect($returnURL);
+				} else {
+					alert('DB: 비밀번호 update에 실패했습니다.');
+					$this->session->set_flashdata('msg', '비밀번호 변경에 실패 했습니다.');
+					redirect(site_url('/auth/changePassword'));
+				}
+			} else {
+				alert('이전 비밀번호가 다릅니다.');
+				$this->session->set_flashdata('msg', '이전 비밀번호가 다릅니다.');
 				redirect(site_url('/auth/changePassword'));
 			}
-			$this->session->set_flashdata('message', '비밀번호 변경에 성공했습니다.');
-
-			redirect(base_url());
 		}
 		$this->_footer();
 	}
 
 	function authentication()
 	{
-		$this->load->model('user_m');
-		$user = $this->user_m->getByEmail(
+
+		$user = $this->user_new_m->getByEmail(
 			array(
 				'email' => $this->input->post('email')
 			)
@@ -146,7 +152,7 @@ class Auth extends MY_Controller
 			}
 			redirect($returnURL);
 		} else {
-			$this->session->set_flashdata('message', '로그인에 실패 했습니다.');
+			$this->session->set_flashdata('msg', '로그인에 실패 했습니다.');
 			redirect(site_url('/auth/login'));
 		}
 	}

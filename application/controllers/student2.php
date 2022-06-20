@@ -8,9 +8,15 @@ class Student2 extends My_Controller
 		$this->_require_login(site_url('student2'), 10);
 
 		$this->load->model('student_m');
+		$this->load->model('st_study_m');
 	}
 
 	function index()
+	{
+		$this->screen_timetable();
+	}
+
+	function screen_timetable()
 	{
 		$this->load->view(
 			'common/s1_head_v',
@@ -64,7 +70,7 @@ class Student2 extends My_Controller
 		);
 	}
 
-	function get_all()
+	function screen_studunt_list()
 	{
 		$this->load->view(
 			'common/s1_head_v',
@@ -125,7 +131,7 @@ class Student2 extends My_Controller
 			array(
 				'name' => $this->input->post('name'),
 				'class_name' => $this->input->post('class_name'),
-				'study_memo' => '2022년 4월 1일 업데이트
+				'study_memo' => '2022년 6월 1일 업데이트
 
 초5 홍길동 학습 기록 공유드립니다.
 
@@ -133,7 +139,7 @@ class Student2 extends My_Controller
 월(2시간), 화(1시간), 수(1시간), 목(1시간), 금(2시간), 토(1시간), 일(0시간) 주당 총 8시간
 
 <레벨테스트>
-초4 (3월) 100점
+초4 (6월) 100점
 
 <교재이력>
 초5-1 : 빅터연산, 디딤돌(기본+응용), 쎈, 최상위S, 점프왕수학
@@ -183,6 +189,28 @@ class Student2 extends My_Controller
 		echo json_encode($data);
 	}
 
+	// read list
+	function ajax_st_study_list($st_id)
+	{
+		$data = $this->st_study_m->get_list(
+			array(
+				'st_id' => $st_id
+			)
+		);
+		echo json_encode($data);
+	}
+
+	// read list
+	function ajax_st_study_modify($st_id)
+	{
+		$data = $this->st_study_m->get_list(
+			array(
+				'st_id' => $st_id
+			)
+		);
+		echo json_encode($data);
+	}
+
 	function ajax_student_names()
 	{
 		// POST data
@@ -197,12 +225,6 @@ class Student2 extends My_Controller
 	// read
 	function get_student($st_id)
 	{
-		if (empty($st_id)) {
-			$st_id = $this->session->userdata('st_id');
-		} else {
-			$this->session->set_userdata('st_id', $st_id);
-		}
-
 		if (empty($st_id)) {
 			alert('st_id의 값이 없습니다', site_url('/student2'));
 		}
@@ -228,8 +250,11 @@ class Student2 extends My_Controller
 
 		// 학생 한명 Data 로드하기 
 		$student = $this->student_m->get($st_id);
+		//$study = $this->st_study_m->get($st_id);
+
 		if ($student) {
 			$this->session->set_userdata('st_name', $student->name);
+			$this->session->set_userdata('st_id', $st_id);
 		} else {
 			alert('해당하는 학생이 없습니다', site_url('/student2'));
 		}

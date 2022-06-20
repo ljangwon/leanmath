@@ -5,7 +5,7 @@ class User_new_c extends My_Controller
 	{
 		parent::__construct();
 
-		//		$this->_require_login(site_url('temp_c'), 10);
+		$this->_require_login(site_url('user_new_c'), 10);
 
 		$this->load->model('student_m');
 
@@ -54,6 +54,42 @@ class User_new_c extends My_Controller
 		);
 
 		echo json_encode($data);
+	}
+
+	function ajax_password_change()
+	{
+		// change password
+		if (!function_exists('password_hash')) {
+			$this->load->helper('password');
+		}
+
+		if ($this->input->post('new_password')) {
+			$hash = password_hash($this->input->post('new_password'), PASSWORD_BCRYPT);
+		}
+		$this->load->model('user_new_m');
+		$user = $this->user_new_m->getByEmail(
+			array(
+				'email' => $this->input->post('user_email')
+			)
+		);
+
+		if (
+			$this->input->post('email') == $user->email &&
+			password_verify($this->input->post('old_password'), $user->password)
+		) {
+
+			$data = $this->user_new_m->modify(
+				array(
+					'id' => $user->id,
+					'email' => $user->email,
+					'password' => $hash
+				)
+			);
+
+			echo json_encode($data);
+		} else {
+			return false;
+		}
 	}
 
 	function get_list()

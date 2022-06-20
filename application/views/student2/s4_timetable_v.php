@@ -27,20 +27,13 @@
       <div class="row">
         <!-- button1 start -->
         <div class="col-xs-6">
-          <select class="form-control" id="select_workspace">
-            <option selected>leanmath</option>
-            <option>thezone</option>
-          </select>
+
         </div>
         <!-- button1 end -->
 
         <!-- button2 start -->
         <div class="col-xs-6 ml-3">
-          <select class="form-control" id="select_status">
-            <option selected>재원</option>
-            <option>대기</option>
-            <option>퇴원</option>
-          </select>
+
         </div>
         <!-- button2 end -->
       </div>
@@ -58,10 +51,23 @@
         return $input;
       }
     }
+
+    // if (!function_exists('card_display')) {
+    //   function card_display($v_id, $v_name, $v_report_date, $v_grade1, $v_grade2, $v_class_name, $v_report_short_memo)
+    //   {
+    //     $input = '<li><a class="collapse-item" href="' + site_url('/student2/get_student/') + '/' +  $v_id + '">'
+    //       + $v_name + '</a> - ' + elapsed_days_span($v_report_date) +
+    //       '<br>- ' + $v_grade1 + '(' + $v_grade2 + ')-' + $v_class_name + '</a> <br>' +
+    //       +memo_input($v_report_short_memo) + '<br> </li> ';
+
+    //     return $input;
+    //   }
+    // }
+
     ?>
 
     <!-- 월요일 start -->
-    <div class="col-md-2">
+    <div class="col-md-2 card-frame">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">월2</h5>
@@ -76,10 +82,11 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
+
           <?php
             }
           }
@@ -103,9 +110,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -130,9 +137,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -156,9 +163,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -172,7 +179,7 @@
     <!-- 월요일 end -->
 
     <!-- 화요일 start -->
-    <div class="col-md-2">
+    <div class="col-md-2 card-frame">
 
       <div class="card">
         <div class="card-body">
@@ -188,9 +195,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -215,9 +222,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -242,9 +249,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -268,9 +275,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -284,7 +291,7 @@
     <!-- 화요일 end -->
 
     <!-- 수요일 start -->
-    <div class="col-md-2">
+    <div class="col-md-2 card-frame">
 
       <div class="card">
         <div class="card-body">
@@ -300,9 +307,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -327,9 +334,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -354,9 +361,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -380,9 +387,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -396,7 +403,7 @@
     <!-- 수요일 end -->
 
     <!-- 목요일 start -->
-    <div class="col-md-2">
+    <div class="col-md-2 card-frame">
 
       <div class="card">
         <div class="card-body">
@@ -412,9 +419,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -439,9 +446,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -466,9 +473,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -492,9 +499,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -508,7 +515,7 @@
     <!-- 목요일 end -->
 
     <!-- 금요일 start -->
-    <div class="col-md-2">
+    <div class="col-md-2 card-frame">
 
       <div class="card">
         <div class="card-body">
@@ -524,9 +531,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -551,9 +558,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -578,9 +585,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -604,9 +611,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -619,7 +626,7 @@
     <!-- 금요일 end -->
 
     <!-- 토요일 start -->
-    <div class="col-md-2">
+    <div class="col-md-2 card-frame">
 
       <div class="card">
         <div class="card-body">
@@ -635,9 +642,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -662,9 +669,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -689,9 +696,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -715,9 +722,9 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a>
-                <?= memo_input($entry->report_short_memo) ?>
-                <?= elapsed_days_span($entry->report_date) ?>
+                  <?= $entry->name ?></a> - <?= elapsed_days_span($entry->report_date) ?> <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                <?= memo_input($entry->report_short_memo) ?><br>
+                <br>
               </li>
           <?php
             }
@@ -728,7 +735,6 @@
       <!-- card end -->
     </div>
     <!-- 토요일 end -->
-
 
   </div>
   <!-- row4 main data table end -->

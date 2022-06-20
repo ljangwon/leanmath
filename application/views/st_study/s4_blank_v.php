@@ -16,13 +16,10 @@
       </span>
     </div>
   </div>
-
   <!-- End of .row -->
   <!-- End of Page Heading -->
 
   <!-- Begin Main Page -->
-
-  <i class="fa fa-arrow"></i>
 
   <div class="select">
     <select class="form-control" id="locale">
@@ -35,16 +32,18 @@
     <button id="remove" class="btn btn-danger" disabled>
       <i class="fa fa-trash"></i> Delete
     </button>
-    <button class="btn btn-danger" data-toggle="modal" data-target="#modal_user_add">
+    <button id="add" class="btn btn-danger" disabled>
       <i class="fa fa-plus"></i> Add
     </button>
   </div>
 
   <!-- table content -->
 
-  <table id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true" data-click-to-select="true" data-detail-formatter="detailFormatter" data-minimum-count-columns="2" data-show-pagination-switch="true" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true" data-side-pagination="server" data-response-handler="responseHandler">
+  <table id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true" data-click-to-select="true" data-detail-formatter="detailFormatter" data-minimum-count-columns="2" data-show-pagination-switch="true" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true" data-side-pagination="server" data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data" data-response-handler="responseHandler">
   </table>
+
   <!-- end -->
+
 
 </div>
 <!-- End of .container-fluid -->
