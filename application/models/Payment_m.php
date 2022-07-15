@@ -33,7 +33,7 @@ class Payment_m extends CI_Model
     $year = $option['year'];
     $month = $option['month'];
 
-    $this->db->select('id, name, fees, discount1, discount2, discount_memo, receipt_phone, receipt_use');
+    $this->db->select('id, name, grade1, grade2, fees, discount1, discount2, discount_memo, receipt_phone, receipt_use');
     $this->db->where('flag', 1);
     $this->db->where('workspace', $this->session->userdata('workspace'));
     $this->db->where('status', '재원');
@@ -90,7 +90,7 @@ class Payment_m extends CI_Model
     $this->db->join('student', 'student.id=st_payment.st_id');
     $this->db->where('st_payment.flag', '1');
     $this->db->where('st_payment.workspace', $this->session->userdata('workspace'));
-    $this->db->where('year', "2021");
+    $this->db->where('year', "2022");
     $this->db->where('month', $option['month']);
     $result = $this->db->get()->result();
 
@@ -115,7 +115,8 @@ class Payment_m extends CI_Model
   //select
   function payment_list($option = null)
   {
-    $this->db->select('p.id, p.year, p.month, p.st_id, s.name, s.class_name, 
+    $this->db->select('p.id, p.year, p.month, p.st_id, 
+        s.name, s.grade1, s.grade2, s.class_name, s.class_day1, s.class_day2,
         p.regular_price, p.discount1, p.discount2, 
         p.discount_memo, p.return_price, p.net_income, 
         p.receipt_status, p.receipt_use, p.receipt_phone,
@@ -130,7 +131,7 @@ class Payment_m extends CI_Model
     } else {
       $this->db->where('p.flag', '1');
       $this->db->where('p.workspace', $this->session->userdata('workspace'));
-      $this->db->where('year', "2021년");
+      $this->db->where('year', "2022년");
     }
 
     $result = $this->db->get()->result();

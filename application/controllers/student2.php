@@ -229,6 +229,17 @@ class Student2 extends My_Controller
 			alert('st_id의 값이 없습니다', site_url('/student2'));
 		}
 
+		// 학생 한명 Data 로드하기 
+		$student = $this->student_m->get($st_id);
+		//$study = $this->st_study_m->get($st_id);
+
+		if ($student) {
+			$this->session->set_userdata('st_name', $student->name);
+			$this->session->set_userdata('st_id', $st_id);
+		} else {
+			alert('해당하는 학생이 없습니다', site_url('/student2'));
+		}
+
 		$this->load->view(
 			'common/s1_head_v',
 			array()
@@ -248,16 +259,6 @@ class Student2 extends My_Controller
 			array()
 		);
 
-		// 학생 한명 Data 로드하기 
-		$student = $this->student_m->get($st_id);
-		//$study = $this->st_study_m->get($st_id);
-
-		if ($student) {
-			$this->session->set_userdata('st_name', $student->name);
-			$this->session->set_userdata('st_id', $st_id);
-		} else {
-			alert('해당하는 학생이 없습니다', site_url('/student2'));
-		}
 
 		$this->load->view(
 			'student2/s4_student_detail_v',
@@ -295,7 +296,7 @@ class Student2 extends My_Controller
 	// read
 	function get_student_post()
 	{
-		$st_id = $this->input->post('search_id');
+		$st_id = $this->input->post('search_st_id');
 
 		if (empty($st_id)) {
 			$st_id = $this->session->userdata('st_id');
@@ -314,6 +315,14 @@ class Student2 extends My_Controller
 
 		$students = $this->student_m->gets();
 
+		// 학생 한명 Data 로드하기 
+		$student = $this->student_m->get($st_id);
+		if ($student) {
+			$this->session->set_userdata('st_name', $student->name);
+		} else {
+			alert('해당하는 학생이 없습니다', site_url('/student2'));
+		}
+
 		$this->load->view(
 			'common/s2_sidebar_v',
 			array(
@@ -325,14 +334,6 @@ class Student2 extends My_Controller
 			'common/s3_topbar_v',
 			array()
 		);
-
-		// 학생 한명 Data 로드하기 
-		$student = $this->student_m->get($st_id);
-		if ($student) {
-			$this->session->set_userdata('st_name', $student->name);
-		} else {
-			alert('해당하는 학생이 없습니다', site_url('/student2'));
-		}
 
 		$this->load->view(
 			'student2/s4_student_detail_v',

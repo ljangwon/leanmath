@@ -80,7 +80,7 @@
     <!-- row4 main data table  begin -->
     <div class="row" id='row4'>
       <div class="col-md-12">
-        <table class="table table-striped display compact cell-border" id="book_chapter_list_data" style="width:100%">
+        <table id="book_chapter_list_data" class="table table-striped display compact cell-border" style="width:100%">
         </table>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
-class Book extends My_Controller
+class St_book_c extends My_Controller
 {
 	function __construct()
 	{
@@ -9,33 +9,13 @@ class Book extends My_Controller
 
 		$this->load->model('student_m');
 		$this->load->model('st_book_m');
-		$this->load->model('st_book_chapter_m');
 	}
 
 	function index()
 	{
-
 		$this->get_book_list();
 	}
 
-	// create
-	function create_book()
-	{
-		$new_book_id = $this->st_book_m->create(
-			array(
-				'title' => $this->input->post('title'),
-				'grade1' => $this->input->post('grade1'),
-				'grade2' => $this->input->post('grade2')
-			)
-		);
-
-		if (!$new_book_id) {
-			alert("book 추가 실패했습니다.", site_url('/book'));
-		} else {
-
-			alert("book 추가 성공했습니다.", site_url('/book/get_book/' . $new_book_id));
-		}
-	}
 
 	// read ajax data of book list
 	function ajax_read_book_list()
@@ -50,27 +30,17 @@ class Book extends My_Controller
 		echo json_encode($data);
 	}
 
-	// read ajax data of book chapter list
-	function ajax_read_book_chapter_list()
+	function ajax_book_names()
 	{
-		$book_id = $this->input->post('book_id');
+		// POST data
+		$postData = $this->input->post();
 
-		$data = $this->st_book_chapter_m->r_list($book_id);
+		// Get data
+		$data = $this->st_book_m->get_book_names($postData);
+
 		echo json_encode($data);
 	}
 
-	// read ajax data of book chapter list
-	function ajax_create_chapter()
-	{
-		$book_id = $this->input->post('book_id');
-
-		$data = $this->st_book_chapter_m->create(
-			array(
-				'book_id' => $book_id
-			)
-		);
-		echo json_encode($data);
-	}
 
 	// update data of book chapter by ajax
 	function ajax_excel_datasave()
@@ -109,6 +79,36 @@ class Book extends My_Controller
 		}
 	}
 
+	// delete
+	function ajax_delete_chapter()
+	{
+		$chapter_id = $this->input->post('chapter_id');
+
+		$data = $this->book_chapter_m->delete($chapter_id);
+
+		echo json_encode($data);
+	}
+
+	// create
+	function create_book()
+	{
+		$new_book_id = $this->book_m->create(
+			array(
+				'title' => $this->input->post('title'),
+				'grade1' => $this->input->post('grade1'),
+				'grade2' => $this->input->post('grade2')
+			)
+		);
+
+		if (!$new_book_id) {
+			alert("book 추가 실패했습니다.", site_url('/book'));
+		} else {
+
+			alert("book 추가 성공했습니다.", site_url('/book/get_book/' . $new_book_id));
+		}
+	}
+
+
 	// show book list
 	function get_book_list()
 	{
@@ -117,7 +117,7 @@ class Book extends My_Controller
 			array()
 		);
 
-		$books = $this->st_book_m->r_list();
+		$books = $this->book_m->r_list();
 
 		$this->load->view(
 			'book/s2_book_sidebar_v',
@@ -170,7 +170,7 @@ class Book extends My_Controller
 			array()
 		);
 
-		$books = $this->st_book_m->r_book_list();
+		$books = $this->book_m->r_book_list();
 
 		$this->load->view(
 			'book/s2_book_sidebar_v',
@@ -223,7 +223,7 @@ class Book extends My_Controller
 			array()
 		);
 
-		$books = $this->st_book_m->r_list();
+		$books = $this->book_m->r_list();
 
 		$this->load->view(
 			'book/s2_book_sidebar_v',
@@ -238,10 +238,10 @@ class Book extends My_Controller
 		);
 
 		// book Data 로드하기 
-		$book = $this->st_book_m->r_get($book_id);
+		$book = $this->book_m->r_get($book_id);
 
 		// book chapter Data 로드하기 
-		$chapters = $this->st_book_chapter_m->r_list($book_id);
+		$chapters = $this->book_chapter_m->r_list($book_id);
 
 		$this->load->view(
 			'book/s4_book_detail_v',
@@ -282,7 +282,7 @@ class Book extends My_Controller
 	{
 		$book_id = $this->session->userdata('book_id');
 
-		$result = $this->st_book_m->update(
+		$result = $this->book_m->update(
 			array(
 				'id' => $this->input->post('id'),
 				'title' => $this->input->post('book_title'),
@@ -300,22 +300,13 @@ class Book extends My_Controller
 		}
 	}
 
-	// delete
-	function ajax_delete_chapter()
-	{
-		$chapter_id = $this->input->post('chapter_id');
-
-		$data = $this->st_book_chapter_m->delete($chapter_id);
-
-		echo json_encode($data);
-	}
 
 	// delete
 	function delete_book()
 	{
 		$book_id = $this->input->post('book_id');
 
-		$data = $this->st_book_m->delete($book_id);
+		$data = $this->book_m->delete($book_id);
 		$this->session->set_userdata('book_id', '');
 		echo json_encode($data);
 	}

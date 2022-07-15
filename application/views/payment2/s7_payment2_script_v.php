@@ -41,7 +41,17 @@
               }, {
                 title: 'Class Name'
               }, {
+                title: 'Class Day1'
+              }, {
+                title: 'Class Day2'
+              }, {
                 title: 'Name'
+              }, {
+                title: 'Grade1'
+              }, {
+                title: 'Grade2'
+              }, {
+                title: 'Receipt_Use'
               }, {
                 title: 'Regular Price'
               }, {
@@ -62,7 +72,7 @@
 
           }
 
-          let rowData = ["#", "Year", "month", "class_name", "name", "Regular Price", "Net Income", "pay_status ", "pay_action", "Receipt Status", "rectipt_action", "actions"];
+          let rowData = ["#", "Year", "month", "class_name", "class_day1", "class_day2", "name", "grade1", "grade2", "receipt_use", "Regular Price", "Net Income", "pay_status ", "pay_action", "Receipt Status", "rectipt_action", "actions"];
           let action_link = null;
           let name_link = null;
           let pay_action_link = null;
@@ -132,7 +142,12 @@
               data[i].year,
               data[i].month,
               data[i].class_name,
+              data[i].class_day1,
+              data[i].class_day2,
               name_link,
+              data[i].grade1,
+              data[i].grade2,
+              data[i].receipt_use,
               data[i].regular_price,
               data[i].net_income,
               data[i].pay_status,

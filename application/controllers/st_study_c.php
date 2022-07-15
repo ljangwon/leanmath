@@ -15,6 +15,7 @@ class St_study_c extends My_Controller
 	{
 		$this->get_list();
 	}
+
 	function ajax_get_list_all()
 	{
 		// POST data
@@ -26,17 +27,33 @@ class St_study_c extends My_Controller
 		echo json_encode($data);
 	}
 
-	function ajax_get_list_by_st_id($st_id)
+	function ajax_get_st_study_list_by_st_id($params)
+	{
+		// POST data
+		//$postData = $this->input->post();
+		$param_a = explode(':', $params);
+
+		// Get data
+		$data = $this->st_study_m->get_st_study_list_by_st_id(
+			array(
+				'st_id' => $param_a[0],
+				'show_flag' => $param_a[1]
+			)
+		);
+
+		echo json_encode($data);
+	}
+
+	function ajax_get_study_detail_list_all()
 	{
 		// POST data
 		//$postData = $this->input->post();
 
 		// Get data
-		$data = $this->st_study_m->get_list_by_st_id($st_id);
+		$data = $this->st_study_m->get_study_detail_list();
 
 		echo json_encode($data);
 	}
-
 
 	function ajax_st_study_modify()
 	{
@@ -80,6 +97,13 @@ class St_study_c extends My_Controller
 			);
 		}
 
+		if ($p = $this->input->post('start_date')) {
+			$a = array_merge(
+				$a,
+				array('start_date' => $p)
+			);
+		}
+
 		$data = $this->st_study_m->modify($a);
 
 		echo json_encode($data);
@@ -116,7 +140,7 @@ class St_study_c extends My_Controller
 
 		$data = $this->st_study_m->add($a);
 
-		$this->session->set_flashdata('msg', '회원가입에 성공했습니다.');
+		$this->session->set_flashdata('msg', '학습기록 입력이 성공했습니다.');
 		echo json_encode($data);
 	}
 

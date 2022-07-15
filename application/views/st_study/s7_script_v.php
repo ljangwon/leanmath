@@ -1,6 +1,7 @@
 <script>
 	var $table = $('#table_st_study');
 	var $remove = $('#remove');
+	var $add = $('#add');
 	var $modal_submit_study_add = $('#modal_submit_study_add');
 	var $modal_submit_study_edit = $('#modal_submit_study_edit');
 
@@ -38,8 +39,32 @@
 			'data-id="' + row.id, '" ',
 			'> ',
 			'<i class="fa-solid fa-pen-to-square"></i>',
+			'</a> ',
+			' <a class="detail" href="javascript:void(0)" title="Detail" ',
+			'data-id="' + row.id, '" ',
+			'> ',
+			'단원진도',
 			'</a> '
 		].join('')
+	}
+
+	function course_cat_Formatter(value, row, index) {
+		let category = '';
+		switch (row.course_cat) {
+			case '1':
+				category = "연산선행";
+				break;
+			case '2':
+				category = "개념선행";
+				break;
+			case '3':
+				category = "현행심화";
+				break
+			default:
+				category = "미정";
+		}
+
+		return category;
 	}
 
 	window.operateEvents = {
@@ -58,12 +83,34 @@
 
 			$('#modal_study_edit').modal('show');
 
+			$('#modal_study_edit').draggable({
+				handle: ".modal-header"
+			});
+
 			$('[name="id_edit"]').val(row.id);
 			$('[name="st_id_edit"]').val(row.st_id);
 			$('[name="show_flag_edit"]').val(row.show_flag);
 			$('[name="course_cat_edit"]').val(row.course_cat);
 			$('[name="course_grade_edit"]').val(row.course_grade);
 			$('[name="book_name_edit"]').val(row.book_name);
+			$('[name="start_date_edit"]').val(row.start_date);
+		},
+		'click .detail': function(e, value, row, index) {
+			console.log('Study Edit Start');
+
+			$('#modal_study_detail').modal('show');
+
+			$('#modal_study_detail').draggable({
+				handle: ".modal-header"
+			});
+
+			var $table = $('#study_detail_table')
+
+			$(function() {
+				$('#modal_study_detail').on('shown.bs.modal', function() {
+					$table.bootstrapTable('resetView')
+				})
+			})
 		}
 	}
 
@@ -84,11 +131,13 @@
 	}
 
 	function initTable() {
+		let params = '<?= $this->session->userdata('st_id') ?>:' + $('#show').val();
+
 		$table.bootstrapTable('destroy').bootstrapTable({
 			height: 800,
 			'locale': $('#locale').val(),
 			search: true,
-			url: '<?= site_url('st_study_c/ajax_get_list_by_st_id') ?>' + '/<?= $this->session->userdata('st_id') ?>',
+			url: '<?= site_url('st_study_c/ajax_get_st_study_list_by_st_id') ?>' + '/' + params,
 			columns: [
 				[{
 					field: 'state',
@@ -105,7 +154,7 @@
 					sortable: true
 				}, {
 					title: 'Item Detail',
-					colspan: 6,
+					colspan: 7,
 					align: 'center'
 				}],
 				[{
@@ -122,7 +171,8 @@
 					field: 'course_cat',
 					title: '학습분류',
 					sortable: true,
-					align: 'center'
+					align: 'center',
+					formatter: course_cat_Formatter
 				}, {
 					field: 'course_grade',
 					title: '학년구분',
@@ -131,6 +181,11 @@
 				}, {
 					field: 'book_name',
 					title: '교재명',
+					sortable: true,
+					align: 'center'
+				}, {
+					field: 'start_date',
+					title: '시작일',
 					sortable: true,
 					align: 'center'
 				}, {
@@ -174,6 +229,15 @@
 
 		});
 
+		$add.click(function() {
+			$('#modal_st_study_add').modal('show');
+
+			$('#modal_st_study_add').draggable({
+				handle: ".modal-header"
+			});
+
+		});
+
 		$modal_submit_study_add.click(function() {
 			$.ajax({
 				url: "<?php echo site_url('st_study_c/ajax_st_study_add') ?>",
@@ -205,6 +269,7 @@
 					course_cat: $('#course_cat_edit').val(),
 					course_grade: $('#course_grade_edit').val(),
 					book_name: $('#book_name_edit').val(),
+					start_date: $('#start_date_edit').val(),
 				},
 				dataType: "JSON",
 				success: function(data) {
@@ -223,7 +288,49 @@
 
 	$(function() {
 		initTable();
-		$('#locale').change(initTable);
+		//$('#locale').change(initTable);
 		$('#show').change(initTable);
+	});
+
+	$("#start_date_edit").datepicker({
+		dateFormat: "yy-mm-dd",
+		dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+		dayNames: ["일", "월", "화", "수", "목", "금", "토"],
+		monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+	});
+
+	$("#end_date_edit").datepicker({
+		dateFormat: "yy-mm-dd",
+		dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+		dayNames: ["일", "월", "화", "수", "목", "금", "토"],
+		monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+	});
+
+
+	$(document).ready(function() {
+		// Initialize 
+		$("#search_book_name").autocomplete({
+			source: function(request, response) {
+				// Fetch data
+				$.ajax({
+					url: "<?= site_url('st_book_c/ajax_book_names') ?>",
+					type: 'post',
+					dataType: "json",
+					data: {
+						search: request.term
+					},
+					success: function(data) {
+						response(data);
+					}
+				});
+			},
+			select: function(event, ui) {
+				// Set selection
+				$('#search_book_name').val(ui.item.title + ui.item.grade1 + ui.item.grade2); // display the selected text
+				$('#search_book_id').val(ui.item.book_id); // save selected id to input
+				return false;
+			}
+		});
+
 	});
 </script>

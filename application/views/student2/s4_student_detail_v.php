@@ -42,6 +42,12 @@
               <span class="fa fa-plus"></span> 학생삭제
             </a>
           </div>
+
+          <div class="float-xs-right mr-2">
+            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#st_study_add">
+              <span class="fa fa-plus"></span>학습추가
+            </a>
+          </div>
         </div>
       </div>
     </div>

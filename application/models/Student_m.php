@@ -158,13 +158,13 @@ class Student_m extends CI_Model
 
     if (isset($postData['search'])) {
       // Select record
-      $this->db->select("id, name");
+      $this->db->select("id, name, grade1, grade2");
       $this->db->where("name like '%" . $postData['search'] . "%' ");
 
       $records = $this->db->get('student')->result();
 
       foreach ($records as $row) {
-        $response[] = array("value1" => $row->id, "label" => $row->name);
+        $response[] = array("st_id" => $row->id, "st_name" => $row->name,  "label" => ($row->name . "-" . $row->grade1 . $row->grade2));
       }
     }
     return $response;

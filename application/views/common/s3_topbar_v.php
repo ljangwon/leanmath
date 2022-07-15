@@ -15,8 +15,10 @@
       <!-- Topbar Search -->
       <form action="<?= site_url() ?>/student2/get_student_post" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-6 my-2 my-md-0 mw-200 navbar-search">
         <div class="input-group">
-          이름 : <input type="text" id="search_name" name="search_name" class="form-control bg-light border-0 small" placeholder="Search for...">
-          아이디 : <input type="text" id="search_id" name="search_id" readonly class="form-control bg-light border-0 small">
+          <label class="col-md-2 col-form-label">이름:</label>
+          <input type="text" id="search_st_name" name="search_st_name" class="form-control bg-light border-0 small" placeholder="Search for...">
+          <label class="col-md-3 col-form-label">아이디:</label>
+          <input type="text" id="search_st_id" name="search_st_id" readonly class="form-control bg-light border-0 small">
           <div class="input-group-append">
             <button type="submit" class="btn btn-primary" type="button">
               <i class="fas fa-search fa-sm"></i>

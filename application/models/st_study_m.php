@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class St_study_m extends CI_Model
 {
   var $tbl = 'st_study';
+  var $tbl_detail = 'st_study_detail';
 
   function __construct()
   {
@@ -66,6 +67,7 @@ class St_study_m extends CI_Model
   function get_list($option = null)
   {
     $this->db->select('*');
+    $this->db->order_by('course_cat', 'ASC');
 
     if ($option) {
       $this->db->where($option);
@@ -76,13 +78,35 @@ class St_study_m extends CI_Model
     return $result;
   }
 
-  function get_list_by_st_id($st_id)
+  // 리스트 데이터 얻기
+  function get_study_detail_list($study_id)
   {
     $this->db->select('*');
 
+    $this->db->where('study_id', $study_id);
 
-    $this->db->where('st_id', $st_id);
+    $result = $this->db->get($this->tbl_detail)->result();
 
+    return $result;
+  }
+
+  function get_st_study_list_by_st_id($param_a)
+  {
+    $this->db->select('*');
+    $this->db->order_by('course_cat', 'ASC');
+
+    $a = array(
+      'st_id' => $param_a['st_id']
+    );
+
+    if ($param_a['show_flag'] == 1) {
+      $a = array_merge(
+        $a,
+        array('show_flag' => '1')
+      );
+    }
+
+    $this->db->where($a);
 
     $result = $this->db->get($this->tbl)->result();
 

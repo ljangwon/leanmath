@@ -7,9 +7,20 @@
 
 <!-- Custom style -->
 <style>
-  .select,
   #locale {
     width: 40%;
+  }
+
+  #show {
+    width: 100px;
+  }
+
+  #grade1 {
+    width: 100px;
+  }
+
+  #grade2 {
+    width: 100px;
   }
 
   #name {

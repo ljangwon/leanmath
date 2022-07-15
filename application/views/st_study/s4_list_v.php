@@ -24,23 +24,39 @@
 
   <i class="fa fa-arrow"></i>
 
-  <div class="select">
-    <select class="form-control" id="locale">
+  <div class="select form-inline">
+    <!-- <select class="form-control" id="locale">
       <option value="ko-KR" selected>ko-KR</option>
       <option value="en-US">en-US</option>
+    </select> -->
+    <input type="text" id="locale" value="ko-KR" hidden> </input>
+
+    <select class="form-control" id="show" name="show_flag_s">
+      <option value="1" selected>선택보기</option>
+      <option value="0">모두보기</option>
     </select>
 
-    <select class="form-control" id="show" name="show_flag_select">
-      <option value="1" selected>보이기</option>
-      <option value="0">감추기</option>
+    <select class="form-control" id="grade1" name="grade1">
+      <option value="초등" selected>초등</option>
+      <option value="중등">중등</option>
+      <option value="고등">고등</option>
     </select>
+
+    <select class="form-control" id="grade2" name="grade2">
+      <option value="5">5학년</option>
+      <option value="6">6학년</option>
+      <option value="1" selected>1학년</option>
+      <option value="2">2학년</option>
+      <option value="3">3학년</option>
+    </select>
+
   </div>
 
   <div id="toolbar">
     <button id="remove" class="btn btn-danger" disabled>
       <i class="fa fa-trash"></i> Delete
     </button>
-    <button class="btn btn-danger" data-toggle="modal" data-target="#modal_st_study_add">
+    <button id="add" class="btn btn-danger">
       <i class="fa fa-plus"></i> Add
     </button>
   </div>

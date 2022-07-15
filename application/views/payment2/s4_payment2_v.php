@@ -36,6 +36,11 @@
             <span class=""></span> Add New
           </a>
         </div>
+        <div class="float-sm-left mr-2">
+          <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Notice">
+            <span class=""></span>수강료공지
+          </a>
+        </div>
       </div>
     </div>
 
@@ -56,8 +61,8 @@
             <option>3월</option>
             <option>4월</option>
             <option>5월</option>
-            <option selected>6월</option>
-            <option>7월</option>
+            <option>6월</option>
+            <option selected>7월</option>
             <option>8월</option>
             <option>9월</option>
             <option>10월</option>

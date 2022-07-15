@@ -36,7 +36,7 @@
 	$(document).ready(function() {
 
 		// Initialize 
-		$("#search_name").autocomplete({
+		$("#search_st_name").autocomplete({
 			source: function(request, response) {
 				// Fetch data
 				$.ajax({
@@ -53,8 +53,10 @@
 			},
 			select: function(event, ui) {
 				// Set selection
-				$('#search_name').val(ui.item.label); // display the selected text
-				$('#search_id').val(ui.item.value1); // save selected id to input
+				sessionStorage.setItem('st_id', ui.item.st_id);
+				sessionStorage.setItem('st_name', ui.item.st_name);
+				$('#search_st_name').val(ui.item.label); // display the selected text
+				$('#search_st_id').val(ui.item.st_id); // save selected id to input
 				return false;
 			}
 		});
