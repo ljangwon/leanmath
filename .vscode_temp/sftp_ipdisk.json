@@ -1,0 +1,27 @@
+[
+	{
+		"name": "lmath",
+		"host": "jakeleanco.ipdisk.co.kr",
+		"protocol": "ftp",
+		"port": 21,
+		"username": "ljangwon",
+		"password": "",
+		"remotePath": "/VOL1/htdocs/lmath",
+		"uploadOnSave": true,
+		"watcher": {
+			"files": "**/*.{php,js,sql}",
+			"autoUpload": true,
+			"autoDelete": true
+		},
+		"ignore": [
+			"**/.vscode",
+			"**/.git",
+			"**/.DS_Store",
+			"**/.sftp.json",
+			"**/.gitignore",
+			"**/node_modules",
+			"**/.env",
+			"**/workspace.code-workspace"
+		]
+	}
+]

@@ -1,2 +1,4 @@
-# lmath
-jakeleanco.ipdisk.co.kr:8000 remote repository
+# leanmath
+
+leanedu22.site/leanamth
+repository
