@@ -49,6 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'jakeleanco.ipdisk.co.kr';
+$db['default']['port'] = "3309";
 $db['default']['username'] = 'codei';
 $db['default']['password'] = '';
 $db['default']['database'] = 'leanmath';
