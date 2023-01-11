@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'jakeleanco.ipdisk.co.kr';
-$db['default']['port'] = "3309";
-$db['default']['username'] = 'codei';
-$db['default']['password'] = 'happy1234';
+$db['default']['hostname'] = 'leanedu22.site';
+$db['default']['port'] = "3306";
+$db['default']['username'] = 'leanmath';
+$db['default']['password'] = 'Happy1234!';
 $db['default']['database'] = 'leanmath';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';

@@ -641,8 +641,10 @@
             if (
               $entry->workspace == $this->session->userdata('workspace') &&
               $entry->status == "재원" &&
-              $entry->class_day2 == '6' &&
-              $entry->class_time2 == '9'
+              (($entry->class_day2 == '6' &&
+                $entry->class_time2 == '9') ||
+                (($entry->class_day3 == '6' &&
+                  $entry->class_time3 == '9')))
             ) {
           ?>
               <li>
@@ -695,8 +697,10 @@
             if (
               $entry->workspace == $this->session->userdata('workspace') &&
               $entry->status == "재원" &&
-              $entry->class_day2 == '6' &&
-              $entry->class_time2 == '14'
+              (($entry->class_day2 == '6' &&
+                $entry->class_time2 == '14') ||
+                (($entry->class_day3 == '6' &&
+                  $entry->class_time3 == '14')))
             ) {
           ?>
               <li>
