@@ -9,7 +9,7 @@
         <a style=text-decoration-line:none href='<?= site_url('payment2') ?>'> 수납현황 </a>
         >
         <a style=text-decoration-line:none href='<?= site_url('book') ?>'> 교재현황 </a> >
-        <small>전체 시간표3-1 </small>
+        <small>전체 시간표-37080 </small>
       </h4>
     </div>
   </div>
