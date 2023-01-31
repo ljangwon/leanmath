@@ -1,5 +1,4 @@
 /application/config/database.php
-/application/config/config.php
 /application/config/database_ipdisk.php
 /.vscode/*
 /logs/*
