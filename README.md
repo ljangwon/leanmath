@@ -1,4 +1,4 @@
 # leanmath
 
-leanedu22.site/leanamth
+leanmath.leanedu22.site
 repository

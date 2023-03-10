@@ -1,6 +1,10 @@
 <!-- -------------PDF GENERATEOR --------------- -->
 
 <button id="pdf-generate">Download</button>
+<?= $student->name ?> 상세화면으로
+<a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $student->id ?>">
+  돌아가기 </a>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.1.223/styles/kendo.common.min.css" />
 <script src="https://kendo.cdn.telerik.com/2017.1.223/js/jszip.min.js"></script>
@@ -15,45 +19,102 @@
       <page size="A4">
 
         <!-- PDF CONTENT START -->
-        <h1>Hi, This is A4 Size PDF Example</h1>
-
+        <h1 align="center"><?= $student->name ?> ( <?= $student->class_name ?> )</h1>
+        <br>
         <table>
-
           <thead>
-            <td>No</td>
-            <td>Name</td>
-            <td>Serial Number</td>
+            <td> 인적사항 </td>
+            <td> 지각결석 </td>
           </thead>
 
           <tbody>
             <tr>
-              <td> 1</td>
-              <td> Lee</td>
-              <td> 1234123412341234</td>
-            </tr>
+              <td align="top"><textarea rows=8 cols=40>학교: <?= $student->school_name ?>, 학년: <?= $student->grade ?>, 거주: <?= $student->house ?></textarea>
+              </td>
 
-            <tr>
-              <td> 2</td>
-              <td> Kim</td>
-              <td> 1234123412341234</td>
-            </tr>
+              <td>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td> <textarea rows=8 cols=40> </textarea> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
 
-            <tr>
-              <td> 3</td>
-              <td> Park</td>
-              <td> 1234123412341234</td>
-            </tr>
-
-            <tr>
-              <td> 4</td>
-              <td> Cha</td>
-              <td> 1234123412341234</td>
             </tr>
           </tbody>
         </table>
+
+        <br>
+        <table>
+          <thead>
+            <td> 자기주도학습시간 </td>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><textarea rows=3 cols=85><?= $student->study_time ?> </textarea></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br>
+        <table>
+          <thead>
+            <td> 레벨테스트 </td>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><textarea rows=5 cols=85><?= $student->level_test ?> </textarea></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br>
+
+        <table>
+          <thead>
+            <td> 교재이력 </td>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><textarea rows=10 cols=85><?= $student->book_history ?> </textarea></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br>
+        <table>
+          <thead>
+            <td> 과정평가 결과 </td>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><textarea rows=10 cols=85><?= $student->course_test ?></textarea></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br>
+        <table>
+          <thead>
+            <td> 학습주안점 </td>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><textarea rows=6 cols=85> </textarea></td>
+            </tr>
+          </tbody>
+        </table>
+
         <!-- PDF CONTENT END -->
       </page>
-      
+
     </div>
   </div>
 
@@ -102,7 +163,7 @@
     }
 
     page[size="A4"] {
-      width: 790px;
+      width: 785px;
       height: 1000px;
     }
 

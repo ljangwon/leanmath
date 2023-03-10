@@ -1,0 +1,1 @@
+app.delete((req, res, next) => {});

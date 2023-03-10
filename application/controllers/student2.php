@@ -252,7 +252,7 @@ class Student2 extends My_Controller
 			array(
 				'name' => $this->input->post('name'),
 				'class_name' => $this->input->post('class_name'),
-				'study_memo' => '2022년 9월 1일 업데이트
+				'study_memo' => '2023년 3월 1일 업데이트
 
 초5 홍길동 학습 기록 공유드립니다.
 
@@ -340,7 +340,7 @@ class Student2 extends My_Controller
 	}
 
 	// read
-	function get_student($st_id)
+	function get_student($st_id = null)
 	{
 		if (empty($st_id)) {
 			alert('st_id의 값이 없습니다', site_url('/student2'));
@@ -408,6 +408,34 @@ class Student2 extends My_Controller
 		$this->load->view(
 			'student2/s7_student2_script_v',
 			array()
+		);
+	}
+
+	// read
+	function print_cover($st_id = null)
+	{
+
+		if (!$st_id) {
+			alert('st_id의 값이 없습니다', site_url('/student2'));
+		}
+
+		// 학생 한명 Data 로드하기 
+		$student = $this->student_m->get($st_id);
+		//$study = $this->st_study_m->get($st_id);
+
+		if ($student) {
+			$this->session->set_userdata('st_name', $student->name);
+			$this->session->set_userdata('st_id', $st_id);
+			$this->session->set_userdata('grade', $student->grade);
+		} else {
+			alert('해당하는 학생이 없습니다', site_url('/student2'));
+		}
+
+		$this->load->view(
+			'student2/s4_student_print_cover_v',
+			array(
+				'student' => $student
+			)
 		);
 	}
 

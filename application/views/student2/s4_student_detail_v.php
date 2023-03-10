@@ -3,16 +3,16 @@
   <!-- Page Heading -->
   <div class="row" id='row1'>
     <div class="col-xs-12">
-      <h4>
+      <h6>
         <a style=text-decoration-line:none href='<?= site_url('student2/screen_timetable') ?>'> 전체 시간표 </a>
         >
         <a style=text-decoration-line:none href='<?= site_url('student2/screen_timetable_today') ?>'> 오늘 시간표 </a>
         >
         <a style=text-decoration-line:none href='<?= site_url('st_study_c') ?>'> 학습기록 </a>
         >
-        <a style=text-decoration-line:none href='<?= site_url('main_test_c') ?>'> 평가기록 </a> >
-        <small>학생 상세화면 </small>
-      </h4>
+        <a style=text-decoration-line:none href='<?= site_url('main_test_c') ?>'> 평가기록 </a>
+        - st_id : <?= $student->id ?> <a class="collapse-item" href="<?= site_url('/student2/print_cover/') ?>/<?= $student->id ?>"> 학생관리 표지인쇄 </a>
+      </h6>
     </div>
   </div>
 
@@ -21,50 +21,41 @@
   <!-- row2 add buttons begin col-xs-4 -->
   <form id="st_info_modify" action='<?= site_url("student2/st_modify") ?>' method="post">
     <div class="row mb-3" id='row2'>
-
-      <div class="col-6">
-        <span>
-          session_st_id : <?= $this->session->userdata('st_id') ?>
-          student name : <?= $this->session->userdata('st_name') ?>
-        </span>
-        <br>
-        <span id="msg" style="color: red">
-          <?php echo $this->session->flashdata('msg'); ?>
-        </span>
-      </div>
+      <input type="hidden" name='id' value="<?= $student->id ?>">
       <div class="col-6">
         <div class="row">
           <div class="float-xs-right mr-2">
-            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#student_add">
+            <a href="javascript:void(0);" class="btn-xs btn-primary" data-toggle="modal" data-target="#student_add">
               <span class="fa fa-plus"></span> 학생추가
             </a>
           </div>
           <div class="float-xs-right mr-2">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn-xs btn-primary">
               <span class="fa fa-plus"></span> 학생수정
             </button>
           </div>
           <div class="float-xs-right mr-2">
-            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#student_del">
+            <a href="javascript:void(0);" class="btn-xs btn-primary" data-toggle="modal" data-target="#student_del">
               <span class="fa fa-plus"></span> 학생삭제
             </a>
           </div>
 
           <div class="float-xs-right mr-2">
-            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#st_study_add">
+            <a href="javascript:void(0);" class="btn-xs btn-primary" data-toggle="modal" data-target="#st_study_add">
               <span class="fa fa-plus"></span>학습추가
             </a>
           </div>
+
         </div>
       </div>
     </div>
 
     <!-- --------------------------------------- -->
+    <h3 align="center"> - 학생 상세정보 -
+    </h3>
+
+    <!-- --------------------------------------- -->
     <div class="row mb-3" id='row3'>
-      <div class="col-sm-2 text-center">
-        <label for="id" class="form-label">ST_ID</label>
-        <input type="text" name="id" class="form-control" placeholder="" value="<?= $student->id ?>">
-      </div>
 
       <div class="col-sm-2 text-center">
         <label for="" class="form-label">이 름</label>
@@ -330,6 +321,8 @@
 
     </div>
   </form>
+
+
   <div class="row mb-3" id='row16'>
     <div class="col-sm-12 text-center">
       <label class="form-label">학습 리포트</label>
@@ -356,7 +349,6 @@
 <?= $student->study_point ?> 
 </textarea>
     </div>
-
   </div>
 
   <!-- table  begin -->
