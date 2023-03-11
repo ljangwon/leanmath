@@ -1,0 +1,27 @@
+[
+	{
+		"name": "leanmath",
+		"host": "jakeleanco.dothome.co.kr",
+		"protocol": "ftp",
+		"port": 21,
+		"username": "jakeleanco",
+		"password": "",
+		"remotePath": "/html/leanmath",
+		"uploadOnSave": true,
+		"watcher": {
+			"files": "**/*.{php,js,sql}",
+			"autoUpload": true,
+			"autoDelete": true
+		},
+		"ignore": [
+			"**/.vscode",
+			"**/.git",
+			"**/.DS_Store",
+			"**/.sftp.json",
+			"**/.gitignore",
+			"**/node_modules",
+			"**/.env",
+			"**/workspace.code-workspace"
+		]
+	}
+]
