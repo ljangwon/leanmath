@@ -158,7 +158,7 @@ class Student2 extends My_Controller
 
 			default:
 				$this->load->view(
-					'student2/s4_timetable1_total_v',
+					'student2/s4_timetable_total_v',
 					array(
 						'students' => $students
 					)
