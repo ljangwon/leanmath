@@ -88,7 +88,7 @@
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
                   <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> )<br>
-                - <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                - <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -115,7 +115,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -142,7 +142,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -168,7 +168,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -200,7 +200,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -227,7 +227,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -254,7 +254,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -280,7 +280,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -312,7 +312,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -339,7 +339,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -366,7 +366,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -392,7 +392,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -424,7 +424,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -451,7 +451,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -478,7 +478,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -504,7 +504,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -536,7 +536,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -563,7 +563,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -590,7 +590,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -616,7 +616,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -649,7 +649,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -676,7 +676,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -705,7 +705,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
@@ -731,7 +731,7 @@
           ?>
               <li>
                 <a class="collapse-item" href="<?= site_url('/student2/get_student/') ?>/<?= $entry->id ?>">
-                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
+                  <?= $entry->name ?></a> - ( <?= elapsed_days_span($entry->report_date) ?>, <?= elapsed_days_span($entry->report_update_date) ?> ) <br>- <?= $entry->school_name ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?> </a> <br>
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
