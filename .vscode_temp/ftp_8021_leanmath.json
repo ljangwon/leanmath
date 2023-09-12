@@ -1,12 +1,12 @@
 [
 	{
-		"name": "lmath",
-		"host": "jakeleanco.ipdisk.co.kr",
+		"name": "leanmath ftp",
+		"host": "leanedu22.site",
 		"protocol": "ftp",
-		"port": 21,
+		"port": 8021,
 		"username": "ljangwon",
-		"password": "",
-		"remotePath": "/VOL1/htdocs/lmath",
+		"password": "Happysky7788a!a",
+		"remotePath": "/VOL1/htdocs/leanmath",
 		"uploadOnSave": true,
 		"watcher": {
 			"files": "**/*.{php,js,sql}",

@@ -30,7 +30,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        즐겨찾기
+        즐겨찾기1
       </div>
       <!-- Nav Item - Study Time Table -->
       <li class="nav-item">
