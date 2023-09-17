@@ -8,6 +8,19 @@ class MY_Controller extends CI_Controller
 
   function _require_login($return_url, $level)
   {
+    $this->load->helper('password');
+    if (check_local_ip()) {
+      $this->session->set_userdata('is_login', true);
+      $this->session->set_userdata('email', 'ljang1@naver.com');
+      $this->session->set_userdata('name', 'local_login');
+      $this->session->set_userdata('year', c_year());
+      $this->session->set_userdata('month', c_month());
+      $this->session->set_userdata('level', '10');
+      $this->session->set_userdata('workspace', 'leanmath');
+      return true;
+    }
+
+
     // 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
     if (!$this->session->userdata('is_login')) {
       alert('로그인이 필요합니다.', site_url('/auth/login?returnURL=' . rawurlencode($return_url)));

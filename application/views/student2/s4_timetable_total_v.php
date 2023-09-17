@@ -9,7 +9,15 @@
         <a style=text-decoration-line:none href='<?= site_url('payment2') ?>'> 수납현황 </a>
         >
         <a style=text-decoration-line:none href='<?= site_url('book') ?>'> 교재현황 </a> >
-        <small>전체 시간표- 2023년 11월 </small>
+        <small>전체 시간표- 2023년 9월 접속IP: <?php if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                                        echo $ip = $_SERVER['HTTP_CLIENT_IP'];
+                                      } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                                        echo $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                                      } else {
+                                        echo $ip = $_SERVER['REMOTE_ADDR'];
+                                      }
+                                      ?> <?php $this->load->helper('password');
+                                          echo check_local_ip(); ?></small>
       </h4>
     </div>
   </div>
