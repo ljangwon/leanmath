@@ -15,8 +15,8 @@
 |
 */
 //$config['base_url']  = 'http://leanedunas.ipdisk.co.kr:8000/leanmath';
-$config['base_url']  = 'http://leanmath.leanedu22.site';
-//$config['base_url']  = 'http://localhot/leanmath';
+//$config['base_url']  = 'http://leanmath.leanedu22.site';
+$config['base_url']  = 'http://localhost:9090/leanmath';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -356,7 +356,7 @@ $config['rewrite_short_tags'] = FALSE;
 | Comma-delimited, e.g. '10.0.1.200,10.0.1.201'
 |
 */
-$config['proxy_ips'] = '';
+$config['proxy_ips'] = '';  
 
 
 /* End of file config.php */
