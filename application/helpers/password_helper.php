@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A Compatibility library with PHP 5.5's simplified password hashing API.
  *
@@ -21,7 +22,8 @@ if (!defined('PASSWORD_BCRYPT')) {
 	 *
 	 * @return string|false The hashed password, or false on error.
 	 */
-	function password_hash($password, $algo, array $options = array()) {
+	function password_hash($password, $algo, array $options = array())
+	{
 		if (!function_exists('crypt')) {
 			trigger_error("Crypt must be loaded for password_hash to function", E_USER_WARNING);
 			return null;
@@ -117,7 +119,6 @@ if (!defined('PASSWORD_BCRYPT')) {
 				}
 			}
 			$salt = str_replace('+', '.', base64_encode($buffer));
-
 		}
 		$salt = substr($salt, 0, $required_salt_len);
 
@@ -148,7 +149,8 @@ if (!defined('PASSWORD_BCRYPT')) {
 	 *
 	 * @return array The array of information about the hash.
 	 */
-	function password_get_info($hash) {
+	function password_get_info($hash)
+	{
 		$return = array(
 			'algo' => 0,
 			'algoName' => 'unknown',
@@ -174,7 +176,8 @@ if (!defined('PASSWORD_BCRYPT')) {
 	 *
 	 * @return boolean True if the password needs to be rehashed.
 	 */
-	function password_needs_rehash($hash, $algo, array $options = array()) {
+	function password_needs_rehash($hash, $algo, array $options = array())
+	{
 		$info = password_get_info($hash);
 		if ($info['algo'] != $algo) {
 			return true;
@@ -198,7 +201,8 @@ if (!defined('PASSWORD_BCRYPT')) {
 	 *
 	 * @return boolean If the password matches the hash
 	 */
-    function password_verify($password, $hash) {
+	function password_verify($password, $hash)
+	{
 		if (!function_exists('crypt')) {
 			trigger_error("Crypt must be loaded for password_verify to function", E_USER_WARNING);
 			return false;
@@ -215,6 +219,22 @@ if (!defined('PASSWORD_BCRYPT')) {
 
 		return $status === 0;
 	}
+
+	function check_local_ip()
+	{
+		$ip = '';
+		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+			$ip = $_SERVER['HTTP_CLIENT_IP'];
+		} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		} else {
+			$ip = $_SERVER['REMOTE_ADDR'];
+		}
+
+		if ($ip == '192.168.0.1') {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
-
-
