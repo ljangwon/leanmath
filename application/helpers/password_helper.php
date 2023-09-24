@@ -219,22 +219,22 @@ if (!defined('PASSWORD_BCRYPT')) {
 
 		return $status === 0;
 	}
+}
 
-	function check_local_ip()
-	{
-		$ip = '';
-		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
-		} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-		} else {
-			$ip = $_SERVER['REMOTE_ADDR'];
-		}
+function check_local_ip()
+{
+	$ip = '';
+	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		$ip = $_SERVER['HTTP_CLIENT_IP'];
+	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	} else {
+		$ip = $_SERVER['REMOTE_ADDR'];
+	}
 
-		if ($ip == '192.168.0.1') {
-			return true;
-		} else {
-			return false;
-		}
+	if ($ip == '192.168.0.1') {
+		return true;
+	} else {
+		return false;
 	}
 }
