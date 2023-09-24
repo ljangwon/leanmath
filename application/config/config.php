@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-//$config['base_url']  = 'http://leanedunas.ipdisk.co.kr:8000/leanmath';
+//$config['base_url']  = 'http://leanedu22.site:8000/leanmath';
 //$config['base_url']  = 'http://leanmath.leanedu22.site';
 $config['base_url']  = 'http://localhost:9090/leanmath';
 /*
