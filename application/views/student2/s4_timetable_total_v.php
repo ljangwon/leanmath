@@ -16,8 +16,7 @@
                                       } else {
                                         echo $ip = $_SERVER['REMOTE_ADDR'];
                                       }
-                                      ?> <?php $this->load->helper('password');
-                                          echo check_local_ip(); ?></small>
+                                      ?> </small>
       </h4>
     </div>
   </div>

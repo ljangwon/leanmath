@@ -232,7 +232,7 @@ function check_local_ip()
 		$ip = $_SERVER['REMOTE_ADDR'];
 	}
 
-	if ($ip == '192.168.0.1') {
+	if ($ip == '172.18.0.1') {
 		return true;
 	} else {
 		return false;
