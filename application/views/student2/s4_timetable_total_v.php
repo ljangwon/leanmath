@@ -10,11 +10,17 @@
         >
         <a style=text-decoration-line:none href='<?= site_url('book') ?>'> 교재현황 </a> >
         <small>전체 시간표- 2023년 10월 접속IP: <?php if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-                                          echo $ip = $_SERVER['HTTP_CLIENT_IP'];
+                                          $ip = $_SERVER['HTTP_CLIENT_IP'];
+                                          echo "HTTP_CLIENT_IP:";
+                                          echo $ip;
                                         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                                          echo $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                                          $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                                          echo "HTTP_X_FORWARDED_FOR:";
+                                          echo $ip;
                                         } else {
-                                          echo $ip = $_SERVER['REMOTE_ADDR'];
+                                          $ip = $_SERVER['REMOTE_ADDR'];
+                                          echo "REMOTE_ADDR:";
+                                          echo $ip;
                                         }
                                         ?> </small>
       </h4>
