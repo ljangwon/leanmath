@@ -179,7 +179,7 @@ class Auth extends MY_Controller
 			$ip = $_SERVER['REMOTE_ADDR'];
 		}
 
-		if (($ip == '101.235.238.3') || ($ip == '192.168.0.1') || ($ip == '172.21.0.1')) {
+		if (($ip == '101.235.238.3') || ($ip == '192.168.0.1') || ($ip == '172.21.0.1') || ($ip == '172.24.0.1')) {
 			return true;
 		} else {
 			return false;
