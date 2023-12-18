@@ -8,6 +8,7 @@ class MY_Controller extends CI_Controller
 
   function _require_login($return_url, $level)
   {
+
     $this->load->helper('password');
     if (check_local_ip()) {
       $this->session->set_userdata('is_login', true);
