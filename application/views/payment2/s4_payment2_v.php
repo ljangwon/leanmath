@@ -57,6 +57,7 @@
             <option>2021년</option>
             <option>2022년</option>
             <option>2023년</option>
+            <option>2024년</option>
           </select>
         </div>
 
